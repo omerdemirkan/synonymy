@@ -25,15 +25,16 @@
     display: flex;
     align-content: center;
     justify-content: space-evenly;
-    width: calc(150px + 12vw);
+    width: calc(150px + 15vw);
     padding: 0;
     position: absolute;
-    top: 20px;
+    top: 10px;
     right: 5vw;
 }
 
 .ListItem {
     cursor: pointer;
+    align-self: center;
 }
 
 .ListItem:hover {

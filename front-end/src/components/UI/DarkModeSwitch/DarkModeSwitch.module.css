@@ -1,0 +1,19 @@
+.Switch {
+    
+}
+
+.SunIcon {
+    height: 100%;
+    vertical-align: middle;
+
+    position: relative;
+    left: 5px;
+}
+
+.MoonIcon {
+    height: 100%;
+    vertical-align: middle;
+
+    position: relative;
+    right: 5px;
+}
