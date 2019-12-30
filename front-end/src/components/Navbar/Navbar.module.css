@@ -1,7 +1,7 @@
 .Navbar {
-    position: absolute;
+    /* position: absolute;
     top: 0;
-    left: 0;
+    left: 0; */
     width: 100%;
     min-height: 60px;
     padding: 0;
@@ -16,6 +16,7 @@
     transform: translate(-50%);
     display: inline-block;
     font-size: 26px;
+    user-select: none;
 }
 
 .ListBox {
@@ -26,7 +27,7 @@
     display: flex;
     align-content: center;
     justify-content: space-evenly;
-    width: calc(180px + 10vw);
+    width: calc(150px + 12vw);
     padding: 0;
     position: absolute;
     top: 20px;
@@ -37,7 +38,11 @@
     cursor: pointer;
 }
 
-@media (max-width: 1200px) and (min-width: 769px) {
+.ListItem:hover {
+    color: rgb(183, 201, 219);
+}
+
+@media (max-width: 1200px) and (min-width: 500px) {
     .Logo {
         margin: 0;
         transform: none;
@@ -47,12 +52,12 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 499px) {
     .ListBox {
         left: 50%;
         top: 70px;
         transform: translate(-50%);
-        width: 200px;
+        width: 100%;
     }
 
     .Navbar {

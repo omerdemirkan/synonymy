@@ -1,0 +1,15 @@
+.Main {
+    width: 100%;
+    height: 80vh;
+    padding: 0;
+    padding-top: 20px;
+}
+
+.Background1 {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -5;
+}
