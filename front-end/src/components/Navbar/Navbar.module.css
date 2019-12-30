@@ -1,0 +1,61 @@
+.Navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 60px;
+    padding: 0;
+    background-color: #23374D;
+    position: relative;
+}
+
+.Logo {
+    color: #92A0AF;
+    margin: 0;
+    margin: 12px 0 0 50%;
+    transform: translate(-50%);
+    display: inline-block;
+    font-size: 26px;
+}
+
+.ListBox {
+    list-style: none;
+    margin: 0;
+    color: #92A0AF;
+    font-weight: 500;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    width: calc(180px + 10vw);
+    padding: 0;
+    position: absolute;
+    top: 20px;
+    right: 5vw;
+}
+
+.ListItem {
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+    .Logo {
+        margin: 0;
+        transform: none;
+        position: absolute;
+        top: 12px;
+        left: 10vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .ListBox {
+        left: 50%;
+        top: 70px;
+        transform: translate(-50%);
+        width: 200px;
+    }
+
+    .Navbar {
+        height: 110px;
+    }
+}
