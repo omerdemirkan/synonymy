@@ -5,12 +5,11 @@
     width: 100%;
     min-height: 60px;
     padding: 0;
-    background-color: #23374D;
     position: relative;
+    z-index: 10;
 }
 
 .Logo {
-    color: #92A0AF;
     margin: 0;
     margin: 12px 0 0 50%;
     transform: translate(-50%);
@@ -22,7 +21,6 @@
 .ListBox {
     list-style: none;
     margin: 0;
-    color: #92A0AF;
     font-weight: 500;
     display: flex;
     align-content: center;
@@ -39,7 +37,7 @@
 }
 
 .ListItem:hover {
-    color: rgb(183, 201, 219);
+    opacity: .8;
 }
 
 @media (max-width: 1200px) and (min-width: 500px) {

@@ -3,29 +3,28 @@ import * as actionTypes from '../actions/actionTypes';
 const mapModeToPallete = darkMode => {
     if (darkMode) {
         return {
-            backgroundMain: '',
-            backgroundSecondary: '',
-            textArea: '',
-            text: ''
+            backgroundMain: 'black',
+            backgroundSecondary: 'black',
+            textArea: 'white',
+            userInputText: 'white',
+            navbar: 'black',
+            navbarText: 'white'
         }
     } else {
         return {
-            backgroundMain: '',
-            backgroundSecondary: '',
-            textArea: '',
-            text: ''
+            backgroundMain: 'white',
+            backgroundSecondary: 'white',
+            textArea: 'black',
+            userInputText: 'black',
+            navbar: '#eee',
+            navbarText: 'black'
         }
     }
 }
 
 const initialState = {
     darkMode: false,
-    pallete: {
-        backgroundMain: '',
-        backgroundSecondary: '',
-        textArea: '',
-        text: ''
-    }
+    pallete: mapModeToPallete(false)
 }
 
 const palleteReducer = (state = initialState, action) => {

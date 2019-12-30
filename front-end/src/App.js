@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
+
+import Navbar from './containers/Navbar/Navbar';
 import Main from './components/Main/Main';
 
 function App() {
