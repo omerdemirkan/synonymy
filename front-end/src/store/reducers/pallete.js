@@ -7,7 +7,7 @@ const mapModeToPallete = darkMode => {
             backgroundSecondary: 'black',
             textArea: 'white',
             userInputText: 'white',
-            navbar: 'black',
+            navbar: '#333',
             navbarText: 'white'
         }
     } else {
@@ -29,10 +29,10 @@ const initialState = {
 
 const palleteReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes:
+        case actionTypes.TOGGLE_PALLETE:
             return {
-                darkMode: action.darkMode,
-                pallete: mapModeToPallete(action.darkMode)
+                darkMode: !state.darkMode,
+                pallete: mapModeToPallete(!state.darkMode)
             }
         default:
             return state;

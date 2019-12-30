@@ -49,16 +49,3 @@
         left: 10vw;
     }
 }
-
-@media (max-width: 499px) {
-    .ListBox {
-        left: 50%;
-        top: 70px;
-        transform: translate(-50%);
-        width: 100%;
-    }
-
-    .Navbar {
-        height: 110px;
-    }
-}

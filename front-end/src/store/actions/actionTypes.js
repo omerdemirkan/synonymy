@@ -1,1 +1,1 @@
-export const SET_PALLETE = 'SET_PALLETE';
+export const TOGGLE_PALLETE = 'TOGGLE_PALLETE';

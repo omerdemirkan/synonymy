@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classes from './Navbar.module.css';
 import { connect } from 'react-redux';
+import DarkModeSwitch from '../../components/UI/DarkModeSwitch/DarkModeSwitch';
 
 const Navbar = props => {
     // Determines whether or not the side-drawer is open, also affects
@@ -15,6 +16,11 @@ const Navbar = props => {
     >
         <h2 className={classes.Logo}>Synonymy</h2>
         <ul className={classes.ListBox}>
+
+            <li>
+                <DarkModeSwitch/>
+            </li>
+
             <li className={classes.ListItem}>About</li>
             <li className={classes.ListItem}>Tutorial</li>
         </ul>
