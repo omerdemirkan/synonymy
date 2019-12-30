@@ -1,0 +1,1 @@
+export const SET_PALLETE = 'SET_PALLETE';
