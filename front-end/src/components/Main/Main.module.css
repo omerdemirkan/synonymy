@@ -3,6 +3,7 @@
     height: 80vh;
     padding: 0;
     padding-top: 20px;
+    transition: background-color 0.2s ease;
 }
 
 .Background1 {

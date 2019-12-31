@@ -4,16 +4,19 @@ import DarkModeSwitch from '../../components/UI/DarkModeSwitch/DarkModeSwitch';
 import { connect } from 'react-redux';
 
 function SideDrawer(props) {
-    return <div className={classes.SideDrawer}
-    style={{
+
+    const themeModifier = {
         backgroundColor: props.pallete.navbar, 
         color: props.pallete.navbarText
-    }}>
+    }
+
+    return <div className={classes.SideDrawer}
+    style={!props.open ? themeModifier : {transform: 'translate(0)', transition: '0.3s ease', ...themeModifier}}
+    >
         <span className={classes.Switch}>
             <DarkModeSwitch/>
         </span>
         <ul className={classes.ListBox}>
-
             <li className={classes.ListItem}>
                 <button className={classes.ListButton} style={{color: props.pallete.navbarText, borderColor: props.pallete.navbarText}}>
                     About

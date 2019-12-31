@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 const mapModeToPallete = darkMode => {
     if (darkMode) {
         return {
-            backgroundMain: 'black',
+            backgroundMain: '#222',
             backgroundSecondary: 'black',
             textArea: 'white',
             userInputText: 'white',
