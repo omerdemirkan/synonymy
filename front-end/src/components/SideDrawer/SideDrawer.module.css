@@ -2,7 +2,7 @@
     position: absolute;
     right: 0;
     top: calc(60px + 10vh);
-    transform: translate(100%);
+    transform: translate(110%);
     padding: 20px 0 50px;
     width: 60vw;
     z-index: 8;

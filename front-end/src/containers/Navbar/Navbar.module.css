@@ -1,13 +1,19 @@
 .Navbar {
-    /* position: absolute;
+    position: fixed;
     top: 0;
-    left: 0; */
+    left: 0;
     width: 100%;
     min-height: 60px;
     padding: 0;
-    /* position: relative; */
     z-index: 10;
     transition: background-color 0.2s ease;
+}
+
+.NavbarPlaceHolder {
+    width: 100%;
+    min-height: 60px;
+    padding: 0;
+    z-index: 10;
 }
 
 .Logo {

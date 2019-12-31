@@ -5,16 +5,25 @@ import DarkModeSwitch from '../../components/UI/DarkModeSwitch/DarkModeSwitch';
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
 // import Backdrop from '../../components/Backdrop/Backdrop';
 import Backdrop from '@material-ui/core/Backdrop';
-import NeuBorder from '../../components/UI/NeuBorder/NueBorder';
 
 const Navbar = props => {
     // Determines whether or not the side-drawer is open, also affects
     const [showSideDrawer, setShowSideDrawer] = useState(false);
     
-    return <nav className={classes.Navbar}
+    return <>
+
+    {/* Because the navbar is taken out to the document flow,
+    (position: fixed) I put a placeholder. */}
+    <nav className={classes.NavbarPlaceHolder}
     style={{
         backgroundColor: props.pallete.navbar, 
         color: props.pallete.navbarText
+    }}></nav>
+
+    <nav className={classes.Navbar}
+    style={{
+        backgroundColor: props.pallete.navbar, 
+        color: props.pallete.navbarText,
     }}
     >
         <h2 className={classes.Logo}>Synonymy</h2>
@@ -54,6 +63,7 @@ const Navbar = props => {
             onClick={() => setShowSideDrawer(!showSideDrawer)}
         ></Backdrop>
     </nav>
+    </>
 }
 
 const mapStateToProps = state => {

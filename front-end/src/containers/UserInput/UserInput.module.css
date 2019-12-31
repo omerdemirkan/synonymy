@@ -1,0 +1,34 @@
+.UserInput {
+    min-height: 80vh;
+    width: 100%;
+}
+
+.TextFieldBox {
+    width: 60%;
+    /* min-height: 70vh; */
+    margin: auto;
+    padding: 10px 10px 50px;
+    border: 1px solid;
+}
+
+.Header {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+.TextField {
+    resize: none;
+    width: 100%;
+    margin: auto;
+    height: 70vh;
+    background-color: transparent;
+
+    box-sizing: border-box;
+
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    border: none;
+    letter-spacing: .5px;
+}
