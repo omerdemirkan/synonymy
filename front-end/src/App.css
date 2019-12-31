@@ -1,3 +1,4 @@
 .App {
   font-family: 'Roboto', sans-serif;
+  transition: 0.3s linear;
 }

@@ -41,12 +41,18 @@
     opacity: .8;
 }
 
-@media (max-width: 1200px) and (min-width: 500px) {
+@media (max-width: 1200px) {
     .Logo {
         margin: 0;
         transform: none;
         position: absolute;
         top: 12px;
         left: 10vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .ListBox {
+        display: none;
     }
 }

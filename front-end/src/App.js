@@ -5,16 +5,14 @@ import Navbar from './containers/Navbar/Navbar';
 import Main from './components/Main/Main';
 
 function App() {
-  return (
-    <div className="App">
-      <Navbar/>
+  return <div className="App">
+    <Navbar/>
+      
+    <Main>
+      
+    </Main>
 
-      <Main>
-        
-      </Main>
-
-    </div>
-  );
+  </div>
 }
 
 export default App;
