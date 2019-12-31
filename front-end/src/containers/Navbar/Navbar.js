@@ -5,6 +5,7 @@ import DarkModeSwitch from '../../components/UI/DarkModeSwitch/DarkModeSwitch';
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
 // import Backdrop from '../../components/Backdrop/Backdrop';
 import Backdrop from '@material-ui/core/Backdrop';
+import NeuBorder from '../../components/UI/NeuBorder/NueBorder';
 
 const Navbar = props => {
     // Determines whether or not the side-drawer is open, also affects
@@ -47,10 +48,10 @@ const Navbar = props => {
         <Backdrop
             style={{
                 zIndex: "3", top: '60px', backgroundColor: props.pallete.backgroundMain
+                // zIndex: "3", top: '60px', backgroundColor: 'black', opacity: '.5'
             }}
             open={showSideDrawer}
             onClick={() => setShowSideDrawer(!showSideDrawer)}
-            classes={{opacity: '.5'}}
         ></Backdrop>
     </nav>
 }

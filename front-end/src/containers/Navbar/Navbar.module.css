@@ -45,7 +45,7 @@
 .Burger {
     display: none;
     position: absolute;
-    top: 15px;
+    top: 14px;
     right: 7%;
     cursor: pointer;
     outline: none;
@@ -53,22 +53,22 @@
 
 .Burger div {
     width: 30px;
-    height: 4px;
-    margin: 5px 0;
+    height: 3px;
+    margin: 6px 0;
     border-radius: 0.5rem;
     transition: 0.3s ease;
 }
 
 .Line1 {
-    transform: rotate(-45deg) translate(-5px, 8px);
+    transform: rotate(45deg) translate(6px, 7px);
 }
 
 .Line2 {
-    opacity: 0;
+    transform: rotate(-45deg) translate(0, 0);
 }
 
 .Line3 {
-    transform: rotate(45deg) translate(-5px, -7px);
+    transform: rotate(45deg) translate(-6px, -6px);
 }
 
 @media (max-width: 1200px) {

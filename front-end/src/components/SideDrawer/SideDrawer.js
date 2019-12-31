@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './SideDrawer.module.css'
 import DarkModeSwitch from '../../components/UI/DarkModeSwitch/DarkModeSwitch';
 import { connect } from 'react-redux';
+import NeuBorder from '../UI/NeuBorder/NueBorder';
 
 function SideDrawer(props) {
 
@@ -11,11 +12,11 @@ function SideDrawer(props) {
     }
 
     return <div className={classes.SideDrawer}
-    style={!props.open ? themeModifier : {transform: 'translate(0)', transition: '0.3s ease', ...themeModifier}}
+    style={!props.open ? themeModifier : {transform: 'translate(0)', transition: '0.2s ease', ...themeModifier}}
     >
-        <span className={classes.Switch}>
+        <NeuBorder className={classes.Switch}>
             <DarkModeSwitch/>
-        </span>
+        </NeuBorder>
         <ul className={classes.ListBox}>
             <li className={classes.ListItem}>
                 <button className={classes.ListButton} style={{color: props.pallete.navbarText, borderColor: props.pallete.navbarText}}>
