@@ -5,16 +5,21 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 // ---Redux---
-import {createStore, combineReducers} from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
 
 import palleteReducer from './store/reducers/pallete';
+import userInputReducer from './store/reducers/userInput';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    pallete: palleteReducer
+    pallete: palleteReducer,
+    userInput: userInputReducer
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 

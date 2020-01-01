@@ -9,12 +9,14 @@
     margin: auto;
     padding: 10px 10px 50px;
     border: 1px solid;
+    position: relative;
 }
 
 .Header {
     font-size: 1rem;
     text-align: center;
     font-weight: 400;
+    margin: 40px 0;
 }
 
 .TextField {
@@ -31,4 +33,18 @@
     outline: none;
     border: none;
     letter-spacing: .5px;
+}
+
+.CheckButton {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+
+    background: transparent;
+    border: 1px solid black;
+    border-radius: .5rem;
+    width: 100px;
+    height: 30px;
+
+    outline: none;
 }

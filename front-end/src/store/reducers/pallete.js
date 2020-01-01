@@ -22,9 +22,16 @@ const mapModeToPallete = darkMode => {
     }
 }
 
-const initialState = {
+let initialState = {
     darkMode: false,
     pallete: mapModeToPallete(false)
+}
+
+if (localStorage.getItem('darkMode')) {
+    initialState = {
+        darkMode: true,
+        pallete: mapModeToPallete(true)
+    }
 }
 
 const palleteReducer = (state = initialState, action) => {
