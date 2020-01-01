@@ -10,17 +10,7 @@ const Navbar = props => {
     // Determines whether or not the side-drawer is open, also affects
     const [showSideDrawer, setShowSideDrawer] = useState(false);
     
-    return <>
-
-    {/* Because the navbar is taken out to the document flow,
-    (position: fixed) I put a placeholder. */}
-    <nav className={classes.NavbarPlaceHolder}
-    style={{
-        backgroundColor: props.pallete.navbar, 
-        color: props.pallete.navbarText
-    }}></nav>
-
-    <nav className={classes.Navbar}
+    return <nav className={classes.Navbar}
     style={{
         backgroundColor: props.pallete.navbar, 
         color: props.pallete.navbarText,
@@ -63,7 +53,6 @@ const Navbar = props => {
             onClick={() => setShowSideDrawer(!showSideDrawer)}
         ></Backdrop>
     </nav>
-    </>
 }
 
 const mapStateToProps = state => {

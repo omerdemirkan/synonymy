@@ -41,7 +41,7 @@ const UserInput = props => {
             </div>
 
             {props.overused.length > 0 ? 
-                <div className={classes.SynonymBox}>
+                <aside className={classes.SynonymBox}>
                     <table className={classes.SynonymTable}>
                         <thead>
                             <tr>
@@ -60,7 +60,7 @@ const UserInput = props => {
                             })}
                         </tbody>
                     </table>
-                </div>
+                </aside>
             : null}
 
             

@@ -12,23 +12,33 @@
 
 .TextFieldSynonymBox {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .TextFieldBox {
     width: 60%;
     /* min-height: 70vh; */
-    padding: 10px 10px 50px;
+    padding: 15px 15px 50px;
     border: 1px solid;
     position: relative;
 }
 
 .SynonymBox {
-    
+    position: relative;
+    margin-left: 
+}
+
+.SynonymTable {
+    border: 1px solid black;
+    position: sticky;
+    top: 70px;
+    left: 0;
+    padding: 0;
 }
 
 td {
-    margin: 0 20px;
+    text-align: center;
+    min-width: 60px;
 }
 
 .TextField {
@@ -45,6 +55,7 @@ td {
     outline: none;
     border: none;
     letter-spacing: .5px;
+    transition: position 0.3s ease;
 }
 
 .CheckButton {

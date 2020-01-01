@@ -9,13 +9,6 @@
     transition: background-color 0.2s ease;
 }
 
-.NavbarPlaceHolder {
-    width: 100%;
-    min-height: 60px;
-    padding: 0;
-    z-index: 10;
-}
-
 .Logo {
     margin: 0;
     margin: 12px 0 0 50%;
