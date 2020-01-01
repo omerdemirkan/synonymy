@@ -24,7 +24,7 @@ const UserInput = props => {
             style={{
                 color: props.pallete.userInputText,
                 borderColor: props.pallete.userInputText
-            }}>Check</button>
+            }}>CHECK</button>
         </div>
     </div>
 }

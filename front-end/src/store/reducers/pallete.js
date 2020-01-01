@@ -25,9 +25,9 @@ const mapModeToPallete = darkMode => {
 let initialState = {
     darkMode: false,
     pallete: mapModeToPallete(false)
-}
+};
 
-if (localStorage.getItem('darkMode')) {
+if (localStorage.getItem('darkMode') === 'true') {
     initialState = {
         darkMode: true,
         pallete: mapModeToPallete(true)
@@ -37,6 +37,7 @@ if (localStorage.getItem('darkMode')) {
 const palleteReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.TOGGLE_PALLETE:
+            localStorage.setItem('darkMode', !state.darkMode);
             return {
                 darkMode: !state.darkMode,
                 pallete: mapModeToPallete(!state.darkMode)
