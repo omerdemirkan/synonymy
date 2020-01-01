@@ -1,21 +1,20 @@
 import * as actionTypes from '../actions/actionTypes';
 import wf from 'word-freq';
 
-let initialState = null;
+let initialState = {
+    text: '',
+    loading: false,
+    numWords: 0,
+    overused: []
+}
 
 const storedText = localStorage.getItem('text');
 
 if (storedText && storedText.length > 0) {
     initialState = {
+        ...initialState,
         text: storedText,
-        loading: false,
         numWords: wf.tokenise(storedText, false).length
-    }
-} else {
-    initialState = {
-        text: '',
-        loading: false,
-        numWords: 0
     }
 }
 
@@ -38,7 +37,7 @@ const userInputReducer = (state = initialState, action) => {
         case actionTypes.SEARCH_TEXT_SUCCESS:
             return {
                 ...state,
-                list: action.list
+                overused: action.overused
             }
         case actionTypes.SEARCH_TEXT_FAILURE:
             return state

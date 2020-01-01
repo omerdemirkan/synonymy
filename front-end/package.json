@@ -16,6 +16,7 @@
     "react-textarea-autosize": "^7.1.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "synonyms": "^1.0.1",
     "word-freq": "0.0.8"
   },
   "scripts": {
