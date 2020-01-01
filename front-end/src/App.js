@@ -7,11 +7,11 @@ import UserInput from './containers/UserInput/UserInput';
 
 function App() {
 
+  // Sets theme preference on first use
   useEffect(() => {
     if (localStorage.getItem('darkMode') == null) {
       localStorage.setItem('darkMode', false);
     }
-    
   }, []);
 
   return <div className="App">

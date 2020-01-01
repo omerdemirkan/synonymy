@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     text: '',
     loading: false,
-
+    list: []
 }
 
 const userInputReducer = (state = initialState, action) => {
@@ -20,8 +20,11 @@ const userInputReducer = (state = initialState, action) => {
             }
         case actionTypes.SEARCH_TEXT_SUCCESS:
             return {
-                ...state
+                ...state,
+                list: action.list
             }
+        case actionTypes.SEARCH_TEXT_FAILURE:
+            return state
         default:
             return state;
     }
