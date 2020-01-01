@@ -32,7 +32,7 @@ const UserInput = props => {
             </TextareaAutosize>
 
             <button className={classes.CheckButton}
-            onClick={() => props.onSearchText(props.text)}
+            onClick={() => props.onSearchText(props.text, props.numWords)}
             style={{
                 color: props.pallete.userInputText,
                 borderColor: props.pallete.userInputText
@@ -44,14 +44,15 @@ const UserInput = props => {
 const mapStateToProps = state => {
     return {
         pallete: state.pallete.pallete,
-        text: state.userInput.text
+        text: state.userInput.text,
+        numWords: state.userInput.numWords
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onTextUpdated: text => dispatch({type: actionTypes.UPDATE_TEXT, text: text}),
-        onSearchText: text => dispatch(searchTextAsync(text))
+        onSearchText: (text, numWords) => dispatch(searchTextAsync(text, numWords))
     }
 }
 
