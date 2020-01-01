@@ -3,20 +3,32 @@
     width: 100%;
 }
 
-.TextFieldBox {
-    width: 60%;
-    /* min-height: 70vh; */
-    margin: auto;
-    padding: 10px 10px 50px;
-    border: 1px solid;
-    position: relative;
-}
-
 .Header {
     font-size: 1rem;
     text-align: center;
     font-weight: 400;
     margin: 40px 0;
+}
+
+.TextFieldSynonymBox {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.TextFieldBox {
+    width: 60%;
+    /* min-height: 70vh; */
+    padding: 10px 10px 50px;
+    border: 1px solid;
+    position: relative;
+}
+
+.SynonymBox {
+    
+}
+
+td {
+    margin: 0 20px;
 }
 
 .TextField {

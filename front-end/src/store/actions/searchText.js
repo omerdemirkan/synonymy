@@ -18,7 +18,6 @@ const searchTextAsync = (text, numWords) => {
         if (text.length > 0) {
             // All usages of non-stop words found in the text.
             const originalList = wf.freq(text);
-            console.log(originalList);
 
             let overusedList = [];
 
@@ -57,7 +56,6 @@ const searchTextAsync = (text, numWords) => {
 
             // Descending order by multiplier
             overusedList.sort((a, b) => {return b.multiplier - a.multiplier});
-            console.log(overusedList);
             dispatch(searchTextSuccess(overusedList));
         }
     }

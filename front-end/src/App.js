@@ -12,6 +12,7 @@ function App() {
     if (localStorage.getItem('darkMode') == null) {
       localStorage.setItem('darkMode', false);
     }
+    window.scrollTo(0, 0);
   }, []);
 
   return <div className="App">
