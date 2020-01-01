@@ -38,7 +38,7 @@ const searchTextAsync = (text, numWords) => {
                         const userFrequency = numFound / numWords;
                         const overusedMultiplier = userFrequency / expectedFrequency;
     
-                        if (overusedMultiplier > 50) {
+                        if (overusedMultiplier > 5) {
     
                             const mySynonyms = synonyms(word)
     
@@ -54,8 +54,10 @@ const searchTextAsync = (text, numWords) => {
                     }
                 }
             });
+
+            // Descending order by multiplier
+            overusedList.sort((a, b) => {return b.multiplier - a.multiplier});
             console.log(overusedList);
-            
             dispatch(searchTextSuccess(overusedList));
         }
     }
