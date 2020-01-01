@@ -17,6 +17,7 @@ const getSynonyms = word => {
 const searchTextAsync = (text, numWords) => {
     return dispatch => {
         dispatch(searchTextStart());
+        localStorage.setItem('text', text);
         if (text.length > 0) {
             // All usages of non-stop words.
             const originalList = wf.freq(text);

@@ -24,6 +24,7 @@ const UserInput = props => {
             <TextareaAutosize
             className={classes.TextField}
             maxLength="10000"
+            value={props.text}
             style={{
                 color: props.pallete.userInputText
             }}

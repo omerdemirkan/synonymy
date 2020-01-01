@@ -1,10 +1,22 @@
 import * as actionTypes from '../actions/actionTypes';
 import wf from 'word-freq';
 
-const initialState = {
-    text: '',
-    loading: false,
-    numWords: 0
+let initialState = null;
+
+const storedText = localStorage.getItem('text');
+
+if (storedText && storedText.length > 0) {
+    initialState = {
+        text: storedText,
+        loading: false,
+        numWords: wf.tokenise(storedText, false).length
+    }
+} else {
+    initialState = {
+        text: '',
+        loading: false,
+        numWords: 0
+    }
 }
 
 const userInputReducer = (state = initialState, action) => {
