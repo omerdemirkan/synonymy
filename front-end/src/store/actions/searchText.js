@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 import wf from 'word-freq';
 import usage from 'norvig-frequencies';
 import axios from '../../axios';
+import {isValidWord} from '../../helper/isValidWord';
 
 const getExpectedFrequency = word => {
     word = word.toUpperCase();
@@ -22,48 +23,57 @@ const searchTextAsync = (text, numWords) => {
             let overusedList = [];
 
             // Qualifications to be considered overused:
-            // 1. Must be used in the text 3 or more times
-            // 2. Must exist within the norvig-frequencies library of words
-            // 3. Frequency of the word's usage must be at least 5 times more than total frequency (referred to as multiplier)
-            // 4. Must have a minimum of one synonym
+            // 1. Must be a valid word
+            // 2. Must be used in the text 3 or more times
+            // 3. Must exist within the norvig-frequencies library of words
+            // 4. Frequency of the word's usage must be at least 5 times more than total frequency (referred to as multiplier)
+            // 5. Must have a minimum of one synonym
+            // Extra: Must be within the top ten most overused in the text
 
             Object.keys(originalList).forEach(word => {
 
                 const numFound = originalList[word];
+
                 if (numFound >= 3) {
 
-                    const expectedFrequency = getExpectedFrequency(word);
-
-                    if (expectedFrequency) {
-                        const userFrequency = numFound / numWords;
-                        const overusedMultiplier = userFrequency / expectedFrequency;
+                    if (isValidWord(word)) {
     
-                        if (overusedMultiplier > 5) {
+                        const expectedFrequency = getExpectedFrequency(word);
     
-                            overusedList.push({
-                                word: word,
-                                multipler: overusedMultiplier,
-                                numFound: numFound
-                            })
+                        if (expectedFrequency) {
+                            const userFrequency = numFound / numWords;
+                            const overusedMultiplier = Math.floor(userFrequency / expectedFrequency);
+        
+                            if (overusedMultiplier > 5) {
+        
+                                overusedList.push({
+                                    word: word,
+                                    multiplier: overusedMultiplier,
+                                    numFound: numFound
+                                })
+                            }
                         }
                     }
                 }
             });
 
             // Descending order by multiplier
-            overusedList.sort((a, b) => {return b.multiplier - a.multiplier});
+            overusedList.sort((a, b) => b.multiplier - a.multiplier);
+            // Limit to ten words (Most overused)
+            overusedList = overusedList.slice(0, 10)
+            console.log(overusedList);
 
-            axios.post('/synonyms/', {
-                list: overusedList
-            })
-            .then(res => {
-                console.log(res);
-                // overusedList = overusedList.slice(0, 9);
-                // dispatch(searchTextSuccess(overusedList));
-            })
-            .catch(err => {
-                console.log(err);
-            });
+            // axios.post('/synonyms/', {
+            //     list: overusedList
+            // })
+            // .then(res => {
+            //     console.log(res.data);
+                
+            //     // dispatch(searchTextSuccess(res.data));
+            // })
+            // .catch(err => {
+            //     console.log(err);
+            // });
 
             // Format:
             // word: String,
