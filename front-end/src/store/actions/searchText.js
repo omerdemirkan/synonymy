@@ -1,7 +1,6 @@
 import * as actionTypes from './actionTypes';
 import wf from 'word-freq';
 import usage from 'norvig-frequencies';
-import synonyms from 'synonyms';
 
 const getExpectedFrequency = word => {
     word = word.toUpperCase();
@@ -39,31 +38,19 @@ const searchTextAsync = (text, numWords) => {
     
                         if (overusedMultiplier > 5) {
     
-                            const mySynonyms = synonyms(word);
-    
-                            if (mySynonyms && Object.keys(mySynonyms).length > 0) {
-
-                                // Due to a bug in the synonyms package:
-                                const types = Object.keys(mySynonyms);
-                                types.forEach(type => {
-                                    if (mySynonyms[type][mySynonyms[type].length - 1].length === 1) {
-                                        mySynonyms[type].pop();
-                                    }
-                                });
-                                
-                                overusedList.push({
-                                    word: word,
-                                    numFound: numFound,
-                                    multiplier: overusedMultiplier,
-                                    synonyms: mySynonyms
-                                })
-                            }
+                            overusedList.push(word)
                         }
                     }
                 }
             });
 
             // Descending order by multiplier
+
+            // Format:
+            // word: String,
+            // multiplier: Number,
+            // numFound: Number,
+            // synonyms: Object
             overusedList.sort((a, b) => {return b.multiplier - a.multiplier});
             dispatch(searchTextSuccess(overusedList));
         }

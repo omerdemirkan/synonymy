@@ -29,7 +29,8 @@ const UserInput = props => {
                     color: props.pallete.userInputText
                 }}
                 autoFocus={true}
-                onChange={event => props.onTextUpdated(event.target.value)}> 
+                onChange={event => props.onTextUpdated(event.target.value)}>
+                    <div contentEditable="true"></div> 
                 </TextareaAutosize>
 
                 <button className={classes.CheckButton}
@@ -50,8 +51,14 @@ const UserInput = props => {
                         <thead >
                             <tr>
                                 <td>WORD</td>
-                                <td>FOUND</td>
-                                <td>SCORE</td>
+                                <td
+                                    style ={{
+                                        textAlign: "center"
+                                    }}>FOUND</td>
+                                <td
+                                    style ={{
+                                        textAlign: "center"
+                                    }}>SEVERITY</td>
                             </tr>
                         </thead>
                         <br/>
@@ -59,7 +66,7 @@ const UserInput = props => {
                             {props.overused.map((element, index) => {
                                 if (index < 30) {
                                     const synonyms = Object.keys(element.synonyms).map(type=> {
-                                        return <li>{type}: {element.synonyms[type].join(', ')}</li>
+                                        return <li key={type}>{type}: {element.synonyms[type].join(', ')}</li>
                                     });
                                     return <tr key={element.word}>
                                         <td className={classes.NameFieldItem}>
@@ -72,8 +79,16 @@ const UserInput = props => {
                                                 {synonyms}
                                             </ul>
                                         </td>
-                                        <td>{element.numFound}</td>
-                                        <td>{Math.floor(element.multiplier)}</td>
+                                        <td
+                                        style ={{
+                                            textAlign: "center"
+                                        }}
+                                        >{element.numFound}</td>
+                                        <td
+                                        style ={{
+                                            textAlign: "center"
+                                        }}
+                                        >{Math.floor(element.multiplier)}</td>
                                     </tr>
                                 }
                             })}

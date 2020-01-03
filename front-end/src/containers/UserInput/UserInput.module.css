@@ -36,7 +36,7 @@
     top: 70px;
     left: 0;
     padding: 0;
-    padding: 0px 10px;
+    padding: 15px 10px;
 }
 
 td {
@@ -73,7 +73,7 @@ td {
 
     background: transparent;
     border: 1px solid black;
-    border-radius: .5rem;
+    border-radius: .25rem;
     width: 100px;
     height: 30px;
 
