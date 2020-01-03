@@ -4,11 +4,11 @@ import classes from './UserInput.module.css';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
 import searchTextAsync from '../../store/actions/searchText';
+import HelpOutlineRoundedIcon from '@material-ui/icons/HelpOutlineRounded';
 
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const UserInput = props => {
-    console.log(props.overused);
 
     return <div className={classes.UserInput}>
         
@@ -42,21 +42,40 @@ const UserInput = props => {
 
             {props.overused.length > 0 ? 
                 <aside className={classes.SynonymBox}>
-                    <table className={classes.SynonymTable}>
-                        <thead>
+                    <table className={classes.SynonymTable}
+                    style={{
+                        borderColor: props.pallete.userInputText,
+                        color: props.pallete.userInputText
+                    }}>
+                        <thead >
                             <tr>
                                 <td>WORD</td>
                                 <td>FOUND</td>
                                 <td>SCORE</td>
                             </tr>
                         </thead>
+                        <br/>
                         <tbody>
-                            {props.overused.map(element => {
-                                return <tr>
-                                    <td>{element.word}</td>
-                                    <td>{element.numFound}</td>
-                                    <td>{Math.floor(element.multiplier)}</td>
-                                </tr>
+                            {props.overused.map((element, index) => {
+                                if (index < 30) {
+                                    const synonyms = Object.keys(element.synonyms).map(type=> {
+                                        return <li>{type}: {element.synonyms[type].join(', ')}</li>
+                                    });
+                                    return <tr key={element.word}>
+                                        <td className={classes.NameFieldItem}>
+                                            {element.word}
+                                            <ul className={classes.Synonym}
+                                            style={{
+                                                backgroundColor: props.pallete.backgroundMain,
+                                                borderColor: props.pallete.userInputText
+                                            }}>
+                                                {synonyms}
+                                            </ul>
+                                        </td>
+                                        <td>{element.numFound}</td>
+                                        <td>{Math.floor(element.multiplier)}</td>
+                                    </tr>
+                                }
                             })}
                         </tbody>
                     </table>

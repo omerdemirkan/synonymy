@@ -24,7 +24,7 @@ const searchTextAsync = (text, numWords) => {
             // Qualifications to be considered overused:
             // 1. Must be used in the text 3 or more times
             // 2. Must exist within the norvig-frequencies library of words
-            // 3. Frequency of the word's usage must be at least 50 times more than total frequency (referred to as multiplier)
+            // 3. Frequency of the word's usage must be at least 5 times more than total frequency (referred to as multiplier)
             // 4. Must have a minimum of one synonym
 
             Object.keys(originalList).forEach(word => {
@@ -39,9 +39,18 @@ const searchTextAsync = (text, numWords) => {
     
                         if (overusedMultiplier > 5) {
     
-                            const mySynonyms = synonyms(word)
+                            const mySynonyms = synonyms(word);
     
                             if (mySynonyms && Object.keys(mySynonyms).length > 0) {
+
+                                // Due to a bug in the synonyms package:
+                                const types = Object.keys(mySynonyms);
+                                types.forEach(type => {
+                                    if (mySynonyms[type][mySynonyms[type].length - 1].length === 1) {
+                                        mySynonyms[type].pop();
+                                    }
+                                });
+                                
                                 overusedList.push({
                                     word: word,
                                     numFound: numFound,
