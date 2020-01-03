@@ -61,19 +61,17 @@ const searchTextAsync = (text, numWords) => {
             overusedList.sort((a, b) => b.multiplier - a.multiplier);
             // Limit to ten words (Most overused)
             overusedList = overusedList.slice(0, 10)
-            console.log(overusedList);
 
-            // axios.post('/synonyms/', {
-            //     list: overusedList
-            // })
-            // .then(res => {
-            //     console.log(res.data);
+            axios.post('/synonyms/', {
+                list: overusedList
+            })
+            .then(res => {
                 
-            //     // dispatch(searchTextSuccess(res.data));
-            // })
-            // .catch(err => {
-            //     console.log(err);
-            // });
+                dispatch(searchTextSuccess(res.data));
+            })
+            .catch(err => {
+                console.log(err);
+            });
 
             // Format:
             // word: String,

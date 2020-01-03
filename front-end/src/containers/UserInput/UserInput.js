@@ -65,19 +65,16 @@ const UserInput = props => {
                         <tbody>
                             {props.overused.map((element, index) => {
                                 if (index < 30) {
-                                    const synonyms = Object.keys(element.synonyms).map(type=> {
-                                        return <li key={type}>{type}: {element.synonyms[type].join(', ')}</li>
-                                    });
                                     return <tr key={element.word}>
                                         <td className={classes.NameFieldItem}>
                                             {element.word}
-                                            <ul className={classes.Synonym}
+                                            <div className={classes.Synonym}
                                             style={{
                                                 backgroundColor: props.pallete.backgroundMain,
                                                 borderColor: props.pallete.userInputText
                                             }}>
-                                                {synonyms}
-                                            </ul>
+                                                {element.synonyms.join(', ')}
+                                            </div>
                                         </td>
                                         <td
                                         style ={{
