@@ -17,7 +17,7 @@ const UserInput = props => {
             style={{
                 borderColor: props.pallete.userInputText
             }}>
-                <div className={classes.HighlightText}>{applyHighlight(props.text, 'e') }</div>
+                <div className={classes.HighlightText}>{applyHighlight(props.text, props.inspectedWord) }</div>
                 <TextareaAutosize
                 className={classes.TextField}
                 maxLength="100000"
@@ -62,16 +62,8 @@ const UserInput = props => {
                             {props.overused.map((element, index) => {
                                 if (index < 30) {
                                     return <tr key={element.word}>
-                                        <td className={classes.NameFieldItem}>
+                                        <td className={classes.NameFieldItem} onClick={() => props.onSetInspect(element.word, element.synonyms)}>
                                             {element.word}
-                                            <div className={classes.Synonym}
-                                            style={{
-                                                backgroundColor: props.pallete.backgroundMain,
-                                                borderColor: props.pallete.userInputText
-                                            }}>
-                                                <p>Possible alternatives for <strong>{element.word}</strong>:</p>
-                                                {element.synonyms.join(', ')}
-                                            </div>
                                         </td>
                                         <td
                                         style ={{
@@ -82,7 +74,7 @@ const UserInput = props => {
                                         style ={{
                                             textAlign: "center"
                                         }}
-                                        >{Math.floor(element.multiplier)}</td>
+                                        >{element.multiplier}</td>
                                     </tr>
                                 }
                             })}
@@ -102,14 +94,16 @@ const mapStateToProps = state => {
         pallete: state.pallete.pallete,
         text: state.userInput.text,
         numWords: state.userInput.numWords,
-        overused: state.userInput.overused
+        overused: state.userInput.overused,
+        inspectedWord: state.inspect.word
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onTextUpdated: text => dispatch({type: actionTypes.UPDATE_TEXT, text: text}),
-        onSearchText: (text, numWords) => dispatch(searchTextAsync(text, numWords))
+        onSearchText: (text, numWords) => dispatch(searchTextAsync(text, numWords)),
+        onSetInspect: (word, synonyms) => dispatch({type: actionTypes.SET_INSPECT, word: word, synonyms: synonyms})
     }
 }
 
