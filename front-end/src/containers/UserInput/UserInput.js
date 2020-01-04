@@ -21,6 +21,7 @@ const UserInput = props => {
             style={{
                 borderColor: props.pallete.userInputText
             }}>
+                <div className={classes.HighlightText}>{props.text}</div>
                 <TextareaAutosize
                 className={classes.TextField}
                 maxLength="100000"
@@ -30,7 +31,7 @@ const UserInput = props => {
                 }}
                 autoFocus={true}
                 onChange={event => props.onTextUpdated(event.target.value)}>
-                    <div contentEditable="true"></div> 
+                    
                 </TextareaAutosize>
 
                 <button className={classes.CheckButton}

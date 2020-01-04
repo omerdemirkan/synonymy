@@ -23,6 +23,7 @@
     position: relative;
     margin-right: 10px;
     min-height: 60vh;
+    position: relative;
 }
 
 .SynonymBox {
@@ -75,11 +76,24 @@ td {
 .TextField {
     resize: none;
     width: 100%;
-    margin: auto;
-    height: 70vh;
+    min-height: 70vh;
     background-color: transparent;
+    padding: 0;
 
-    box-sizing: border-box;
+    font-size: .9rem;
+    font-family: inherit;
+    font-weight: 300;
+    outline: none;
+    border: none;
+    letter-spacing: .5px;
+}
+
+.HighlightText {
+    position: absolute;
+    background-color: transparent;
+    color: transparent;
+    width: calc(100% - 30px);
+    padding: 0;
 
     font-size: .9rem;
     font-family: inherit;
