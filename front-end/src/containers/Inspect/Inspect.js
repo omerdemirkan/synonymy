@@ -16,10 +16,14 @@ const Inspect = props => {
             color: props.pallete.userInputText,
             borderColor: props.pallete.userInputText
         }} className={classes.InspectBox}>
-        <p>Possible alternatives for <bold>{props.word}</bold></p>
-        <p>{props.synonyms.join(', ')}</p>
-        </div>
         
+        {props.synonyms ? 
+            <>
+                <p>Possible alternatives for <bold>{props.word}</bold></p>
+                <p>{props.synonyms.join(', ')}</p>
+            </>
+        : <h3 className={classes.NotFoundMessage}>Sorry! Couldn't find synonyms for {props.word}</h3>}
+        </div>
     </div>
 }
 

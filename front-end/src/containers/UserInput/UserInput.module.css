@@ -1,6 +1,7 @@
 .UserInput {
     width: 100%;
     padding-bottom: 50px;
+    background-color: transparent;
 }
 
 .Header {
@@ -13,6 +14,7 @@
 .TextFieldSynonymBox {
     display: flex;
     justify-content: center;
+    background-color: transparent;
 }
 
 .TextFieldBox {
@@ -24,6 +26,7 @@
     margin: 0 10px;
     min-height: 60vh;
     position: relative;
+    background-color: transparent;
 }
 
 .SynonymBox {
@@ -69,16 +72,13 @@ td {
     opacity: .5;
 }
 
-/* .NameFieldItem:hover {
-    position: relative;
-} */
-
 .TextField {
     resize: none;
     width: 100%;
     min-height: 70vh;
     background-color: transparent;
     padding: 0;
+    z-index: 1000;
 
     font-size: .9rem;
     font-family: inherit;
@@ -86,16 +86,15 @@ td {
     outline: none;
     border: none;
     letter-spacing: .5px;
-    z-index: 10;
 }
 
 .HighlightText {
-    white-space: pre-line;
     position: absolute;
     color: transparent;
     background-color: transparent;
     width: calc(100% - 30px);
     padding: 0;
+    z-index: 0;
 
     font-size: .9rem;
     font-family: inherit;
@@ -103,6 +102,13 @@ td {
     outline: none;
     border: none;
     letter-spacing: .5px;
+    white-space: pre-line;
+    pointer-events:none;
+}
+
+mark {
+    border-radius: 3px;
+    background-color: #b1d5e5;
 }
 
 .CheckButton {

@@ -67,21 +67,26 @@ const UserInput = props => {
             }}>
                 {props.inspectedWord ? 
                     <div className={classes.HighlightText}>
-                        {applyHighlight(props.text, props.inspectedWord)}
+                            {applyHighlight(props.text, props.inspectedWord, {
+                                color: props.pallete.userInputText
+                            })}
                     </div>
                 : null}
+                
                 <TextareaAutosize
                 spellcheck="false"
                 className={classes.TextField}
                 maxLength="100000"
                 value={props.text}
                 style={{
-                    color: props.pallete.userInputText
+                    color: props.pallete.userInputText,
+                    zIndex: '5'
                 }}
                 autoFocus={true}
                 onChange={event => props.onTextUpdated(event.target.value)}>
                     
                 </TextareaAutosize>
+                
 
                 <button className={classes.CheckButton}
                 onClick={() => props.onSearchText(props.text, props.numWords)}

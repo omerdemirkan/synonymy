@@ -1,9 +1,9 @@
 import React from 'react';
 
-function applyHighlight(text, highlight) {
+function applyHighlight(text, highlight, style) {
 
-    let parts = text.split(new RegExp(`(${highlight})`, 'gi'));
-    return <span>{parts.map(part => part.toLowerCase() === highlight.toLowerCase() ? <mark>{part}</mark> : part)}</span>;
+    let parts = text.split(new RegExp(`\w*(${highlight})\w*`, 'gi'));
+    return parts.map(part => part.toLowerCase() === highlight.toLowerCase() ? <mark style={style}>{part}</mark> : part);
 }
 
 export default applyHighlight;

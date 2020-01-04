@@ -12,3 +12,7 @@
     border: 1px solid;
     transition: height 0.3s ease;
 }
+
+.NotFoundMessage {
+    text-align: center;
+}

@@ -5,7 +5,6 @@ const mapModeToPallete = darkMode => {
         return {
             backgroundMain: '#222',
             backgroundSecondary: 'black',
-            textArea: 'white',
             userInputText: 'white',
             navbar: '#333',
             navbarText: 'white'
@@ -14,7 +13,6 @@ const mapModeToPallete = darkMode => {
         return {
             backgroundMain: 'white',
             backgroundSecondary: 'white',
-            textArea: 'black',
             userInputText: 'black',
             navbar: '#eee',
             navbarText: 'black'
