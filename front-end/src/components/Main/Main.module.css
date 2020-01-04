@@ -3,3 +3,10 @@
     padding: 60px 0;
     transition: background-color 0.2s ease;
 }
+
+.Header {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 400;
+    margin: 40px 0;
+}

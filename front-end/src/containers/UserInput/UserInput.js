@@ -4,24 +4,20 @@ import classes from './UserInput.module.css';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
 import searchTextAsync from '../../store/actions/searchText';
-import HelpOutlineRoundedIcon from '@material-ui/icons/HelpOutlineRounded';
+import applyHighlight from '../../helper/applyHightlight';
 
+import HelpOutlineRoundedIcon from '@material-ui/icons/HelpOutlineRounded';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const UserInput = props => {
 
     return <div className={classes.UserInput}>
-        
-        <h3 className={classes.Header}
-        style={{
-            color: props.pallete.userInputText
-        }}>I find overused words in your essay and recommend alternatives</h3>
         <div className={classes.TextFieldSynonymBox}>
             <div className={classes.TextFieldBox}
             style={{
                 borderColor: props.pallete.userInputText
             }}>
-                <div className={classes.HighlightText}>{props.text}</div>
+                <div className={classes.HighlightText}>{applyHighlight(props.text, 'e') }</div>
                 <TextareaAutosize
                 className={classes.TextField}
                 maxLength="100000"

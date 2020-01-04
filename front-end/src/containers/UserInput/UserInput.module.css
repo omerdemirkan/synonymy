@@ -89,9 +89,9 @@ td {
 }
 
 .HighlightText {
+    white-space: pre-line;
     position: absolute;
     background-color: transparent;
-    color: transparent;
     width: calc(100% - 30px);
     padding: 0;
 
@@ -101,6 +101,7 @@ td {
     outline: none;
     border: none;
     letter-spacing: .5px;
+    z-index: -5;
 }
 
 .CheckButton {
