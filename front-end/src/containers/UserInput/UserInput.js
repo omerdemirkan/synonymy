@@ -49,16 +49,15 @@ const UserInput = props => {
                         color: props.pallete.userInputText
                     }}>
                         <thead >
-                            <tr>
+                            <tr style={{
+                                textAlign: 'center'
+                            }}>
                                 <td>WORD</td>
-                                <td
-                                    style ={{
-                                        textAlign: "center"
-                                    }}>FOUND</td>
-                                <td
-                                    style ={{
-                                        textAlign: "center"
-                                    }}>SEVERITY</td>
+                                <td>FOUND</td>
+                                <td className={classes.SeverityHeader}>
+                                    SEVERITY
+                                    <HelpOutlineRoundedIcon fontSize='small' className={classes.QuestionIcon}/>
+                                </td>
                             </tr>
                         </thead>
                         <br/>
@@ -73,6 +72,7 @@ const UserInput = props => {
                                                 backgroundColor: props.pallete.backgroundMain,
                                                 borderColor: props.pallete.userInputText
                                             }}>
+                                                <p>Possible alternatives for <strong>{element.word}</strong>:</p>
                                                 {element.synonyms.join(', ')}
                                             </div>
                                         </td>

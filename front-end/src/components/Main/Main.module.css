@@ -1,8 +1,5 @@
 .Main {
     width: 100%;
-    min-height: 100vh;
     padding: 60px 0;
     transition: background-color 0.2s ease;
-    display: flex;
-    align-content: center;
 }

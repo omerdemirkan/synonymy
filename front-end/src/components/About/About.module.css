@@ -1,0 +1,27 @@
+.About {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AboutBox {
+    width: 90%;
+    box-sizing: border-box;
+    max-width: 800px;
+    border: 1px solid;
+    padding: 0 50px;
+}
+
+.MainHeader {
+    text-align: center;
+    font-weight: 400;
+}
+
+.SecondaryHeader {
+    text-align: center;
+
+}
+
+.MainParagraph {
+    
+}

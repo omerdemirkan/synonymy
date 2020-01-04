@@ -46,8 +46,7 @@ const Navbar = props => {
         <SideDrawer open={showSideDrawer}/>
         <Backdrop
             style={{
-                zIndex: "3", top: '60px', backgroundColor: props.pallete.backgroundMain
-                // zIndex: "3", top: '60px', backgroundColor: 'black', opacity: '.5'
+                zIndex: "3", top: '60px'
             }}
             open={showSideDrawer}
             onClick={() => setShowSideDrawer(!showSideDrawer)}

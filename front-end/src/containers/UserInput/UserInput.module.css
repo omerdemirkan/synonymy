@@ -1,6 +1,6 @@
 .UserInput {
-    min-height: 80vh;
     width: 100%;
+    padding-bottom: 50px;
 }
 
 .Header {
@@ -22,6 +22,7 @@
     border: 1px solid;
     position: relative;
     margin-right: 10px;
+    min-height: 60vh;
 }
 
 .SynonymBox {
@@ -33,21 +34,43 @@
 .SynonymTable {
     border: 1px solid black;
     position: sticky;
-    top: 70px;
+    top: 100px;
     left: 0;
     padding: 0;
-    padding: 15px 10px;
+    padding: 15px 0;
 }
 
 td {
     min-width: 60px;
+    padding: 0;
 }
 
 .NameFieldItem {
-    padding-right: 20px;
-    position: relative;
+    padding-left: 10px;
     cursor: pointer;
 }
+
+.CategoryHeader {
+    padding-left: 20px;
+    position: relative;
+}
+
+.SeverityHeader {
+    padding: 0 10px 0 20px;
+    position: relative;
+}
+
+.QuestionIcon {
+    position: absolute;
+    top: 100%;
+    right: 50%;
+    transform: translate(50%);
+    opacity: .5;
+}
+
+/* .NameFieldItem:hover {
+    position: relative;
+} */
 
 .TextField {
     resize: none;
@@ -83,18 +106,25 @@ td {
 
 .Synonym {
     position: absolute;
-    top: -15px;
-    right: 100%;
+    top: 0px;
+    right: calc(100% - 2px);
     display: none;
     list-style: none;
     padding-inline-start: 0;
     z-index: 5;
-    padding: 20px;
+    padding: 0 20px 20px;
+    border: 1px solid;
+    border-radius: .5rem;
+    border-top-right-radius: 0;
+    -webkit-box-shadow: -2px 3px 5px 2px rgba(0,0,0,0.2); 
+    box-shadow: -2px 3px 5px 2px rgba(0,0,0,0.2);
+    box-sizing: border-box;
 }
 
 .NameFieldItem:hover .Synonym{
     display: inline-block;
-    min-width: 300px;
+    min-width: 50vw;
+    min-height: 100%;
 }
 
 @keyframes SlideIn {
@@ -122,5 +152,13 @@ td {
         margin: 0;
         display: flex;
         justify-content: center;
+        position: static;
+    }
+    .NameFieldItem:hover .Synonym {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(-100%);
+        width: 90vw;
     }
 }

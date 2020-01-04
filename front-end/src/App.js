@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './containers/Navbar/Navbar';
 import Main from './components/Main/Main';
 import UserInput from './containers/UserInput/UserInput';
+import About from './components/About/About';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       
     <Main>
       <UserInput/>
+      <About/>
     </Main>
 
   </div>
