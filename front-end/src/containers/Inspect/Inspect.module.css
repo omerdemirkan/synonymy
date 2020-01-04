@@ -6,7 +6,7 @@
 .InspectBox {
     width: 90%;
     max-width: 800px;
-    padding: 20px 50px;
+    padding: 20px calc(20px + 1vw);
     box-sizing: border-box;
     margin: auto;
     border: 1px solid;

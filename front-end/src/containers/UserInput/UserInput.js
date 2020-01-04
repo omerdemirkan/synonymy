@@ -13,7 +13,7 @@ const UserInput = props => {
 
     return <div className={classes.UserInput}>
         <div className={classes.TextFieldSynonymBox}>
-            
+
         {props.overused.length > 0 ? 
                 <aside className={classes.SynonymBox}>
                     <table className={classes.SynonymTable}
@@ -38,7 +38,7 @@ const UserInput = props => {
                             {props.overused.map((element, index) => {
                                 if (index < 30) {
                                     return <tr key={element.word}>
-                                        <td className={classes.NameFieldItem} onClick={() => props.onSetInspect(element.word, element.synonyms)}>
+                                        <td className={classes.NameFieldItem} onClick={() => {props.onSetInspect(element.word, element.synonyms); window.scrollTo(0, 0);}}>
                                             {element.word}
                                         </td>
                                         <td
@@ -63,8 +63,9 @@ const UserInput = props => {
             style={{
                 borderColor: props.pallete.userInputText
             }}>
-                <div className={classes.HighlightText}>{applyHighlight(props.text, props.inspectedWord) }</div>
+                <div className={classes.HighlightText}>{props.text.replace(props.inspectedWord, <span style={{backgroundColor: 'yellow'}}>{props.inspectedWord}</span>)}</div>
                 <TextareaAutosize
+                spellcheck="false"
                 className={classes.TextField}
                 maxLength="100000"
                 value={props.text}
