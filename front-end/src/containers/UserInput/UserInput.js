@@ -68,7 +68,8 @@ const UserInput = props => {
                 {props.inspectedWord ? 
                     <div className={classes.HighlightText}>
                             {applyHighlight(props.text, props.inspectedWord, {
-                                color: props.pallete.userInputText
+                                color: props.pallete.userInputText,
+                                backgroundColor: props.pallete.userInputTextHighlight
                             })}
                     </div>
                 : null}
