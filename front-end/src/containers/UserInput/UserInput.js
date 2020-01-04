@@ -11,6 +11,8 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const UserInput = props => {
 
+    
+
     return <div className={classes.UserInput}>
         <div className={classes.TextFieldSynonymBox}>
 
@@ -63,7 +65,11 @@ const UserInput = props => {
             style={{
                 borderColor: props.pallete.userInputText
             }}>
-                <div className={classes.HighlightText}>{props.text.replace(props.inspectedWord, <span style={{backgroundColor: 'yellow'}}>{props.inspectedWord}</span>)}</div>
+                {props.inspectedWord ? 
+                    <div className={classes.HighlightText}>
+                        {applyHighlight(props.text, props.inspectedWord)}
+                    </div>
+                : null}
                 <TextareaAutosize
                 spellcheck="false"
                 className={classes.TextField}
