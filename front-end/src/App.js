@@ -5,6 +5,7 @@ import Navbar from './containers/Navbar/Navbar';
 import Main from './components/Main/Main';
 import UserInput from './containers/UserInput/UserInput';
 import About from './components/About/About';
+import Inspect from './containers/Inspect/Inspect';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
     <Navbar/>
       
     <Main>
+      <Inspect/>
       <UserInput/>
       <About/>
     </Main>

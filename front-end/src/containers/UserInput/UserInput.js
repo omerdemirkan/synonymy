@@ -13,32 +13,8 @@ const UserInput = props => {
 
     return <div className={classes.UserInput}>
         <div className={classes.TextFieldSynonymBox}>
-            <div className={classes.TextFieldBox}
-            style={{
-                borderColor: props.pallete.userInputText
-            }}>
-                <div className={classes.HighlightText}>{applyHighlight(props.text, props.inspectedWord) }</div>
-                <TextareaAutosize
-                className={classes.TextField}
-                maxLength="100000"
-                value={props.text}
-                style={{
-                    color: props.pallete.userInputText
-                }}
-                autoFocus={true}
-                onChange={event => props.onTextUpdated(event.target.value)}>
-                    
-                </TextareaAutosize>
-
-                <button className={classes.CheckButton}
-                onClick={() => props.onSearchText(props.text, props.numWords)}
-                style={{
-                    color: props.pallete.userInputText,
-                    borderColor: props.pallete.userInputText
-                }}>CHECK</button>
-            </div>
-
-            {props.overused.length > 0 ? 
+            
+        {props.overused.length > 0 ? 
                 <aside className={classes.SynonymBox}>
                     <table className={classes.SynonymTable}
                     style={{
@@ -83,7 +59,30 @@ const UserInput = props => {
                 </aside>
             : null}
 
-            
+            <div className={classes.TextFieldBox}
+            style={{
+                borderColor: props.pallete.userInputText
+            }}>
+                <div className={classes.HighlightText}>{applyHighlight(props.text, props.inspectedWord) }</div>
+                <TextareaAutosize
+                className={classes.TextField}
+                maxLength="100000"
+                value={props.text}
+                style={{
+                    color: props.pallete.userInputText
+                }}
+                autoFocus={true}
+                onChange={event => props.onTextUpdated(event.target.value)}>
+                    
+                </TextareaAutosize>
+
+                <button className={classes.CheckButton}
+                onClick={() => props.onSearchText(props.text, props.numWords)}
+                style={{
+                    color: props.pallete.userInputText,
+                    borderColor: props.pallete.userInputText
+                }}>CHECK</button>
+            </div>
         </div>
         
     </div>

@@ -21,14 +21,14 @@
     padding: 15px 15px 50px;
     border: 1px solid;
     position: relative;
-    margin-right: 10px;
+    margin: 0 10px;
     min-height: 60vh;
     position: relative;
 }
 
 .SynonymBox {
     position: relative;
-    margin-left: 10px;
+    margin: 0 10px;
     animation: SlideIn 0.3s ease;
 }
 
@@ -141,7 +141,7 @@ td {
     }
 
     .TextFieldBox {
-        width: 80%;
+        width: 90%;
         margin: 0;
     }
     
