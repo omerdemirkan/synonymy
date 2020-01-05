@@ -1,0 +1,24 @@
+.Footer {
+    height: 100px;
+    box-sizing: border-box;
+    background-color: red;
+    padding: 20px 0;
+}
+
+.NameYear {
+    margin: 0;
+    text-align: center;
+    font-weight: 300;
+}
+
+.InfoBox {
+    display: inline-block;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+.Icons {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 8px 0;
+}

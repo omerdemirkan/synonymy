@@ -1,6 +1,6 @@
 .Main {
     width: 100%;
-    padding: 60px 0;
+    padding: 60px 0 30px;
     transition: background-color 0.2s ease;
 }
 

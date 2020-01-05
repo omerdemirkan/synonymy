@@ -6,6 +6,7 @@ import Main from './components/Main/Main';
 import UserInput from './containers/UserInput/UserInput';
 import About from './components/About/About';
 import Inspect from './containers/Inspect/Inspect';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
       <UserInput/>
       <About/>
     </Main>
-
+    <Footer/>
   </div>
 }
 
