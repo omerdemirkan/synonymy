@@ -12,6 +12,6 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "moby": "^1.1.2"
+    "thesaurus": "0.0.1"
   }
 }
