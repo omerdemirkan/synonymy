@@ -1,6 +1,7 @@
 .Main {
     width: 100%;
     padding: 60px 0 30px;
+    min-height: 60vh;
     transition: background-color 0.2s ease;
 }
 
@@ -9,4 +10,12 @@
     text-align: center;
     font-weight: 400;
     margin: 40px 0;
+    opacity: 0;
+    animation: PhaseIn 0.5s ease forwards;
+    animation-delay: .6s;
+}
+
+@keyframes PhaseIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }

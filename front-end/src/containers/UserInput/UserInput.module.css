@@ -15,23 +15,28 @@
     display: flex;
     justify-content: center;
     background-color: transparent;
+    padding: 0 5vw;
 }
 
 .TextFieldBox {
     width: 60%;
+    max-width: 1000px;
     padding: 20px 20px 50px;
     border: 1px solid;
     position: relative;
-    margin: 0 10px;
-    min-height: 30vh;
+    margin: 0;
+    margin-left: 12px;
+    min-height: 60vh;
     position: relative;
     background-color: transparent;
+    animation: PhaseIn .8s ease forwards;
 }
 
 .SynonymBox {
     position: relative;
-    margin: 0 10px;
-    animation: SlideIn 0.3s ease;
+    margin: 0;
+    margin-right: 12px;
+    animation: PhaseIn2 0.8s ease forwards;
 }
 
 .SynonymTable {
@@ -136,19 +141,11 @@ mark {
     color: inherit;
 }
 
-@keyframes SlideIn {
-    from {
-        left: 40px;
-    }
-    to {
-        left: 0px;
-    }
-}
-
 @media (max-width: 768px) {
     .TextFieldSynonymBox {
         flex-direction: column;
         align-items: center;
+        padding: 0;
     }
 
     .TextFieldBox {
@@ -168,11 +165,13 @@ mark {
     .SynonymTable {
         width: 100%;
         font-size: 1.2rem;
+        padding: 20px 0;
     }
 
     .NameFieldItem {
-        padding-left: 30px;
-        cursor: pointer;
+        padding: 0px;
+        text-align: center;
+        width: 40%;
     }
 
     .NameFieldItem:hover .Synonym {
@@ -181,5 +180,27 @@ mark {
         left: 0;
         transform: translateY(-100%);
         width: 90vw;
+    }
+}
+
+@keyframes PhaseIn {
+    from {
+        top: 10px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes PhaseIn2 {
+    from {
+        top: 5px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
     }
 }

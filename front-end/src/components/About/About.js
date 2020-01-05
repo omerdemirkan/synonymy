@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 function About(props) {
     return <div id="about" className={classes.About}
     style={{
-        color: props.pallete.userInputText
+        color: props.pallete.userInputText,
+        backgroundColor: props.pallete.backgroundMain
     }}>
         <div className={classes.AboutBox}
         style={{

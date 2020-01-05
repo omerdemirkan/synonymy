@@ -10,8 +10,8 @@
     box-sizing: border-box;
     margin: auto;
     border: 1px solid;
-    transition: height 0.3s ease;
     position: relative;
+    animation: PhaseIn 0.5s ease forwards;
 }
 
 .NotFoundMessage {
@@ -27,5 +27,13 @@
 
 .CloseIcon:hover {
     opacity: 1;
-    
+}
+
+@keyframes PhaseIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }   
 }

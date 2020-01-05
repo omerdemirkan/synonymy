@@ -90,7 +90,7 @@ const UserInput = props => {
                 </TextareaAutosize>
                 
 
-                <AnchorLink href="#userinput" offset="100">
+                <AnchorLink href="#userinput" offset="200">
                     <button className={classes.CheckButton}
                     onClick={() => props.onSearchText(props.text, props.numWords)}
                     style={{
