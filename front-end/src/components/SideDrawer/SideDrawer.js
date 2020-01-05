@@ -2,12 +2,18 @@ import React from 'react';
 import classes from './SideDrawer.module.css'
 import DarkModeSwitch from '../../components/UI/DarkModeSwitch/DarkModeSwitch';
 import { connect } from 'react-redux';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 function SideDrawer(props) {
 
     const themeModifier = {
         backgroundColor: props.pallete.navbar, 
         color: props.pallete.navbarText
+    }
+
+    const buttonClickedHandler = () => {
+        props.buttonClicked();
+        
     }
 
     return <div className={classes.SideDrawer}
@@ -18,13 +24,20 @@ function SideDrawer(props) {
         </span>
         <ul className={classes.ListBox}>
             <li className={classes.ListItem}>
-                <button className={classes.ListButton} style={{color: props.pallete.navbarText, borderColor: props.pallete.navbarText}}>
-                    About
+                <button 
+                className={classes.ListButton} 
+                style={{color: props.pallete.navbarText, borderColor: props.pallete.navbarText}}
+                onClick={buttonClickedHandler}>
+                    <AnchorLink className={classes.Link} href='#about'>About</AnchorLink>
                 </button>
             </li>
             <li className={classes.ListItem}>
-                <button className={classes.ListButton} style={{color: props.pallete.navbarText, borderColor: props.pallete.navbarText}}>
-                    Tutorial
+                <button 
+                className={classes.ListButton} 
+                style={{color: props.pallete.navbarText, 
+                borderColor: props.pallete.navbarText}}
+                onClick={buttonClickedHandler}>
+                    <AnchorLink className={classes.Link} href='#tutorial'>Tutorial</AnchorLink>
                 </button>
             </li>
         </ul>

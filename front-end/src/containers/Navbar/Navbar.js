@@ -5,6 +5,7 @@ import DarkModeSwitch from '../../components/UI/DarkModeSwitch/DarkModeSwitch';
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
 // import Backdrop from '../../components/Backdrop/Backdrop';
 import Backdrop from '@material-ui/core/Backdrop';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 const Navbar = props => {
     // Determines whether or not the side-drawer is open, also affects
@@ -25,8 +26,8 @@ const Navbar = props => {
                 <DarkModeSwitch/>
             </li>
 
-            <li className={classes.ListItem}>About</li>
-            <li className={classes.ListItem}>Tutorial</li>
+            <li className={classes.ListItem}><AnchorLink className={classes.Link} href='#about'>About</AnchorLink></li>
+            <li className={classes.ListItem}><AnchorLink className={classes.Link} href='#tutorial'>Tutorial</AnchorLink></li>
         </ul>
         
 
@@ -43,7 +44,7 @@ const Navbar = props => {
             }}></div>
         </div>
         
-        <SideDrawer open={showSideDrawer}/>
+        <SideDrawer open={showSideDrawer} buttonClicked={() => setShowSideDrawer(!showSideDrawer)}/>
         <Backdrop
             style={{
                 zIndex: "3", top: '60px'

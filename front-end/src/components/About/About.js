@@ -3,7 +3,7 @@ import classes from './About.module.css';
 import { connect } from 'react-redux';
 
 function About(props) {
-    return <div className={classes.About}
+    return <div id="about" className={classes.About}
     style={{
         color: props.pallete.userInputText
     }}>
@@ -36,7 +36,7 @@ function About(props) {
                     Finally, I take the most overused words and gather all the possible synonyms I can find and offer them.
                 </p>
             </div>
-            <div className={classes.Section}>
+            <div id="tutorial" className={classes.Section}>
                 <h1 className={classes.MainHeader}>How do I use it?</h1>
                 <p>Once you feel you are close to a final draft, paste your essay in the text field and click CHECK. 
                     After some thinking, I will list what I believe to be your most overused words in a sidebar.</p>
