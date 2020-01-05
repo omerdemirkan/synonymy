@@ -22,3 +22,11 @@
     justify-content: space-evenly;
     padding: 8px 0;
 }
+
+.LinkIcon {
+    opacity: .5;
+}
+
+.LinkIcon:hover {
+    opacity: 1;
+}

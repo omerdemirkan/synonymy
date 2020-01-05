@@ -10,12 +10,13 @@
     box-sizing: border-box;
     max-width: 800px;
     border: 1px solid;
-    padding: 0px calc(25px + 1vw) 5px;
+    padding: 0px 20px 5px;
     margin: 50px 0;
 }
 
 .MainHeader {
     text-align: center;
+    margin: 0;
     font-weight: 400;
 }
 

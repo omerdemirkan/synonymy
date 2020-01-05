@@ -19,7 +19,7 @@
 
 .TextFieldBox {
     width: 60%;
-    padding: 15px 15px 50px;
+    padding: 20px 20px 50px;
     border: 1px solid;
     position: relative;
     margin: 0 10px;
@@ -41,11 +41,12 @@
     left: 0;
     padding: 0;
     padding: 15px 0;
+    font-weight: 1.2rem;
 }
 
 td {
     min-width: 60px;
-    padding: 0;
+    padding: 2px 0;
 }
 
 .NameFieldItem {
@@ -90,7 +91,7 @@ td {
     position: absolute;
     color: transparent;
     background-color: transparent;
-    width: calc(100% - 30px);
+    width: calc(100% - 40px);
     padding: 0;
     z-index: 0;
 
@@ -147,16 +148,28 @@ mark {
 
     .TextFieldBox {
         width: 90%;
+        box-sizing: border-box;
         margin: 0;
     }
     
     .SynonymBox {
-        width: 80%;
-        margin: 0;
+        width: 90%;
+        margin-bottom: 50px;
         display: flex;
         justify-content: center;
         position: static;
     }
+
+    .SynonymTable {
+        width: 100%;
+        font-size: 1.2rem;
+    }
+
+    .NameFieldItem {
+        padding-left: 30px;
+        cursor: pointer;
+    }
+
     .NameFieldItem:hover .Synonym {
         position: absolute;
         top: 0;
