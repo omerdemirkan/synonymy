@@ -31,8 +31,7 @@ const UserInput = props => {
                                 <td>WORD</td>
                                 <td>FOUND</td>
                                 <td className={classes.SeverityHeader}>
-                                    SEVERITY
-                                    <HelpOutlineRoundedIcon fontSize='small' className={classes.QuestionIcon}/>
+                                    SCORE
                                 </td>
                             </tr>
                         </thead>
@@ -41,7 +40,10 @@ const UserInput = props => {
                             {props.overused.map((element, index) => {
                                 if (index < 30) {
                                     return <tr key={element.word}>
-                                        <td className={classes.NameFieldItem} onClick={() => {props.onSetInspect(element.word, element.synonyms); window.scrollTo(0, 0);}}>
+                                        <td 
+                                        className={classes.NameFieldItem} 
+                                        onClick={() => {props.onSetInspect(element.word, element.synonyms); window.scrollTo(0, 0);}}
+                                        style={props.inspectedWord === element.word ? {opacity: '1', fontWeight: '500'} : null}>
                                             {element.word}
                                         </td>
                                         <td
@@ -93,9 +95,9 @@ const UserInput = props => {
                 <AnchorLink href="#userinput" offset="200">
                     <button className={classes.CheckButton}
                     onClick={() => props.onSearchText(props.text, props.numWords)}
+                    disabled={!props.changed}
                     style={{
-                        color: props.pallete.userInputText,
-                        borderColor: props.pallete.userInputText
+                        color: props.pallete.userInputText
                     }}>CHECK</button>
                 </AnchorLink>
             </div>
@@ -110,7 +112,9 @@ const mapStateToProps = state => {
         text: state.userInput.text,
         numWords: state.userInput.numWords,
         overused: state.userInput.overused,
-        inspectedWord: state.inspect.word
+        inspectedWord: state.inspect.word,
+        loading: state.userInput.loading,
+        changed: state.userInput.changed
     }
 }
 

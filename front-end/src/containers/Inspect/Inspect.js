@@ -20,8 +20,8 @@ const Inspect = props => {
         
         {props.synonyms ? 
             <>
-                <p>Possible alternatives for <bold>{props.word}</bold></p>
-                <p>{props.synonyms.join(', ')}</p>
+                <p className={classes.WordSentence}>Possible alternatives for <bold className={classes.Word}>{props.word}</bold>: </p>
+                <p className={classes.Synonyms}>{props.synonyms.join(', ')}</p>
             </>
         : <h3 className={classes.NotFoundMessage}>Sorry! Couldn't find synonyms for {props.word}</h3>}
         </div>

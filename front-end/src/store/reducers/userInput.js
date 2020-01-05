@@ -5,7 +5,8 @@ let initialState = {
     text: '',
     loading: false,
     numWords: 0,
-    overused: []
+    overused: [],
+    changed: true
 }
 
 const storedText = localStorage.getItem('text');
@@ -22,17 +23,13 @@ const userInputReducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.UPDATE_TEXT:
             if (!action.text) {
-                return {
-                    text: '',
-                    loading: false,
-                    numWords: 0,
-                    overused: []
-                };
+                return initialState;
             }
             return {
                 ...state,
                 text: action.text,
-                numWords: wf.tokenise(action.text, false).length
+                numWords: wf.tokenise(action.text, false).length,
+                changed: true
             }
         case actionTypes.SEARCH_TEXT_START:
             return {
@@ -42,7 +39,8 @@ const userInputReducer = (state = initialState, action) => {
         case actionTypes.SEARCH_TEXT_SUCCESS:
             return {
                 ...state,
-                overused: action.overused
+                overused: action.overused,
+                changed: false
             }
         case actionTypes.SEARCH_TEXT_FAILURE:
             return state

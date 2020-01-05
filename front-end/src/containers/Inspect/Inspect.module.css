@@ -6,7 +6,7 @@
 .InspectBox {
     width: 90%;
     max-width: 800px;
-    padding: 10px 20px;
+    padding: 0px 20px;
     box-sizing: border-box;
     margin: auto;
     border: 1px solid;
@@ -16,6 +16,24 @@
 
 .NotFoundMessage {
     text-align: center;
+}
+
+.WordSentence {
+    font-size: 1.3rem;
+}
+
+.Word {
+    font-weight: 700;
+}
+
+.Synonyms {
+
+}
+
+.Word::selection, .Synonyms::selection, .WordSentence::selection {
+    color: inherit;
+    background-color: rgb(196, 196, 196);
+    border-radius: .3rem;
 }
 
 .CloseIcon {

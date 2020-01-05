@@ -3,6 +3,7 @@
     box-sizing: border-box;
     background-color: red;
     padding: 20px 0;
+    transition: background-color 0.2s ease;
 }
 
 .NameYear {

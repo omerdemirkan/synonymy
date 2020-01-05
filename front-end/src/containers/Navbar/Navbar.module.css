@@ -42,6 +42,7 @@
 .Link {
     text-decoration: none;
     color: inherit;
+    user-select: none;
 }
 
 .ListItem:hover {

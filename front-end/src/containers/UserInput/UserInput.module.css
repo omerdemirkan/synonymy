@@ -37,6 +37,7 @@
     margin: 0;
     margin-right: 12px;
     animation: PhaseIn2 0.8s ease forwards;
+    user-select: none;
 }
 
 .SynonymTable {
@@ -45,7 +46,7 @@
     top: 100px;
     left: 0;
     padding: 0;
-    padding: 15px 0;
+    padding: 15px 8px;
     font-weight: 1.2rem;
 }
 
@@ -57,15 +58,16 @@ td {
 .NameFieldItem {
     padding-left: 10px;
     cursor: pointer;
+    opacity: .9;
+}
+
+.NameFieldItem:hover {
+    font-weight: 500;
+    opacity: 1;
 }
 
 .CategoryHeader {
     padding-left: 20px;
-    position: relative;
-}
-
-.SeverityHeader {
-    padding: 0 10px 0 20px;
     position: relative;
 }
 
@@ -86,10 +88,15 @@ td {
 
     font-size: .9rem;
     font-family: inherit;
-    font-weight: 300;
+    font-weight: 400;
     outline: none;
     border: none;
     letter-spacing: .5px;
+}
+
+.TextField::selection {
+    color: inherit;
+    background-color: rgb(196, 196, 196);
 }
 
 .HighlightText {
@@ -102,7 +109,7 @@ td {
 
     font-size: .9rem;
     font-family: inherit;
-    font-weight: 300;
+    font-weight: 400;
     outline: none;
     border: none;
     letter-spacing: .5px;
@@ -121,13 +128,23 @@ mark {
     right: 20px;
 
     background: transparent;
-    border: 1px solid black;
+    border: none;
     border-radius: .25rem;
-    width: 100px;
+    width: 70px;
     height: 30px;
+    opacity: .8;
 
     outline: none;
     font-weight: 600;
+    cursor: pointer;
+}
+
+.CheckButton:hover {
+    opacity: 1;
+}
+
+.CheckButton:disabled {
+    opacity: .6;
 }
 
 .NameFieldItem:hover .Synonym{
@@ -171,7 +188,7 @@ mark {
     .NameFieldItem {
         padding: 0px;
         text-align: center;
-        width: 40%;
+        width: 35%;
     }
 
     .NameFieldItem:hover .Synonym {

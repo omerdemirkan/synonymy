@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 400;
     transition: background-color 0.2s ease;
 }
 
@@ -18,18 +17,19 @@
 .MainHeader {
     text-align: center;
     margin: 0;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .SecondaryHeader {
     text-align: center;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .Section {
     margin: 0 0 40px;
 }
 
-.MainParagraph {
-    
+.Text {
+    font-size: 1rem;
+    font-weight: 400;
 }
