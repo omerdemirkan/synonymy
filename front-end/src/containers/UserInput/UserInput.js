@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
 import searchTextAsync from '../../store/actions/searchText';
 import applyHighlight from '../../helper/applyHightlight';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 import HelpOutlineRoundedIcon from '@material-ui/icons/HelpOutlineRounded';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
@@ -13,7 +14,7 @@ const UserInput = props => {
 
     
 
-    return <div className={classes.UserInput}>
+    return <div className={classes.UserInput} id="userinput">
         <div className={classes.TextFieldSynonymBox}>
 
         {props.overused.length > 0 ? 
@@ -89,12 +90,14 @@ const UserInput = props => {
                 </TextareaAutosize>
                 
 
-                <button className={classes.CheckButton}
-                onClick={() => props.onSearchText(props.text, props.numWords)}
-                style={{
-                    color: props.pallete.userInputText,
-                    borderColor: props.pallete.userInputText
-                }}>CHECK</button>
+                <AnchorLink href="#userinput" offset="100">
+                    <button className={classes.CheckButton}
+                    onClick={() => props.onSearchText(props.text, props.numWords)}
+                    style={{
+                        color: props.pallete.userInputText,
+                        borderColor: props.pallete.userInputText
+                    }}>CHECK</button>
+                </AnchorLink>
             </div>
         </div>
         

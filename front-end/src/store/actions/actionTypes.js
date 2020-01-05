@@ -9,6 +9,7 @@ export const SEARCH_TEXT_SUCCESS = 'SEARCH_TEXT_SUCCESS';
 
 // Inspect
 export const SET_INSPECT = 'SET_INSPECT';
+export const RESET_INSPECT = 'RESET_INSPECT';
 
 
 

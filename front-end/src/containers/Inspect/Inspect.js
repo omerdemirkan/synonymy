@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Inspect.module.css';
 import {connect} from 'react-redux';
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+import * as actionTypes from '../../store/actions/actionTypes';
 
 const Inspect = props => {
 
@@ -8,14 +10,13 @@ const Inspect = props => {
         return null;
     }
 
-    console.log(props.word);
-    console.log(props.synonyms);
-    return <div className={classes.Inspect}>
+    return <div className={classes.Inspect} id="inspect">
         <div
         style={{
             color: props.pallete.userInputText,
             borderColor: props.pallete.userInputText
         }} className={classes.InspectBox}>
+        <CloseRoundedIcon onClick={() => props.onResetInspect()} className={classes.CloseIcon}/>
         
         {props.synonyms ? 
             <>
@@ -35,4 +36,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Inspect);
+const mapDispatchToProps = dispatch => {
+    return {
+        onResetInspect: () => dispatch({type: actionTypes.RESET_INSPECT})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Inspect);

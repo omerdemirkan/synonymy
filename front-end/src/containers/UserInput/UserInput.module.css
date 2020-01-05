@@ -131,6 +131,11 @@ mark {
     min-height: 100%;
 }
 
+.Link {
+    text-decoration: none;
+    color: inherit;
+}
+
 @keyframes SlideIn {
     from {
         left: 40px;

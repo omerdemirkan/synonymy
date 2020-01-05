@@ -12,6 +12,8 @@ const inspectReducer = (state = initialState, action) => {
                 word: action.word,
                 synonyms: action.synonyms
             }
+        case actionTypes.RESET_INSPECT:
+            return initialState;
         default: 
         return state;
     }
