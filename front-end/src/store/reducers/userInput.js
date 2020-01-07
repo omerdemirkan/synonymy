@@ -5,6 +5,7 @@ let initialState = {
     text: '',
     loading: false,
     numWords: 0,
+    numChars: 0,
     overused: [],
     changed: true
 }
@@ -15,6 +16,7 @@ if (storedText && storedText.length > 0) {
     initialState = {
         ...initialState,
         text: storedText,
+        numChars: storedText.length,
         numWords: wf.tokenise(storedText, false).length
     }
 }
@@ -27,6 +29,7 @@ const userInputReducer = (state = initialState, action) => {
                     text: '',
                     loading: false,
                     numWords: 0,
+                    numChars: 0,
                     overused: [],
                     changed: true
                 };
@@ -35,6 +38,7 @@ const userInputReducer = (state = initialState, action) => {
                 ...state,
                 text: action.text,
                 numWords: wf.tokenise(action.text, false).length,
+                numChars: action.text.length,
                 changed: true
             }
         case actionTypes.SEARCH_TEXT_START:

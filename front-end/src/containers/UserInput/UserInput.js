@@ -83,7 +83,7 @@ const UserInput = props => {
                         </table>
                             <div className={classes.Stats}>
                                 <p className={classes.Stat}>{props.numWords} words</p>
-                                <p className={classes.Stat}>{props.text.length} characters</p>
+                                <p className={classes.Stat}>{props.numChars} characters</p>
                             </div>
                             
 
@@ -138,6 +138,7 @@ const mapStateToProps = state => {
         pallete: state.pallete.pallete,
         text: state.userInput.text,
         numWords: state.userInput.numWords,
+        numChars: state.userInput.numChars,
         overused: state.userInput.overused,
         inspectedWord: state.inspect.word,
         loading: state.userInput.loading,
