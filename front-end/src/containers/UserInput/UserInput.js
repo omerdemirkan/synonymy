@@ -33,8 +33,14 @@ const UserInput = props => {
                 setClickWordModal(true);
             }
         } else {
-            props.onUpdateText(props.text, props.numWords, props.overused);
+            props.onUpdateText(props.text, props.numWords, props.loadedSynonyms);
         }
+    }
+
+    const wordClickedHandler = word => {
+        const synonyms = props.loadedSynonyms[word];
+        props.onSetInspect(word, synonyms); 
+        window.scrollTo(0, 0);
     }
 
     console.log(clickWordModal);
@@ -71,7 +77,7 @@ const UserInput = props => {
                                     return <tr key={element.word}>
                                         <td 
                                         className={classes.NameFieldItem} 
-                                        onClick={() => {props.onSetInspect(element.word, element.synonyms); window.scrollTo(0, 0);}}
+                                        onClick={() => wordClickedHandler(element.word)}
                                         style={props.inspectedWord === element.word ? {opacity: '1', fontWeight: '500'} : null}>
                                             {element.word}
                                         </td>
@@ -167,7 +173,8 @@ const mapStateToProps = state => {
         inspectedWord: state.inspect.word,
         loading: state.userInput.loading,
         changed: state.userInput.changed,
-        numWords: state.userInput.numWords
+        numWords: state.userInput.numWords,
+        loadedSynonyms: state.userInput.loadedSynonyms
     }
 }
 

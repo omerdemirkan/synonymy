@@ -7,6 +7,7 @@ let initialState = {
     numWords: 0,
     numChars: 0,
     overused: [],
+    loadedSynonyms: [],
     changed: true
 }
 
@@ -50,6 +51,7 @@ const userInputReducer = (state = initialState, action) => {
             return {
                 ...state,
                 overused: action.overused,
+                loadedSynonyms: action.loadedSynonyms,
                 changed: false
             }
         case actionTypes.SEARCH_TEXT_FAILURE:

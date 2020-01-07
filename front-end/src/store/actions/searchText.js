@@ -58,7 +58,6 @@ const searchTextAsync = (text, numWords) => {
             });
 
             if (overusedList.length > 0) {
-
                 // Descending order by multiplier
                 overusedList.sort((a, b) => b.multiplier - a.multiplier);
                 // Limit to ten words (Most overused)
@@ -69,7 +68,7 @@ const searchTextAsync = (text, numWords) => {
                 })
                 .then(res => {
                     
-                    dispatch(searchTextSuccess(res.data));
+                    dispatch(searchTextSuccess(overusedList, res.data));
                 })
                 .catch(err => {
                     console.log(err);
@@ -86,8 +85,8 @@ const searchTextStart = () => {
     return {type: actionTypes.SEARCH_TEXT_START}
 }
 
-const searchTextSuccess = overused => {
-    return {type: actionTypes.SEARCH_TEXT_SUCCESS, overused: overused}
+const searchTextSuccess = (overusedList, loadedSynonyms) => {
+    return {type: actionTypes.SEARCH_TEXT_SUCCESS, overused: overusedList, loadedSynonyms: loadedSynonyms}
 }
 
 const searchTextFailure = () => {

@@ -15,7 +15,7 @@ const getExpectedFrequency = word => {
     return (.0714 / index)
 }
 
-const updateTextAsync = (text, numWords, oldOverusedList) => {
+const updateTextAsync = (text, numWords, loadedSynonyms) => {
     return dispatch => {
 
         dispatch(searchTextStart());
@@ -59,15 +59,13 @@ const updateTextAsync = (text, numWords, oldOverusedList) => {
             // Limit to ten words (Most overused)
             newOverusedList = newOverusedList.slice(0, 10);
 
-            const oldWordsList = oldOverusedList.map(object => object.word);
             let wordsWithoutSynonyms = [];
 
-            newOverusedList.forEach((element, index) => {
-                if (oldWordsList.includes(element.word)) {
-                    element.synonyms = oldOverusedList[oldWordsList.indexOf(element.word)].synonyms;
+            newOverusedList.forEach(element => {
+                if (Object.keys(loadedSynonyms).includes(element.word)) {
+                    element.synonyms = loadedSynonyms[element.word];
                 } else {
                     wordsWithoutSynonyms.push(element);
-                    newOverusedList.splice(index, 1);
                 }
             });
 
@@ -76,17 +74,14 @@ const updateTextAsync = (text, numWords, oldOverusedList) => {
                     list: wordsWithoutSynonyms
                 })
                 .then(res => {
-                    newOverusedList = newOverusedList.concat(res.data)
+                    loadedSynonyms = {...loadedSynonyms, ...res.data}
                 })
                 .catch(err => {
                     console.log(err);
                 });
             }
-
-            // Descending order by multiplier
-            newOverusedList.sort((a, b) => b.multiplier - a.multiplier);
                     
-            dispatch(searchTextSuccess(newOverusedList));
+            dispatch(searchTextSuccess(newOverusedList, loadedSynonyms));
         }
     }
 }
@@ -95,8 +90,8 @@ const searchTextStart = () => {
     return {type: actionTypes.SEARCH_TEXT_START}
 }
 
-const searchTextSuccess = overused => {
-    return {type: actionTypes.SEARCH_TEXT_SUCCESS, overused: overused}
+const searchTextSuccess = (overusedList, loadedSynonyms) => {
+    return {type: actionTypes.SEARCH_TEXT_SUCCESS, overused: overusedList, loadedSynonyms: loadedSynonyms}
 }
 
 const searchTextFailure = () => {
