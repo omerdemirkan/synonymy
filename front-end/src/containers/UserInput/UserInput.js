@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classes from './UserInput.module.css';
+import useDebounce from '../Hooks/useDebounce';
 
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
@@ -19,12 +20,23 @@ const UserInput = props => {
     const [clickWordModal, setClickWordModal] = useState(false);
     const [userIsNew, setUserIsNew] = useState(false);
 
+    // On mount: sets whether or not the user is new
+
     useEffect(() => {
         const initialText = localStorage.getItem('text');
         if (!initialText) {
             setUserIsNew(true);
         };
     }, []);
+
+    // text that updates after the user stops typing (1 second)
+    const debouncedText = useDebounce(props.text, 1000);
+
+    useEffect(() => {
+        if (debouncedText && props.overused.length > 0) {
+            props.onUpdateText(props.text, props.numWords, props.loadedSynonyms);
+        }
+    }, [debouncedText]);
 
     const checkButtonClickedHandler = () => {
         if (props.overused.length === 0) {
@@ -43,7 +55,6 @@ const UserInput = props => {
         window.scrollTo(0, 0);
     }
 
-    console.log(clickWordModal);
     return <div className={classes.UserInput} id="userinput">
         <div className={classes.TextFieldSynonymBox}>
 
@@ -120,6 +131,7 @@ const UserInput = props => {
                 
                 <TextareaAutosize
                 spellcheck="false"
+                placeholder="Paste your essay here"
                 className={classes.TextField}
                 maxLength="100000"
                 value={props.text}

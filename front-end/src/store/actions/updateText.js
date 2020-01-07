@@ -1,11 +1,13 @@
+
+
+// The whole point of this action creator is the same as searchText, only to avoid needlessly reaching out 
+// to the api for synonyms when it isn't needed.
+
 import * as actionTypes from './actionTypes';
 import wf from 'word-freq';
 import usage from 'norvig-frequencies';
 import axios from '../../axios';
 import {isValidWord} from '../../helper/isValidWord';
-
-// The whole point of this action creator is the same as searchText, only to avoid needlessly reaching out 
-// to the api for synonyms when it isn't needed.
 
 const getExpectedFrequency = word => {
     word = word.toUpperCase();
@@ -67,24 +69,28 @@ const updateTextAsync = (text, numWords, loadedSynonyms) => {
                     element.synonyms = loadedSynonyms[element.word];
                 } else {
                     // If synonym hasn't been fetched yet
+                    console.log('item added to wordsWithoutSynonyms');
                     wordsWithoutSynonyms.push(element);
                 }
             });
 
             if (wordsWithoutSynonyms.length > 0) {
+                console.log('sending request for word(s)');
                 axios.post('/synonyms/', {
                     list: wordsWithoutSynonyms
                 })
                 .then(res => {
                     // Adding synonyms for new overused words
+                    console.log('response: ', res.data);
                     loadedSynonyms = {...loadedSynonyms, ...res.data}
+                    dispatch(searchTextSuccess(newOverusedList, loadedSynonyms));
                 })
                 .catch(err => {
                     console.log(err);
                 });
+            } else {
+                dispatch(searchTextSuccess(newOverusedList, loadedSynonyms));
             }
-                    
-            dispatch(searchTextSuccess(newOverusedList, loadedSynonyms));
         }
     }
 }
