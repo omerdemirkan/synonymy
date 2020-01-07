@@ -18,7 +18,7 @@ const searchTextAsync = (text, numWords) => {
         localStorage.setItem('text', text);
         if (text.length > 0) {
             // All usages of non-stop words found in the text.
-            const originalList = wf.freq(text);
+            const allWords = wf.freq(text);
 
             let overusedList = [];
 
@@ -27,12 +27,11 @@ const searchTextAsync = (text, numWords) => {
             // 2. Must be used in the text 3 or more times
             // 3. Must exist within the norvig-frequencies library of words
             // 4. Frequency of the word's usage must be at least 5 times more than total frequency (referred to as multiplier)
-            // 5. Must have a minimum of one synonym
             // Extra: Must be within the top ten most overused in the text
 
-            Object.keys(originalList).forEach(word => {
+            Object.keys(allWords).forEach(word => {
 
-                const numFound = originalList[word];
+                const numFound = allWords[word];
 
                 if (numFound >= 3) {
 
@@ -42,7 +41,7 @@ const searchTextAsync = (text, numWords) => {
     
                         if (expectedFrequency) {
                             const overusedMultiplier = Math.floor((numFound / numWords) / expectedFrequency);
-        
+
                             if (overusedMultiplier > 5) {
         
                                 overusedList.push({
@@ -50,7 +49,7 @@ const searchTextAsync = (text, numWords) => {
                                     multiplier: overusedMultiplier,
                                     numFound: numFound,
                                     expectedFrequency: expectedFrequency
-                                })
+                                });
                             }
                         }
                     }
@@ -67,7 +66,6 @@ const searchTextAsync = (text, numWords) => {
                     list: overusedList
                 })
                 .then(res => {
-                    
                     dispatch(searchTextSuccess(overusedList, res.data));
                 })
                 .catch(err => {

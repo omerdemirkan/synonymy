@@ -16,8 +16,8 @@ const getExpectedFrequency = word => {
 }
 
 const updateTextAsync = (text, numWords, loadedSynonyms) => {
-    return dispatch => {
 
+    return dispatch => {
         dispatch(searchTextStart());
 
         localStorage.setItem('text', text);
@@ -63,8 +63,10 @@ const updateTextAsync = (text, numWords, loadedSynonyms) => {
 
             newOverusedList.forEach(element => {
                 if (Object.keys(loadedSynonyms).includes(element.word)) {
+                    // If synonym has already been fetched
                     element.synonyms = loadedSynonyms[element.word];
                 } else {
+                    // If synonym hasn't been fetched yet
                     wordsWithoutSynonyms.push(element);
                 }
             });
@@ -74,6 +76,7 @@ const updateTextAsync = (text, numWords, loadedSynonyms) => {
                     list: wordsWithoutSynonyms
                 })
                 .then(res => {
+                    // Adding synonyms for new overused words
                     loadedSynonyms = {...loadedSynonyms, ...res.data}
                 })
                 .catch(err => {
