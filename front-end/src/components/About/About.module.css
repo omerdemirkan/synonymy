@@ -11,7 +11,7 @@
     max-width: 800px;
     border: 1px solid;
     padding: 25px 20px 0;
-    margin: 50px 0;
+    margin: 80px 0 50px;
 }
 
 .MainHeader {
@@ -32,4 +32,9 @@
 .Text {
     font-size: 1rem;
     font-weight: 400;
+}
+
+.Text::selection, .MainHeader::selection, .SecondaryHeader::selection, a::selection {
+    color: inherit;
+    background-color: rgb(196, 196, 196);
 }

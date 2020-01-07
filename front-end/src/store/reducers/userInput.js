@@ -23,7 +23,13 @@ const userInputReducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.UPDATE_TEXT:
             if (!action.text) {
-                return initialState;
+                return {
+                    text: '',
+                    loading: false,
+                    numWords: 0,
+                    overused: [],
+                    changed: true
+                };
             }
             return {
                 ...state,

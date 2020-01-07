@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './UserInput.module.css';
 
 import { connect } from 'react-redux';
@@ -7,60 +7,87 @@ import searchTextAsync from '../../store/actions/searchText';
 import applyHighlight from '../../helper/applyHightlight';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
-import HelpOutlineRoundedIcon from '@material-ui/icons/HelpOutlineRounded';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const UserInput = props => {
 
-    
+    const [clickWordModal, setClickWordModal] = useState(false);
+    const [userIsNew, setUserIsNew] = useState(false);
+
+    useEffect(() => {
+        const initialText = localStorage.getItem('text');
+        if (!initialText) {
+            setUserIsNew(true);
+        };
+    }, []);
+
+    const checkButtonClickedHandler = () => {
+        props.onSearchText(props.text, props.numWords);
+        if (userIsNew) {
+            setClickWordModal(true);
+        }
+    }
 
     return <div className={classes.UserInput} id="userinput">
         <div className={classes.TextFieldSynonymBox}>
 
         {props.overused.length > 0 ? 
-                <aside className={classes.SynonymBox}>
-                    <table className={classes.SynonymTable}
+
+                <aside className={classes.SynonymLane}>
+
+                    <div 
+                    className={classes.SynonymBox}
                     style={{
                         borderColor: props.pallete.userInputText,
+                        backgroundColor: '',
                         color: props.pallete.userInputText
                     }}>
-                        <thead >
-                            <tr style={{
-                                textAlign: 'center'
-                            }}>
-                                <td>WORD</td>
-                                <td>FOUND</td>
-                                <td className={classes.SeverityHeader}>
-                                    SCORE
-                                </td>
-                            </tr>
-                        </thead>
-                        <br/>
-                        <tbody>
-                            {props.overused.map((element, index) => {
-                                if (index < 30) {
-                                    return <tr key={element.word}>
-                                        <td 
-                                        className={classes.NameFieldItem} 
-                                        onClick={() => {props.onSetInspect(element.word, element.synonyms); window.scrollTo(0, 0);}}
-                                        style={props.inspectedWord === element.word ? {opacity: '1', fontWeight: '500'} : null}>
-                                            {element.word}
-                                        </td>
-                                        <td
-                                        style ={{
-                                            textAlign: "center"
-                                        }}
-                                        >{element.numFound}</td>
-                                        <td
-                                        style ={{
-                                            textAlign: "center"
-                                        }}
-                                        >{element.multiplier}</td>
-                                    </tr>
-                                }
-                            })}
-                        </tbody>
-                    </table>
+
+                        <table className={classes.SynonymTable}>
+                            <thead >
+                                <tr style={{
+                                    textAlign: 'center'
+                                }}>
+                                    <td>WORD</td>
+                                    <td>FOUND</td>
+                                    <td className={classes.SeverityHeader}>
+                                        SCORE
+                                    </td>
+                                </tr>
+                            </thead>
+                            <br/>
+                            <tbody>
+                                {props.overused.map((element, index) => {
+                                    if (index < 30) {
+                                        return <tr key={element.word}>
+                                            <td 
+                                            className={classes.NameFieldItem} 
+                                            onClick={() => {props.onSetInspect(element.word, element.synonyms); window.scrollTo(0, 0);}}
+                                            style={props.inspectedWord === element.word ? {opacity: '1', fontWeight: '500'} : null}>
+                                                {element.word}
+                                            </td>
+                                            <td
+                                            style ={{
+                                                textAlign: "center"
+                                            }}
+                                            >{element.numFound}</td>
+                                            <td
+                                            style ={{
+                                                textAlign: "center"
+                                            }}
+                                            >{element.multiplier}</td>
+                                        </tr>
+                                    }
+                                })}
+                            </tbody>
+                        </table>
+                            <div className={classes.Stats}>
+                                <p className={classes.Stat}>{props.numWords} words</p>
+                                <p className={classes.Stat}>{props.text.length} characters</p>
+                            </div>
+                            
+
+                    </div>
                 </aside>
             : null}
 
@@ -94,7 +121,7 @@ const UserInput = props => {
 
                 <AnchorLink href="#userinput" offset="200">
                     <button className={classes.CheckButton}
-                    onClick={() => props.onSearchText(props.text, props.numWords)}
+                    onClick={checkButtonClickedHandler}
                     disabled={!props.changed}
                     style={{
                         color: props.pallete.userInputText
@@ -114,7 +141,8 @@ const mapStateToProps = state => {
         overused: state.userInput.overused,
         inspectedWord: state.inspect.word,
         loading: state.userInput.loading,
-        changed: state.userInput.changed
+        changed: state.userInput.changed,
+        numWords: state.userInput.numWords
     }
 }
 
