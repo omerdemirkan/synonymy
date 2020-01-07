@@ -57,29 +57,27 @@ const searchTextAsync = (text, numWords) => {
                 }
             });
 
-            // Descending order by multiplier
-            overusedList.sort((a, b) => b.multiplier - a.multiplier);
-            // Limit to ten words (Most overused)
-            overusedList = overusedList.slice(0, 10)
+            if (overusedList.length > 0) {
 
-            axios.post('/synonyms/', {
-                list: overusedList
-            })
-            .then(res => {
-                
-                dispatch(searchTextSuccess(res.data));
-            })
-            .catch(err => {
-                console.log(err);
-            });
+                // Descending order by multiplier
+                overusedList.sort((a, b) => b.multiplier - a.multiplier);
+                // Limit to ten words (Most overused)
+                overusedList = overusedList.slice(0, 10)
 
-            // Format:
-            // word: String,
-            // multiplier: Number,
-            // numFound: Number,
-            // synonyms: Object
-            
-            
+                axios.post('/synonyms/', {
+                    list: overusedList
+                })
+                .then(res => {
+                    
+                    dispatch(searchTextSuccess(res.data));
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
+            } else {
+                dispatch(searchTextAsync([]))
+            }
         }
     }
 }

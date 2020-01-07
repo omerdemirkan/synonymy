@@ -24,7 +24,7 @@ if (storedText && storedText.length > 0) {
 const userInputReducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.UPDATE_TEXT:
-            if (!action.text) {
+            if (!action.text || action.text.length === 0) {
                 return {
                     text: '',
                     loading: false,

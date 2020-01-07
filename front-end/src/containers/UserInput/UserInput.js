@@ -8,7 +8,11 @@ import updateTextAsync from '../../store/actions/updateText';
 import applyHighlight from '../../helper/applyHightlight';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
+// Material UI
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 const UserInput = props => {
 
@@ -33,6 +37,7 @@ const UserInput = props => {
         }
     }
 
+    console.log(clickWordModal);
     return <div className={classes.UserInput} id="userinput">
         <div className={classes.TextFieldSynonymBox}>
 
@@ -132,7 +137,23 @@ const UserInput = props => {
                 </AnchorLink>
             </div>
         </div>
-        
+        <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={clickWordModal}
+        autoHideDuration={6000}
+        onClose={() => setClickWordModal(false)}
+        message="Click on a word to see its synonyms"
+        action={
+          <React.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={() => setClickWordModal(false)}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
     </div>
 }
 
