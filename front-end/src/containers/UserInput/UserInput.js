@@ -75,7 +75,7 @@ const UserInput = props => {
                                             style ={{
                                                 textAlign: "center"
                                             }}
-                                            >{element.multiplier}</td>
+                                            >{Math.floor((element.numFound / props.numWords) / element.expectedFrequency)}</td>
                                         </tr>
                                     }
                                 })}

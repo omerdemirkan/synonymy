@@ -41,15 +41,15 @@ const searchTextAsync = (text, numWords) => {
                         const expectedFrequency = getExpectedFrequency(word);
     
                         if (expectedFrequency) {
-                            const userFrequency = numFound / numWords;
-                            const overusedMultiplier = Math.floor(userFrequency / expectedFrequency);
+                            const overusedMultiplier = Math.floor((numFound / numWords) / expectedFrequency);
         
                             if (overusedMultiplier > 5) {
         
                                 overusedList.push({
                                     word: word,
                                     multiplier: overusedMultiplier,
-                                    numFound: numFound
+                                    numFound: numFound,
+                                    expectedFrequency: expectedFrequency
                                 })
                             }
                         }
