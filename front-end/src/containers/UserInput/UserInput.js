@@ -4,6 +4,7 @@ import classes from './UserInput.module.css';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
 import searchTextAsync from '../../store/actions/searchText';
+import updateTextAsync from '../../store/actions/updateText';
 import applyHighlight from '../../helper/applyHightlight';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
@@ -22,9 +23,13 @@ const UserInput = props => {
     }, []);
 
     const checkButtonClickedHandler = () => {
-        props.onSearchText(props.text, props.numWords);
-        if (userIsNew) {
-            setClickWordModal(true);
+        if (props.overused.length === 0) {
+            props.onSearchText(props.text, props.numWords);
+            if (userIsNew) {
+                setClickWordModal(true);
+            }
+        } else {
+            props.onUpdateText(props.text, props.numWords, props.overused);
         }
     }
 
@@ -58,26 +63,24 @@ const UserInput = props => {
                             <br/>
                             <tbody>
                                 {props.overused.map((element, index) => {
-                                    if (index < 30) {
-                                        return <tr key={element.word}>
-                                            <td 
-                                            className={classes.NameFieldItem} 
-                                            onClick={() => {props.onSetInspect(element.word, element.synonyms); window.scrollTo(0, 0);}}
-                                            style={props.inspectedWord === element.word ? {opacity: '1', fontWeight: '500'} : null}>
-                                                {element.word}
-                                            </td>
-                                            <td
-                                            style ={{
-                                                textAlign: "center"
-                                            }}
-                                            >{element.numFound}</td>
-                                            <td
-                                            style ={{
-                                                textAlign: "center"
-                                            }}
-                                            >{Math.floor((element.numFound / props.numWords) / element.expectedFrequency)}</td>
-                                        </tr>
-                                    }
+                                    return <tr key={element.word}>
+                                        <td 
+                                        className={classes.NameFieldItem} 
+                                        onClick={() => {props.onSetInspect(element.word, element.synonyms); window.scrollTo(0, 0);}}
+                                        style={props.inspectedWord === element.word ? {opacity: '1', fontWeight: '500'} : null}>
+                                            {element.word}
+                                        </td>
+                                        <td
+                                        style ={{
+                                            textAlign: "center"
+                                        }}
+                                        >{element.numFound}</td>
+                                        <td
+                                        style ={{
+                                            textAlign: "center"
+                                        }}
+                                        >{Math.floor((element.numFound / props.numWords) / element.expectedFrequency)}</td>
+                                    </tr>
                                 })}
                             </tbody>
                         </table>
@@ -151,7 +154,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onTextUpdated: text => dispatch({type: actionTypes.UPDATE_TEXT, text: text}),
         onSearchText: (text, numWords) => dispatch(searchTextAsync(text, numWords)),
-        onSetInspect: (word, synonyms) => dispatch({type: actionTypes.SET_INSPECT, word: word, synonyms: synonyms})
+        onSetInspect: (word, synonyms) => dispatch({type: actionTypes.SET_INSPECT, word: word, synonyms: synonyms}),
+        onUpdateText: (text, numWords, overusedList) => dispatch(updateTextAsync(text, numWords, overusedList))
     }
 }
 

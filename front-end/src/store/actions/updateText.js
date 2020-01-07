@@ -4,6 +4,9 @@ import usage from 'norvig-frequencies';
 import axios from '../../axios';
 import {isValidWord} from '../../helper/isValidWord';
 
+// The whole point of this action creator is the same as searchText, only to avoid needlessly reaching out 
+// to the api for synonyms when it isn't needed.
+
 const getExpectedFrequency = word => {
     word = word.toUpperCase();
     const index = usage.indexOf(word)
@@ -12,27 +15,22 @@ const getExpectedFrequency = word => {
     return (.0714 / index)
 }
 
-const searchTextAsync = (text, numWords) => {
+const updateTextAsync = (text, numWords, oldOverusedList) => {
     return dispatch => {
+
         dispatch(searchTextStart());
+
         localStorage.setItem('text', text);
+
         if (text.length > 0) {
             // All usages of non-stop words found in the text.
-            const originalList = wf.freq(text);
+            const allWords = wf.freq(text);
 
-            let overusedList = [];
+            let newOverusedList = [];
 
-            // Qualifications to be considered overused:
-            // 1. Must be a valid word
-            // 2. Must be used in the text 3 or more times
-            // 3. Must exist within the norvig-frequencies library of words
-            // 4. Frequency of the word's usage must be at least 5 times more than total frequency (referred to as multiplier)
-            // 5. Must have a minimum of one synonym
-            // Extra: Must be within the top ten most overused in the text
+            Object.keys(allWords).forEach(word => {
 
-            Object.keys(originalList).forEach(word => {
-
-                const numFound = originalList[word];
+                const numFound = allWords[word];
 
                 if (numFound >= 3) {
 
@@ -44,8 +42,7 @@ const searchTextAsync = (text, numWords) => {
                             const overusedMultiplier = Math.floor((numFound / numWords) / expectedFrequency);
         
                             if (overusedMultiplier > 5) {
-        
-                                overusedList.push({
+                                newOverusedList.push({
                                     word: word,
                                     multiplier: overusedMultiplier,
                                     numFound: numFound,
@@ -58,28 +55,38 @@ const searchTextAsync = (text, numWords) => {
             });
 
             // Descending order by multiplier
-            overusedList.sort((a, b) => b.multiplier - a.multiplier);
+            newOverusedList.sort((a, b) => b.multiplier - a.multiplier);
             // Limit to ten words (Most overused)
-            overusedList = overusedList.slice(0, 10)
+            newOverusedList = newOverusedList.slice(0, 10);
 
-            axios.post('/synonyms/', {
-                list: overusedList
-            })
-            .then(res => {
-                
-                dispatch(searchTextSuccess(res.data));
-            })
-            .catch(err => {
-                console.log(err);
+            const oldWordsList = oldOverusedList.map(object => object.word);
+            let wordsWithoutSynonyms = [];
+
+            newOverusedList.forEach((element, index) => {
+                if (oldWordsList.includes(element.word)) {
+                    element.synonyms = oldOverusedList[oldWordsList.indexOf(element.word)].synonyms;
+                } else {
+                    wordsWithoutSynonyms.push(element);
+                    newOverusedList.splice(index, 1);
+                }
             });
 
-            // Format:
-            // word: String,
-            // multiplier: Number,
-            // numFound: Number,
-            // synonyms: Object
-            
-            
+            if (wordsWithoutSynonyms.length > 0) {
+                axios.post('/synonyms/', {
+                    list: wordsWithoutSynonyms
+                })
+                .then(res => {
+                    newOverusedList = newOverusedList.concat(res.data)
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            }
+
+            // Descending order by multiplier
+            newOverusedList.sort((a, b) => b.multiplier - a.multiplier);
+                    
+            dispatch(searchTextSuccess(newOverusedList));
         }
     }
 }
@@ -96,4 +103,4 @@ const searchTextFailure = () => {
     return {type: actionTypes.SEARCH_TEXT_FAILURE}
 }
 
-export default searchTextAsync;
+export default updateTextAsync;
