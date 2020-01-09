@@ -28,7 +28,6 @@
     margin-left: 12px;
     min-height: 65vh;
     position: relative;
-    background-color: transparent;
     animation: PhaseIn .8s ease forwards;
 }
 
@@ -126,7 +125,8 @@ td {
     outline: none;
     border: none;
     letter-spacing: .5px;
-    white-space: pre-line;
+    white-space: pre-wrap;
+    word-wrap: break-word;
     pointer-events:none;
 }
 
@@ -173,7 +173,7 @@ mark {
 }
 
 .WordCountWarningBox {
-    margin-top: 30px;
+    max-width: 60%;
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -189,6 +189,7 @@ mark {
 .SampleEssayCTA {
     text-decoration: underline;
     cursor: pointer;
+    white-space:nowrap;
 }
 
 .SampleEssayCTA:hover {

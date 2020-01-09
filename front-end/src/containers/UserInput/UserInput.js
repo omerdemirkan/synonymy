@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 import classes from './UserInput.module.css';
 import useDebounce from '../Hooks/useDebounce';
 
+// Redux
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
+// Action creators
 import searchTextAsync from '../../store/actions/searchText';
 import updateTextAsync from '../../store/actions/updateText';
+
+// Helpers
 import applyHighlight from '../../helper/applyHightlight';
+import getSampleEssay from '../../helper/sampleEssay';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 // Material UI
@@ -60,6 +65,10 @@ const UserInput = props => {
         window.scrollTo(0, 0);
     }
 
+    const sampleEssayHandler = () => {
+        props.onTextUpdated(getSampleEssay());
+    }
+
     return <div className={classes.UserInput} id="userinput">
         <div className={classes.TextFieldSynonymBox}>
 
@@ -89,7 +98,7 @@ const UserInput = props => {
                             </thead>
                             <br/>
                             <tbody>
-                                {props.overused.map((element, index) => {
+                                {props.overused.map(element => {
                                     return <tr key={element.word}>
                                         <td 
                                         className={classes.NameFieldItem} 
@@ -166,7 +175,7 @@ const UserInput = props => {
                         color: props.pallete.userInputText
                     }}>
                         <span>A minimum of 200 words required. </span>
-                        <span className={classes.SampleEssayCTA}>Try sample essay</span>
+                        <span className={classes.SampleEssayCTA} onClick={() => props.onTextUpdated(getSampleEssay())}>Try sample essay</span>
                     </div>
                 : null}
                 
