@@ -165,7 +165,8 @@ const UserInput = props => {
                     style={{
                         color: props.pallete.userInputText
                     }}>
-                        <p>A minimum of 200 words required</p>
+                        <span>A minimum of 200 words required. </span>
+                        <span className={classes.SampleEssayCTA}>Try sample essay</span>
                     </div>
                 : null}
                 

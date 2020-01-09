@@ -25,7 +25,10 @@ if (storedText && storedText.length > 0) {
 const userInputReducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.UPDATE_TEXT:
-            if (!action.text || action.text.length === 0) {
+
+            const allWords = wf.tokenise(action.text, false);
+
+            if (!action.text || action.text.length === 0 || !allWords) {
                 return {
                     text: '',
                     loading: false,
@@ -35,10 +38,11 @@ const userInputReducer = (state = initialState, action) => {
                     changed: true
                 };
             }
+
             return {
                 ...state,
                 text: action.text,
-                numWords: wf.tokenise(action.text, false).length,
+                numWords: allWords.length,
                 numChars: action.text.length,
                 changed: true
             }

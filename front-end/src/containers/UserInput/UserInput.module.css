@@ -173,13 +173,26 @@ mark {
 }
 
 .WordCountWarningBox {
-    position: relative;
+    margin-top: 30px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
     user-select: none;
     font-size: .8rem;
     font-weight: 400;
     opacity: 0;
-    animation: PhaseIn3 0.5s ease forwards;
+    z-index: inherit;
+    animation: WarningBoxPhaseIn 0.5s ease forwards;
     animation-delay: 0.5s;
+}
+
+.SampleEssayCTA {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.SampleEssayCTA:hover {
+    opacity: .8;
 }
 
 @media (max-width: 768px) {
@@ -233,7 +246,7 @@ mark {
 
 @keyframes PhaseIn {
     from {
-        top: 10px;
+        top: 5px;
         opacity: 0;
     }
     to {
@@ -244,7 +257,7 @@ mark {
 
 @keyframes PhaseIn2 {
     from {
-        top: 5px;
+        top: 2px;
         opacity: 0;
     }
     to {
@@ -253,13 +266,13 @@ mark {
     }
 }
 
-@keyframes PhaseIn3 {
+@keyframes WarningBoxPhaseIn {
     from {
-        top: 2px;
+        bottom: 18px;
         opacity: 0;
     }
     to {
-        top: 0;
+        bottom: 20px;
         opacity: .5;
     }
 }
