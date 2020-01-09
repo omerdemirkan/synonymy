@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classes from './UserInput.module.css';
 import useDebounce from '../Hooks/useDebounce';
 
@@ -43,7 +43,8 @@ const UserInput = props => {
     const debouncedText = useDebounce(props.text, 1000);
 
     useEffect(() => {
-        if (debouncedText && props.overused.length > 0 && props.numWords >= 200) {
+        // if (debouncedText && props.overused.length > 0 && props.numWords >= 200)
+        if (debouncedText && props.numWords >= 200 && props.overused.length > 0) {
             props.onUpdateText(props.text, props.numWords, props.loadedSynonyms);
         }
     }, [debouncedText]);
@@ -67,6 +68,7 @@ const UserInput = props => {
 
     const sampleEssayHandler = () => {
         props.onTextUpdated(getSampleEssay());
+        checkButtonClickedHandler();
     }
 
     return <div className={classes.UserInput} id="userinput">
@@ -157,15 +159,17 @@ const UserInput = props => {
                 onChange={event => props.onTextUpdated(event.target.value)}>
                 </TextareaAutosize>
                 
-
-                <AnchorLink href="#userinput" offset="200">
-                    <button className={classes.CheckButton}
-                    onClick={checkButtonClickedHandler}
-                    disabled={!props.changed || props.numWords < 200}
-                    style={{
-                        color: props.pallete.userInputText
-                    }}>CHECK</button>
-                </AnchorLink>
+                {props.overused.length === 0 ?
+                    <AnchorLink href="#userinput" offset="200">
+                        <button className={classes.CheckButton}
+                        onClick={checkButtonClickedHandler}
+                        disabled={!props.changed || props.numWords < 200}
+                        style={{
+                            color: props.pallete.userInputText
+                        }}>CHECK</button>
+                    </AnchorLink>
+                : null}
+                
 
                 {/* Displays with insufficient text */}
                 {props.numWords > 0 && props.numWords < 200 ?
@@ -178,7 +182,6 @@ const UserInput = props => {
                         <span className={classes.SampleEssayCTA} onClick={() => props.onTextUpdated(getSampleEssay())}>Try sample essay</span>
                     </div>
                 : null}
-                
             </div>
         </div>
         <Snackbar
