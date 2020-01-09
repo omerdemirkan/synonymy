@@ -13,6 +13,7 @@ const Inspect = props => {
     return <div className={classes.Inspect} id="inspect">
         <div
         style={{
+            backgroundColor: props.pallete.textArea,
             color: props.pallete.userInputText,
             // borderColor: props.pallete.userInputText
         }} className={classes.InspectBox}>

@@ -82,7 +82,7 @@ const UserInput = props => {
                     className={classes.SynonymBox}
                     style={{
                         borderColor: props.pallete.userInputText,
-                        backgroundColor: '',
+                        backgroundColor: props.pallete.textArea,
                         color: props.pallete.userInputText
                     }}>
 
@@ -134,6 +134,7 @@ const UserInput = props => {
 
             <div className={classes.TextFieldBox}
             style={{
+                backgroundColor: props.pallete.textArea,
                 borderColor: props.pallete.userInputText
             }}>
                 {props.inspectedWord && props.numWords >= 200 ?

@@ -3,12 +3,12 @@ import * as actionTypes from '../actions/actionTypes';
 const mapModeToPallete = darkMode => {
     if (darkMode) {
         return {
-            backgroundMain: '#222',
+            backgroundMain: 'rgb(41, 45, 51)',
             backgroundSecondary: 'black',
-            textArea: 'black',
+            textArea: '#222',
             userInputText: 'white',
             userInputTextHighlight: '#005e86',
-            navbar: '#333',
+            navbar: 'rgb(47, 52, 58)',
             navbarText: 'white'
         }
     } else {
