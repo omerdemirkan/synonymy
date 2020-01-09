@@ -6,7 +6,7 @@ import * as actionTypes from '../../store/actions/actionTypes';
 
 const Inspect = props => {
 
-    if (!props.word) {
+    if (!props.word || props.numWords < 200) {
         return null;
     }
 
@@ -14,7 +14,7 @@ const Inspect = props => {
         <div
         style={{
             color: props.pallete.userInputText,
-            borderColor: props.pallete.userInputText
+            // borderColor: props.pallete.userInputText
         }} className={classes.InspectBox}>
         <CloseRoundedIcon onClick={() => props.onResetInspect()} className={classes.CloseIcon}/>
         
@@ -32,7 +32,8 @@ const mapStateToProps = state => {
     return {
         pallete: state.pallete.pallete,
         word: state.inspect.word,
-        synonyms: state.inspect.synonyms
+        synonyms: state.inspect.synonyms,
+        numWords: state.userInput.numWords
     }
 }
 

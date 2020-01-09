@@ -17,7 +17,11 @@ import CloseIcon from '@material-ui/icons/Close';
 
 const UserInput = props => {
 
+    // Controls a snackbar that prompts a new user to click on 
+    // a word in the sidebar to see its synonyms
     const [clickWordModal, setClickWordModal] = useState(false);
+
+    // Is determined by localStorage, 
     const [userIsNew, setUserIsNew] = useState(false);
 
     // On mount: sets whether or not the user is new
@@ -30,10 +34,11 @@ const UserInput = props => {
     }, []);
 
     // text that updates after the user stops typing (1 second)
+    // this is used to update search with updateTextAsync()
     const debouncedText = useDebounce(props.text, 1000);
 
     useEffect(() => {
-        if (debouncedText && props.overused.length > 0) {
+        if (debouncedText && props.overused.length > 0 && props.numWords >= 200) {
             props.onUpdateText(props.text, props.numWords, props.loadedSynonyms);
         }
     }, [debouncedText]);
@@ -58,7 +63,7 @@ const UserInput = props => {
     return <div className={classes.UserInput} id="userinput">
         <div className={classes.TextFieldSynonymBox}>
 
-        {props.overused.length > 0 ? 
+        {props.overused.length > 0 && props.numWords >= 200 ? 
 
                 <aside className={classes.SynonymLane}>
 
@@ -120,7 +125,7 @@ const UserInput = props => {
             style={{
                 borderColor: props.pallete.userInputText
             }}>
-                {props.inspectedWord ? 
+                {props.inspectedWord && props.numWords >= 200 ?
                     <div className={classes.HighlightText}>
                             {applyHighlight(props.text, props.inspectedWord, {
                                 color: props.pallete.userInputText,
@@ -141,18 +146,29 @@ const UserInput = props => {
                 }}
                 autoFocus={true}
                 onChange={event => props.onTextUpdated(event.target.value)}>
-                    
                 </TextareaAutosize>
                 
 
                 <AnchorLink href="#userinput" offset="200">
                     <button className={classes.CheckButton}
                     onClick={checkButtonClickedHandler}
-                    disabled={!props.changed}
+                    disabled={!props.changed || props.numWords < 200}
                     style={{
                         color: props.pallete.userInputText
                     }}>CHECK</button>
                 </AnchorLink>
+
+                {/* Displays with insufficient text */}
+                {props.numWords > 0 && props.numWords < 200 ?
+                    <div 
+                    className={classes.WordCountWarningBox}
+                    style={{
+                        color: props.pallete.userInputText
+                    }}>
+                        <p>A minimum of 200 words required</p>
+                    </div>
+                : null}
+                
             </div>
         </div>
         <Snackbar

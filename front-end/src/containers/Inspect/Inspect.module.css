@@ -10,6 +10,7 @@
     box-sizing: border-box;
     margin: auto;
     border: 1px solid;
+    /* border: none; */
     position: relative;
     animation: PhaseIn 0.5s ease forwards;
 }

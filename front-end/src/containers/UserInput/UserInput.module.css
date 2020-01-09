@@ -172,6 +172,16 @@ mark {
     color: inherit;
 }
 
+.WordCountWarningBox {
+    position: relative;
+    user-select: none;
+    font-size: .8rem;
+    font-weight: 400;
+    opacity: 0;
+    animation: PhaseIn3 0.5s ease forwards;
+    animation-delay: 0.5s;
+}
+
 @media (max-width: 768px) {
     .TextFieldSynonymBox {
         flex-direction: column;
@@ -215,6 +225,12 @@ mark {
     }
 }
 
+@media (max-height: 768px) {
+    .TextFieldBox {
+        min-height: 50vh;
+    }
+}
+
 @keyframes PhaseIn {
     from {
         top: 10px;
@@ -234,5 +250,16 @@ mark {
     to {
         top: 0;
         opacity: 1;
+    }
+}
+
+@keyframes PhaseIn3 {
+    from {
+        top: 2px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: .5;
     }
 }
