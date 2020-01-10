@@ -18,7 +18,7 @@ const searchTextAsync = (text, numWords) => {
         localStorage.setItem('text', text);
         if (text.length > 0) {
             // All usages of non-stop words found in the text.
-            const allWords = wf.freq(text);
+            const allWords = wf.freq(text, true, false);
 
             let overusedList = [];
 

@@ -29,6 +29,7 @@
     min-height: 65vh;
     position: relative;
     animation: PhaseIn .8s ease forwards;
+    transition: background-color 0.2s ease;
 }
 
 .SynonymLane {
@@ -56,6 +57,7 @@
     padding: 0;
     padding: 15px 8px;
     font-weight: 1.2rem;
+    transition: background-color 0.2s ease;
 }
 
 .SynonymTable {
@@ -205,7 +207,7 @@ mark {
 
     .TextFieldBox {
         width: 90%;
-        box-sizing: border-box;
+        /* box-sizing: border-box; */
         margin: 0;
     }
     
@@ -278,6 +280,6 @@ mark {
     }
 }
 
-/* .Test {
-    color: rgb(26, 34, 51);
-} */
+.Test {
+    color: rgb(0, 12, 24);
+}

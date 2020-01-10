@@ -3,9 +3,9 @@ import * as actionTypes from '../actions/actionTypes';
 const mapModeToPallete = darkMode => {
     if (darkMode) {
         return {
-            backgroundMain: 'rgb(41, 45, 51)',
+            backgroundMain: 'black',
             backgroundSecondary: 'black',
-            textArea: '#222',
+            textArea: 'black',
             userInputText: 'white',
             userInputTextHighlight: '#005e86',
             navbar: 'rgb(47, 52, 58)',
@@ -15,7 +15,7 @@ const mapModeToPallete = darkMode => {
         return {
             backgroundMain: 'white',
             backgroundSecondary: 'white',
-            textArea: 'black',
+            textArea: 'white',
             userInputText: 'black',
             userInputTextHighlight: '#b1d5e5',
             navbar: '#eee',
