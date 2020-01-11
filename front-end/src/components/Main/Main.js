@@ -8,7 +8,7 @@ const main = props => {
         
         <h3 className={classes.Header}
         style={{
-            color: props.pallete.userInputText
+            color: props.pallete.accentText
         }}>I find overused words in your essay and recommend alternatives</h3>
         
         {props.children}

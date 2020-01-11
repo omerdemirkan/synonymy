@@ -22,10 +22,11 @@
     width: 60%;
     max-width: 1000px;
     padding: 20px 20px 50px;
-    border: 1px solid;
+    /* border: 1px solid; */
+    border-radius: 10px;
     position: relative;
     margin: 0;
-    margin-left: 12px;
+    margin-left: 15px;
     min-height: 65vh;
     position: relative;
     animation: PhaseIn .8s ease forwards;
@@ -35,7 +36,7 @@
 .SynonymLane {
     position: relative;
     margin: 0;
-    margin-right: 12px;
+    margin-right: 15px;
     animation: PhaseIn2 0.8s ease forwards;
     user-select: none;
 }
@@ -52,6 +53,8 @@
 .SynonymBox {
     border: 1px solid black;
     position: sticky;
+    border: none;
+    border-radius: 10px;
     top: 100px;
     left: 0;
     padding: 0;
@@ -97,6 +100,8 @@ td {
     resize: none;
     width: 100%;
     background-color: transparent;
+    box-sizing: border-box;
+    margin: 0;
     padding: 0;
     z-index: 1000;
 
@@ -115,6 +120,8 @@ td {
 
 .HighlightText {
     position: absolute;
+    box-sizing: border-box;
+    margin: 0;
     color: transparent;
     background-color: transparent;
     width: calc(100% - 40px);
@@ -147,15 +154,10 @@ mark {
     border-radius: .25rem;
     width: 70px;
     height: 30px;
-    opacity: .8;
 
     outline: none;
     font-weight: 600;
     cursor: pointer;
-}
-
-.CheckButton:hover {
-    opacity: 1;
 }
 
 .CheckButton:disabled {
@@ -185,7 +187,7 @@ mark {
     opacity: 0;
     z-index: inherit;
     animation: WarningBoxPhaseIn 0.5s ease forwards;
-    animation-delay: 0.5s;
+    animation-delay: 2s;
 }
 
 .SampleEssayCTA {
@@ -207,7 +209,7 @@ mark {
 
     .TextFieldBox {
         width: 90%;
-        /* box-sizing: border-box; */
+        box-sizing: border-box;
         margin: 0;
     }
     

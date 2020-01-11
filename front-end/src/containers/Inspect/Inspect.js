@@ -6,6 +6,15 @@ import * as actionTypes from '../../store/actions/actionTypes';
 
 const Inspect = props => {
 
+    const neuBorder = props.darkMode ? {
+
+    }
+    : {
+        boxShadow: 'inset 3px 3px 6px rgba(0, 0, 0, 0.08), inset -3px -3px 6px rgba(255, 255, 255, 0.5)'
+    }
+
+    
+
     if (!props.word || props.numWords < 200) {
         return null;
     }
@@ -15,16 +24,17 @@ const Inspect = props => {
         style={{
             backgroundColor: props.pallete.textArea,
             color: props.pallete.userInputText,
-            // borderColor: props.pallete.userInputText
+            ...neuBorder
         }} className={classes.InspectBox}>
-        <CloseRoundedIcon onClick={() => props.onResetInspect()} className={classes.CloseIcon}/>
-        
-        {props.synonyms ? 
-            <>
-                <p className={classes.WordSentence}>Possible alternatives for <bold className={classes.Word}>{props.word}</bold>: </p>
-                <p className={classes.Synonyms}>{props.synonyms.join(', ')}</p>
-            </>
-        : <h3 className={classes.NotFoundMessage}>Sorry! Couldn't find synonyms for {props.word}</h3>}
+            <CloseRoundedIcon onClick={() => props.onResetInspect()} className={classes.CloseIcon}/>
+            
+            {props.synonyms ? 
+                <>
+                    <p className={classes.WordSentence}>Possible alternatives for <bold className={classes.Word}>{props.word}</bold>: </p>
+                    <p className={classes.Synonyms}>{props.synonyms.join(', ')}</p>
+                </>
+            : <h3 className={classes.NotFoundMessage}>Sorry! Couldn't find synonyms for {props.word}</h3>}
+
         </div>
     </div>
 }
@@ -34,7 +44,9 @@ const mapStateToProps = state => {
         pallete: state.pallete.pallete,
         word: state.inspect.word,
         synonyms: state.inspect.synonyms,
-        numWords: state.userInput.numWords
+        numWords: state.userInput.numWords,
+        overused: state.userInput.overused,
+        darkMode: state.pallete.darkMode
     }
 }
 

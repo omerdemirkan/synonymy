@@ -22,6 +22,24 @@ import CloseIcon from '@material-ui/icons/Close';
 
 const UserInput = props => {
 
+    const neuBorder = props.darkMode ? {
+        main: {
+
+        },
+        secondary: {
+
+        }
+    }
+    : {
+        main: {
+            boxShadow: '-10px -10px 8px rgba(255, 255, 255, 0.35), 10px 10px 8px rgba(0, 0, 0, 0.05), inset 1px 1px 3px rgba(0, 0, 0, 0.03), inset -1px -1px 3px rgba(255, 255, 255, 0.2)'
+        },
+        secondary: {
+            boxShadow: '-8px -8px 8px rgba(255, 255, 255, 0.35), 8px 8px 8px rgba(0, 0, 0, 0.05), inset 1px 1px 3px rgba(0, 0, 0, 0.03), inset -1px -1px 3px rgba(255, 255, 255, 0.2)'
+        }
+        
+    };
+
     // Controls a snackbar that prompts a new user to click on 
     // a word in the sidebar to see its synonyms
     const [clickWordModal, setClickWordModal] = useState(false);
@@ -40,7 +58,7 @@ const UserInput = props => {
 
     // text that updates after the user stops typing (1 second)
     // this is used to update search with updateTextAsync()
-    const debouncedText = useDebounce(props.text, 1000);
+    let debouncedText = useDebounce(props.text, 1000);
 
     useEffect(() => {
         // if (debouncedText && props.overused.length > 0 && props.numWords >= 200)
@@ -66,11 +84,6 @@ const UserInput = props => {
         window.scrollTo(0, 0);
     }
 
-    const sampleEssayHandler = () => {
-        props.onTextUpdated(getSampleEssay());
-        checkButtonClickedHandler();
-    }
-
     return <div className={classes.UserInput} id="userinput">
         <div className={classes.TextFieldSynonymBox}>
 
@@ -81,9 +94,8 @@ const UserInput = props => {
                     <div 
                     className={classes.SynonymBox}
                     style={{
-                        borderColor: props.pallete.userInputText,
-                        backgroundColor: props.pallete.textArea,
-                        color: props.pallete.userInputText
+                        color: props.pallete.userInputText,
+                        ...neuBorder.secondary
                     }}>
 
                         <table className={classes.SynonymTable}>
@@ -134,14 +146,14 @@ const UserInput = props => {
 
             <div className={classes.TextFieldBox}
             style={{
-                backgroundColor: props.pallete.textArea,
-                borderColor: props.pallete.userInputText
+                ...neuBorder.main
             }}>
                 {props.inspectedWord && props.numWords >= 200 ?
                     <div className={classes.HighlightText}>
                             {applyHighlight(props.text, props.inspectedWord, {
                                 color: props.pallete.userInputText,
-                                backgroundColor: props.pallete.userInputTextHighlight
+                                backgroundColor: props.pallete.userInputTextHighlight,
+                                transition: 'background-color 0.2s ease'
                             })}
                     </div>
                 : null}
@@ -166,14 +178,14 @@ const UserInput = props => {
                         onClick={checkButtonClickedHandler}
                         disabled={!props.changed || props.numWords < 200}
                         style={{
-                            color: props.pallete.userInputText
+                            color: props.pallete.accentText
                         }}>CHECK</button>
                     </AnchorLink>
                 : null}
                 
 
                 {/* Displays with insufficient text */}
-                {props.numWords > 0 && props.numWords < 200 ?
+                {props.numWords < 200 ?
                     <div 
                     className={classes.WordCountWarningBox}
                     style={{
@@ -216,7 +228,8 @@ const mapStateToProps = state => {
         loading: state.userInput.loading,
         changed: state.userInput.changed,
         numWords: state.userInput.numWords,
-        loadedSynonyms: state.userInput.loadedSynonyms
+        loadedSynonyms: state.userInput.loadedSynonyms,
+        darkMode: state.pallete.darkMode
     }
 }
 

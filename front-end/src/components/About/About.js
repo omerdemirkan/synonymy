@@ -3,6 +3,13 @@ import classes from './About.module.css';
 import { connect } from 'react-redux';
 
 function About(props) {
+    const neuBorder = props.darkMode ? {
+
+    }
+    : {
+        boxShadow: 'inset 3px 3px 6px rgba(0, 0, 0, 0.08), inset -3px -3px 6px rgba(255, 255, 255, 0.5)'
+    }
+
     return <div id="about" className={classes.About}
     style={{
         color: props.pallete.userInputText,
@@ -10,7 +17,7 @@ function About(props) {
     }}>
         <div className={classes.AboutBox}
         style={{
-            borderColor: props.pallete.userInputText
+            ...neuBorder
         }}>
             <div className={classes.Section}>
                 <h1 className={classes.MainHeader}>What is Synonymy?</h1>
@@ -57,7 +64,8 @@ function About(props) {
 
 const mapStateToProps = state => {
     return {
-        pallete: state.pallete.pallete
+        pallete: state.pallete.pallete,
+        darkMode: state.pallete.darkMode
     }
 }
 

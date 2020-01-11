@@ -8,18 +8,20 @@ const mapModeToPallete = darkMode => {
             textArea: 'black',
             userInputText: 'white',
             userInputTextHighlight: '#005e86',
+            accentText: '#2090DB',
             navbar: 'rgb(47, 52, 58)',
             navbarText: 'white'
         }
     } else {
         return {
-            backgroundMain: 'white',
+            backgroundMain: '#DFE6EC',
             backgroundSecondary: 'white',
-            textArea: 'white',
-            userInputText: 'black',
+            textArea: '#DFE6EC',
+            userInputText: '#10466A',
             userInputTextHighlight: '#b1d5e5',
-            navbar: '#eee',
-            navbarText: 'black'
+            accentText: '#2090DB',
+            navbar: '#2090DB',
+            navbarText: '#E7ECF0'
         }
     }
 }
