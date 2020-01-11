@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from './Inspect.module.css';
 import {connect} from 'react-redux';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
@@ -13,7 +13,11 @@ const Inspect = props => {
         boxShadow: 'inset 3px 3px 6px rgba(0, 0, 0, 0.08), inset -3px -3px 6px rgba(255, 255, 255, 0.5)'
     }
 
-    
+    useEffect(() => {
+        if (props.numWords < 200 && props.word) {
+            props.onResetInspect();
+        }
+    }, [props.numWords]);
 
     if (!props.word || props.numWords < 200) {
         return null;

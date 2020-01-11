@@ -67,6 +67,13 @@ const UserInput = props => {
         }
     }, [debouncedText]);
 
+    // To reset overused if the user deletes their current essay.
+    // useEffect(() => {
+    //     if (props.numWords === 0 && props.overused.length > 0) {
+            
+    //     }
+    // }, [props.numWords]);
+
     const checkButtonClickedHandler = () => {
         if (props.overused.length === 0) {
             props.onSearchText(props.text, props.numWords);
