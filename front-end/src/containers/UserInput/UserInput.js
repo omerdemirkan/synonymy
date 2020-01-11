@@ -68,11 +68,11 @@ const UserInput = props => {
     }, [debouncedText]);
 
     // To reset overused if the user deletes their current essay.
-    // useEffect(() => {
-    //     if (props.numWords === 0 && props.overused.length > 0) {
-            
-    //     }
-    // }, [props.numWords]);
+    useEffect(() => {
+        if (props.numWords === 0 && props.overused.length > 0) {
+            props.onResetSearch();
+        }
+    }, [props.numWords]);
 
     const checkButtonClickedHandler = () => {
         if (props.overused.length === 0) {
@@ -245,7 +245,8 @@ const mapDispatchToProps = dispatch => {
         onTextUpdated: text => dispatch({type: actionTypes.UPDATE_TEXT, text: text}),
         onSearchText: (text, numWords) => dispatch(searchTextAsync(text, numWords)),
         onSetInspect: (word, synonyms) => dispatch({type: actionTypes.SET_INSPECT, word: word, synonyms: synonyms}),
-        onUpdateText: (text, numWords, overusedList) => dispatch(updateTextAsync(text, numWords, overusedList))
+        onUpdateText: (text, numWords, overusedList) => dispatch(updateTextAsync(text, numWords, overusedList)),
+        onResetSearch: () => dispatch({type: actionTypes.RESET_SEARCH})
     }
 }
 

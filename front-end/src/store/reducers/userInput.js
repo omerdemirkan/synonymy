@@ -59,7 +59,12 @@ const userInputReducer = (state = initialState, action) => {
                 changed: false
             }
         case actionTypes.SEARCH_TEXT_FAILURE:
-            return state
+            return state;
+        case actionTypes.RESET_SEARCH:
+            return {
+                ...state,
+                overused: []
+            }
         default:
             return state;
     }
