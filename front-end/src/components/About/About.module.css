@@ -13,6 +13,7 @@
     border-radius: 10px;
     padding: 25px 25px 0;
     margin: 80px 0 50px;
+    transition: box-shadow 0.2s ease;
 }
 
 .MainHeader {

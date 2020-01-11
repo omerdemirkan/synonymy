@@ -3,20 +3,18 @@ import * as actionTypes from '../actions/actionTypes';
 const mapModeToPallete = darkMode => {
     if (darkMode) {
         return {
-            backgroundMain: 'black',
+            backgroundMain: '#14191E',
             backgroundSecondary: 'black',
-            textArea: 'black',
-            userInputText: 'white',
-            userInputTextHighlight: '#005e86',
+            userInputText: '#93ADBE',
+            userInputTextHighlight: 'rgb(6, 63, 100)',
             accentText: '#2090DB',
-            navbar: 'rgb(47, 52, 58)',
-            navbarText: 'white'
+            navbar: '#233039',
+            navbarText: '#ABB7C0'
         }
     } else {
         return {
             backgroundMain: '#DFE6EC',
             backgroundSecondary: 'white',
-            textArea: '#DFE6EC',
             userInputText: '#10466A',
             userInputTextHighlight: '#6AC3FF',
             accentText: '#2090DB',

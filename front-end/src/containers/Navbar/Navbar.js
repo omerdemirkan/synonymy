@@ -14,7 +14,7 @@ const Navbar = props => {
     return <nav className={classes.Navbar}
     style={{
         backgroundColor: props.pallete.navbar, 
-        color: props.pallete.navbarText,
+        color: props.pallete.navbarText
     }}
     >
         <h2 className={classes.Logo}>Synonymy</h2>

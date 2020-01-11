@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 function About(props) {
     const neuBorder = props.darkMode ? {
-
+        boxShadow: 'inset 4px 4px 10px rgba(0, 0, 0, 0.18), inset -4px -4px 10px rgba(255, 255, 255, 0.015)'
     }
     : {
         boxShadow: 'inset 3px 3px 6px rgba(0, 0, 0, 0.08), inset -3px -3px 6px rgba(255, 255, 255, 0.5)'

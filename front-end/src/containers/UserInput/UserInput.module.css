@@ -30,7 +30,7 @@
     min-height: 65vh;
     position: relative;
     animation: PhaseIn .8s ease forwards;
-    transition: background-color 0.2s ease;
+    transition: box-shadow 0.2s ease;
 }
 
 .SynonymLane {
@@ -57,10 +57,9 @@
     border-radius: 10px;
     top: 100px;
     left: 0;
-    padding: 0;
-    padding: 15px 8px;
+    padding: 15px 12px 15px 8px;
     font-weight: 1.2rem;
-    transition: background-color 0.2s ease;
+    transition: box-shadow 0.2s ease;
 }
 
 .SynonymTable {
@@ -231,7 +230,7 @@ mark {
     .NameFieldItem {
         padding: 0px;
         text-align: center;
-        width: 35%;
+        max-width: 40%;
     }
 
     .NameFieldItem:hover .Synonym {
@@ -283,5 +282,5 @@ mark {
 }
 
 .Test {
-    color: rgb(0, 12, 24);
+    color: rgb(6, 63, 100);
 }
