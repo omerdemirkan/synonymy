@@ -10,6 +10,7 @@
 }
 
 .Logo {
+    position: relative;
     margin: 0;
     margin: 12px 0 0 50%;
     transform: translate(-50%);
@@ -17,6 +18,13 @@
     font-size: 26px;
     user-select: none;
     font-weight: 500;
+}
+
+.Beta {
+    position: absolute;
+    font-size: .9rem;
+    left: calc(100% + 5px);
+    top: 0px;
 }
 
 .ListBox {

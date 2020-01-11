@@ -186,7 +186,7 @@ mark {
     opacity: 0;
     z-index: inherit;
     animation: WarningBoxPhaseIn 0.5s ease forwards;
-    animation-delay: 2s;
+    animation-delay: 1.5s;
 }
 
 .SampleEssayCTA {

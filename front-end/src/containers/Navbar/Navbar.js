@@ -17,7 +17,11 @@ const Navbar = props => {
         color: props.pallete.navbarText
     }}
     >
-        <h2 className={classes.Logo}>Synonymy</h2>
+        <h2 className={classes.Logo}>
+            Synonymy
+            <p className={classes.Beta}>beta</p>
+        </h2>
+        
 
         {/* Desktop */}
         <ul className={classes.ListBox}>

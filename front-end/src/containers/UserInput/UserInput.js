@@ -166,7 +166,7 @@ const UserInput = props => {
                 : null}
                 
                 <TextareaAutosize
-                spellcheck="false"
+                spellCheck="false"
                 placeholder="Paste your essay here"
                 className={classes.TextField}
                 maxLength="100000"
