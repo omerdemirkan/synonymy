@@ -21,7 +21,7 @@
 .TextFieldBox {
     width: 60%;
     max-width: 1000px;
-    padding: 20px 20px 50px;
+    padding: 25px 25px 50px;
     /* border: 1px solid; */
     border-radius: 10px;
     position: relative;
@@ -123,7 +123,7 @@ td {
     margin: 0;
     color: transparent;
     background-color: transparent;
-    width: calc(100% - 40px);
+    width: calc(100% - 50px);
     padding: 0;
     z-index: 0;
 
@@ -162,12 +162,6 @@ mark {
 .CheckButton:disabled {
     opacity: .6;
     cursor: not-allowed;
-}
-
-.NameFieldItem:hover .Synonym{
-    display: inline-block;
-    min-width: 50vw;
-    min-height: 100%;
 }
 
 .Link {
@@ -224,21 +218,23 @@ mark {
     .SynonymBox {
         width: 100%;
         font-size: 1.2rem;
-        padding: 20px 0;
+        padding: 20px 20px 20px 0;
     }
 
     .NameFieldItem {
         padding: 0px;
         text-align: center;
-        max-width: 40%;
+        max-width: 35%;
+    }
+    .Stats {
+        padding: 0;
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-evenly;
     }
 
-    .NameFieldItem:hover .Synonym {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translateY(-100%);
-        width: 90vw;
+    .Stats p {
+        display: inline;
     }
 }
 

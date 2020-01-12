@@ -25,6 +25,7 @@
     font-size: .9rem;
     left: calc(100% + 5px);
     top: 0px;
+    opacity: .8;
 }
 
 .ListBox {

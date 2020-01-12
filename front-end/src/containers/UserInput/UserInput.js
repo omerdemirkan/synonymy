@@ -23,21 +23,12 @@ import CloseIcon from '@material-ui/icons/Close';
 const UserInput = props => {
 
     const neuBorder = props.darkMode ? {
-        main: {
-            boxShadow: '-10px -10px 10px rgba(255, 255, 255, 0.015), 10px 10px 10px rgba(0, 0, 0, 0.12), inset 1px 1px 3px rgba(0, 0, 0, 0.15), inset -1px -1px 3px rgba(255, 255, 255, 0.02)'
-        },
-        secondary: {
-            boxShadow: '-8px -8px 8px rgba(255, 255, 255, 0.015), 8px 8px 8px rgba(0, 0, 0, 0.12), inset 1px 1px 3px rgba(0, 0, 0, 0.15), inset -1px -1px 3px rgba(255, 255, 255, 0.02)'
-        }
+        main: {boxShadow: '-10px -10px 10px rgba(255, 255, 255, 0.015), 10px 10px 10px rgba(0, 0, 0, 0.12), inset 1px 1px 3px rgba(0, 0, 0, 0.15), inset -1px -1px 3px rgba(255, 255, 255, 0.02)'},
+        secondary: {boxShadow: '-8px -8px 8px rgba(255, 255, 255, 0.015), 8px 8px 8px rgba(0, 0, 0, 0.12), inset 1px 1px 3px rgba(0, 0, 0, 0.15), inset -1px -1px 3px rgba(255, 255, 255, 0.02)'}
     }
     : {
-        main: {
-            boxShadow: '-10px -10px 8px rgba(255, 255, 255, 0.35), 10px 10px 8px rgba(0, 0, 0, 0.05), inset 1px 1px 3px rgba(0, 0, 0, 0.03), inset -1px -1px 3px rgba(255, 255, 255, 0.2)'
-        },
-        secondary: {
-            boxShadow: '-8px -8px 8px rgba(255, 255, 255, 0.35), 8px 8px 8px rgba(0, 0, 0, 0.05), inset 1px 1px 3px rgba(0, 0, 0, 0.03), inset -1px -1px 3px rgba(255, 255, 255, 0.2)'
-        }
-        
+        main: {boxShadow: '-10px -10px 8px rgba(255, 255, 255, 0.35), 10px 10px 8px rgba(0, 0, 0, 0.05), inset 1px 1px 3px rgba(0, 0, 0, 0.03), inset -1px -1px 3px rgba(255, 255, 255, 0.2)'},
+        secondary: {boxShadow: '-8px -8px 8px rgba(255, 255, 255, 0.35), 8px 8px 8px rgba(0, 0, 0, 0.05), inset 1px 1px 3px rgba(0, 0, 0, 0.03), inset -1px -1px 3px rgba(255, 255, 255, 0.2)'}
     };
 
     // Controls a snackbar that prompts a new user to click on 
