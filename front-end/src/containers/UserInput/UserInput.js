@@ -151,7 +151,8 @@ const UserInput = props => {
                             {applyHighlight(props.text, props.inspectedWord, {
                                 color: props.pallete.userInputText,
                                 backgroundColor: props.pallete.userInputTextHighlight,
-                                transition: 'background-color 0.2s ease'
+                                transition: 'background-color 0.2s ease',
+                                opacity: '.3'
                             })}
                     </div>
                 : null}
