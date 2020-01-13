@@ -58,8 +58,9 @@ const UserInput = props => {
     // Updates overusedList based on change in ignored words
 
     useEffect(() => {
-        props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms, props.ignoredWords);
-
+        if (props.overused.length > 0) {
+            props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms, props.ignoredWords);
+        }
     }, [props.ignoredWords]);
 
     

@@ -50,7 +50,7 @@ const Inspect = props => {
         open={ignoreModal}
         autoHideDuration={6000}
         onClose={() => setIgnoreModal(false)}
-        message={props.ignoredWords[props.ignoredWords.length - 1] + ' is ignored for this visit.'}
+        message={`"` + props.ignoredWords[props.ignoredWords.length - 1] + `"` + ' is ignored for this visit.'}
         action={
         <>
             <Button key="undo" color="secondary" size="small" onClick={undoButtonClickedHandler}>
