@@ -1,19 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import classes from './Inspect.module.css';
 import {connect} from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
-import updateSearchAsync from '../../store/actions/updateSearch';
 
 // Material UI
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-import Button from '@material-ui/core/Button';
 
 const Inspect = props => {
-
-    const [ignoreModal, setIgnoreModal] = useState(false);
 
     useEffect(() => {
         if (props.numWords < 200 && props.word) {
@@ -24,12 +17,6 @@ const Inspect = props => {
     const ignoreButtonClickedHandler = () => {
         props.onResetInspect();
         props.onAddIgnore(props.word);
-        setIgnoreModal(true);
-    }
-
-    const undoButtonClickedHandler = () => {
-        props.onRemoveIgnore();
-        setIgnoreModal(false);
     }
 
     const neuBorder = props.darkMode ? {
@@ -42,27 +29,6 @@ const Inspect = props => {
     
 
     if (!props.word) {
-        return <Snackbar
-        anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'left',
-        }}
-        open={ignoreModal}
-        autoHideDuration={6000}
-        onClose={() => setIgnoreModal(false)}
-        message={`"` + props.ignoredWords[props.ignoredWords.length - 1] + `"` + ' is ignored for this visit.'}
-        action={
-        <>
-            <Button key="undo" color="secondary" size="small" onClick={undoButtonClickedHandler}>
-            UNDO
-            </Button>
-            <IconButton size="small" aria-label="close" color="inherit" onClick={() => setIgnoreModal(false)}>
-            <CloseIcon fontSize="small" />
-            </IconButton>
-        </>
-        }
-        />;
-    } else if (props.numWords < 200) {
         return null;
     }
 
@@ -87,8 +53,8 @@ const Inspect = props => {
             onClick={ignoreButtonClickedHandler}>
                 IGNORE
             </button>
-        </div>
 
+        </div>
 
     </div>
 }
@@ -110,8 +76,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onResetInspect: () => dispatch({type: actionTypes.RESET_INSPECT}),
-        onAddIgnore: ignoredWord => dispatch({type: actionTypes.ADD_IGNORE, word: ignoredWord}),
-        onRemoveIgnore: () => dispatch({type: actionTypes.REMOVE_IGNORE})
+        onAddIgnore: ignoredWord => dispatch({type: actionTypes.ADD_IGNORE, word: ignoredWord})
     }
 }
 

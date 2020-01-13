@@ -6,7 +6,7 @@
     min-height: 60px;
     padding: 0;
     z-index: 10;
-    background: linear-gradient(170.52deg, #24A7FF -35.59%, #2264E4 110.3%);
+    background: linear-gradient(177.42deg, #24A7FF -53.56%, #2264E4 113.86%);
     transition: background-color 0.2s ease;
 }
 
@@ -16,7 +16,7 @@
     left: 0;
     width: 100vw;
     height: 100%;
-    background: linear-gradient(170.97deg, #29353E -24.19%, #212834 102.58%);
+    background: linear-gradient(173.87deg, #253138 0%, #212834 76.47%);
     opacity: 0;
     transition: opacity 0.2s ease;
     z-index: 12;

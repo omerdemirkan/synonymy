@@ -19,6 +19,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import Button from '@material-ui/core/Button';
 
 const UserInput = props => {
 
@@ -218,6 +219,7 @@ const UserInput = props => {
                 : null}
             </div>
         </div>
+
         <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
@@ -234,7 +236,30 @@ const UserInput = props => {
             </IconButton>
           </>
         }
-      />
+        />
+        
+        <Snackbar
+        anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left',
+        }}
+        open={props.ignoreModal}
+        autoHideDuration={6000}
+        onClose={props.onCloseIgnoreModal}
+        message={`"` + props.lastIgnored + `"` + ' is ignored for this visit.'}
+        action={
+        <>
+            <Button key="undo" color="secondary" size="small" onClick={props.onRemoveIgnore}>
+            UNDO
+            </Button>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={props.onCloseIgnoreModal}>
+            <CloseIcon fontSize="small" />
+            </IconButton>
+        </>
+        }
+        />;
+
+
     </div>
 }
 
@@ -251,7 +276,9 @@ const mapStateToProps = state => {
         numWords: state.userInput.numWords,
         loadedSynonyms: state.userInput.loadedSynonyms,
         darkMode: state.pallete.darkMode,
-        ignoredWords: state.ignore.words
+        ignoredWords: state.ignore.words,
+        ignoreModal: state.ignore.ignoreModal,
+        lastIgnored: state.ignore.lastIgnored
     }
 }
 
@@ -261,7 +288,9 @@ const mapDispatchToProps = dispatch => {
         onSearchText: (text, numWords) => dispatch(searchTextAsync(text, numWords)),
         onSetInspect: (word, synonyms) => dispatch({type: actionTypes.SET_INSPECT, word: word, synonyms: synonyms}),
         onUpdateSearch: (text, numWords, overusedList, ignoredWords) => dispatch(updateSearchAsync(text, numWords, overusedList, ignoredWords)),
-        onResetSearch: () => dispatch({type: actionTypes.RESET_SEARCH})
+        onResetSearch: () => dispatch({type: actionTypes.RESET_SEARCH}),
+        onRemoveIgnore: () => dispatch({type: actionTypes.REMOVE_IGNORE}),
+        onCloseIgnoreModal: () => dispatch({type: actionTypes.CLOSE_IGNORE_MODAL})
     }
 }
 
