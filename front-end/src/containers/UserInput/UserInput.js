@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
 // Action creators
 import searchTextAsync from '../../store/actions/searchText';
-import updateTextAsync from '../../store/actions/updateText';
+import updateSearchAsync from '../../store/actions/updateText';
 
 // Helpers
 import applyHighlight from '../../helper/applyHightlight';
@@ -21,6 +21,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
 const UserInput = props => {
+    console.log(props.ignoredWords);
 
     const neuBorder = props.darkMode ? {
         main: {boxShadow: '-10px -10px 10px rgba(255, 255, 255, 0.015), 10px 10px 10px rgba(0, 0, 0, 0.12), inset 1px 1px 3px rgba(0, 0, 0, 0.15), inset -1px -1px 3px rgba(255, 255, 255, 0.02)'},
@@ -48,13 +49,13 @@ const UserInput = props => {
     }, []);
 
     // text that updates after the user stops typing (1 second)
-    // this is used to update search with updateTextAsync()
+    // this is used to update search with updateSearchAsync()
     let debouncedText = useDebounce(props.text, 1000);
 
     useEffect(() => {
         // if (debouncedText && props.overused.length > 0 && props.numWords >= 200)
         if (debouncedText && props.numWords >= 200 && props.overused.length > 0) {
-            props.onUpdateText(props.text, props.numWords, props.loadedSynonyms);
+            props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms);
         }
     }, [debouncedText]);
 
@@ -72,7 +73,7 @@ const UserInput = props => {
                 setClickWordModal(true);
             }
         } else {
-            props.onUpdateText(props.text, props.numWords, props.loadedSynonyms);
+            props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms);
         }
     }
 
@@ -175,10 +176,9 @@ const UserInput = props => {
                     <AnchorLink href="#userinput" offset="200">
                         <button className={classes.CheckButton}
                         onClick={checkButtonClickedHandler}
-                        disabled={!props.changed || props.numWords < 200}
-                        style={{
-                            color: props.pallete.accentText
-                        }}>CHECK</button>
+                        disabled={!props.changed || props.numWords < 200}>
+                            CHECK
+                        </button>
                     </AnchorLink>
                 : null}
                 
@@ -228,7 +228,8 @@ const mapStateToProps = state => {
         changed: state.userInput.changed,
         numWords: state.userInput.numWords,
         loadedSynonyms: state.userInput.loadedSynonyms,
-        darkMode: state.pallete.darkMode
+        darkMode: state.pallete.darkMode,
+        ignoredWords: state.ignore.words
     }
 }
 
@@ -237,7 +238,7 @@ const mapDispatchToProps = dispatch => {
         onTextUpdated: text => dispatch({type: actionTypes.UPDATE_TEXT, text: text}),
         onSearchText: (text, numWords) => dispatch(searchTextAsync(text, numWords)),
         onSetInspect: (word, synonyms) => dispatch({type: actionTypes.SET_INSPECT, word: word, synonyms: synonyms}),
-        onUpdateText: (text, numWords, overusedList) => dispatch(updateTextAsync(text, numWords, overusedList)),
+        onUpdateSearch: (text, numWords, overusedList) => dispatch(updateSearchAsync(text, numWords, overusedList)),
         onResetSearch: () => dispatch({type: actionTypes.RESET_SEARCH})
     }
 }

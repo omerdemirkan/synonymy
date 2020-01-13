@@ -147,6 +147,8 @@ mark {
     position: absolute;
     bottom: 10px;
     right: 20px;
+    color: #2090DB;
+    transition: background-color 0.1s ease;
 
     background: transparent;
     border: none;

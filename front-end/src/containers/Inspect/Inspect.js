@@ -3,6 +3,7 @@ import classes from './Inspect.module.css';
 import {connect} from 'react-redux';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import * as actionTypes from '../../store/actions/actionTypes';
+import updateSearchAsync from '../../store/actions/updateText';
 
 const Inspect = props => {
 
@@ -23,6 +24,12 @@ const Inspect = props => {
         return null;
     }
 
+    const ignoreButtonClickedHandler = () => {
+        props.onResetInspect();
+        props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms);
+        props.onAddIgnore(props.word);
+    }
+
     return <div className={classes.Inspect} id="inspect">
         <div
         style={{
@@ -38,6 +45,11 @@ const Inspect = props => {
                 </>
             : <h3 className={classes.NotFoundMessage}>Sorry! Couldn't find synonyms for {props.word}</h3>}
 
+            <button 
+            className={classes.IgnoreButton}
+            onClick={ignoreButtonClickedHandler}>
+                IGNORE
+            </button>
         </div>
     </div>
 }
@@ -46,16 +58,21 @@ const mapStateToProps = state => {
     return {
         pallete: state.pallete.pallete,
         word: state.inspect.word,
+        loadedSynonyms: state.userInput.loadedSynonyms,
         synonyms: state.inspect.synonyms,
         numWords: state.userInput.numWords,
         overused: state.userInput.overused,
-        darkMode: state.pallete.darkMode
+        darkMode: state.pallete.darkMode,
+        text: state.userInput.text,
+        ignoredWords: state.ignore.words
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onResetInspect: () => dispatch({type: actionTypes.RESET_INSPECT})
+        onResetInspect: () => dispatch({type: actionTypes.RESET_INSPECT}),
+        onUpdateSearch: (text, numWords, overusedList) => dispatch(updateSearchAsync(text, numWords, overusedList)),
+        onAddIgnore: ignoredWord => dispatch({type: actionTypes.ADD_IGNORE, word: ignoredWord})
     }
 }
 

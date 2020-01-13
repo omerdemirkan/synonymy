@@ -13,4 +13,10 @@ export const SET_INSPECT = 'SET_INSPECT';
 export const RESET_INSPECT = 'RESET_INSPECT';
 
 
+// Ignore
+export const ADD_IGNORE = 'ADD_IGNORE';
+export const REMOVE_IGNORE = 'REMOVE_IGNORE';
+export const CLOSE_IGNORE_MODAL = 'CLOSE_IGNORE_MODAL';
+
+
 

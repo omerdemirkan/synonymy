@@ -6,7 +6,7 @@
 .InspectBox {
     width: 90%;
     max-width: 800px;
-    padding: 8px 28px;
+    padding: 8px 28px 30px;
     box-sizing: border-box;
     margin: auto;
     border: none;
@@ -41,12 +41,40 @@
 .CloseIcon {
     position: absolute;
     top: 12px;
-    right: 18px;
+    right: 20px;
     opacity: .5;
 }
 
 .CloseIcon:hover {
     opacity: 1;
+}
+
+.IgnoreButton {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    color: #2090DB;
+    transition: background-color 0.1s ease;
+
+    background: transparent;
+    border: none;
+    border-radius: .25rem;
+    width: 70px;
+    height: 30px;
+
+    outline: none;
+    font-weight: 600;
+    background-color: RGBA(77,152,242,0);
+    cursor: pointer;
+}
+
+.IgnoreButton:hover {
+    background-color: RGBA(77,152,242,0.1);
+}
+
+.IgnoreButton:disabled {
+    opacity: .6;
+    cursor: not-allowed;
 }
 
 @keyframes PhaseIn {
