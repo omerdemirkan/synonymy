@@ -9,6 +9,7 @@ const mapModeToPallete = darkMode => {
             userInputTextHighlight: 'rgb(0, 153, 255)',
             accentText: '#2090DB',
             navbar: '#233039',
+            footer: '#233039',
             navbarText: '#ABB7C0'
         }
     } else {
@@ -19,6 +20,7 @@ const mapModeToPallete = darkMode => {
             userInputTextHighlight: 'rgb(0, 153, 255)',
             accentText: '#2090DB',
             navbar: '#2090DB',
+            footer: '#2090DB',
             navbarText: '#E7ECF0'
         }
     }

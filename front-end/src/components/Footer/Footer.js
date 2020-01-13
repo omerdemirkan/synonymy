@@ -8,8 +8,9 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 const Footer = props => {
     return <div 
     className={classes.Footer}
-    style={{backgroundColor: props.pallete.navbar, color: props.pallete.navbarText}}
+    style={{background: props.pallete.footer, color: props.pallete.navbarText}}
     >
+        <div className={classes.DarkModeBackdrop} style={props.darkMode ? {opacity: '1'} : {}}></div>
         <div className={classes.InfoBox}>
             <h3 className={classes.NameYear}>Omer Demirkan {new Date().getFullYear()}</h3>
             <div className={classes.Icons}>
@@ -36,7 +37,8 @@ const Footer = props => {
 
 const mapStateToProps = state => {
     return {
-        pallete: state.pallete.pallete
+        pallete: state.pallete.pallete,
+        darkMode: state.pallete.darkMode
     }
 }
 

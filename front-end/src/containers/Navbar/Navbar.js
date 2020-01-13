@@ -8,15 +8,17 @@ import Backdrop from '@material-ui/core/Backdrop';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 const Navbar = props => {
+    console.log(props.darkMode);
     // Determines whether or not the side-drawer is open, also affects
     const [showSideDrawer, setShowSideDrawer] = useState(false);
     
     return <nav className={classes.Navbar}
     style={{
-        backgroundColor: props.pallete.navbar, 
+        background: props.pallete.navbar, 
         color: props.pallete.navbarText
     }}
     >
+        <div className={classes.DarkModeBackdrop} style={props.darkMode ? {opacity: '1'} : {}}></div>
         <h2 className={classes.Logo}>
             Synonymy
             <p className={classes.Beta}>beta</p>
@@ -61,7 +63,8 @@ const Navbar = props => {
 
 const mapStateToProps = state => {
     return {
-        pallete: state.pallete.pallete
+        pallete: state.pallete.pallete,
+        darkMode: state.pallete.darkMode
     }
 }
 
