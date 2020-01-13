@@ -51,3 +51,12 @@
 .LinkIcon:hover {
     opacity: 1;
 }
+
+@media (max-width: 768px) {
+    .Footer {
+        background: #008EEE;
+    }
+    .DarkModeBackdrop {
+        background: #2B3842;
+    }
+}

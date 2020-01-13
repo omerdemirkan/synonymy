@@ -7,6 +7,7 @@ const mapModeToPallete = darkMode => {
             backgroundSecondary: 'black',
             userInputText: '#93ADBE',
             userInputTextHighlight: 'rgb(0, 153, 255)',
+            sidedrawer: '#2B3842',
             accentText: '#2090DB',
             navbarText: '#ABB7C0'
         }
@@ -16,6 +17,7 @@ const mapModeToPallete = darkMode => {
             backgroundSecondary: 'white',
             userInputText: '#10466A',
             userInputTextHighlight: 'rgb(0, 153, 255)',
+            sidedrawer: '#008EEE',
             accentText: '#2090DB',
             navbarText: '#E7ECF0'
         }

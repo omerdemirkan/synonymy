@@ -156,7 +156,12 @@ mark {
 
     outline: none;
     font-weight: 600;
+    background-color: RGBA(77,152,242,0);
     cursor: pointer;
+}
+
+.CheckButton:hover {
+    background-color: RGBA(77,152,242,0.1);
 }
 
 .CheckButton:disabled {

@@ -7,7 +7,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 function SideDrawer(props) {
 
     const themeModifier = {
-        backgroundColor: props.pallete.navbar, 
+        backgroundColor: props.pallete.sidedrawer, 
         color: props.pallete.navbarText
     }
 

@@ -6,7 +6,7 @@
     min-height: 60px;
     padding: 0;
     z-index: 10;
-    background: linear-gradient(170.03deg, #24A7FF -9.07%, #4769E0 104.8%);
+    background: linear-gradient(172.08deg, #24A7FF -45.92%, #345CE9 125.13%);
     transition: background-color 0.2s ease;
 }
 
@@ -166,5 +166,11 @@
     }
     .DropdownBox {
         display: none;
+    }
+    .Navbar {
+        background: #008EEE;
+    }
+    .DarkModeBackdrop {
+        background: #2B3842;
     }
 }
