@@ -3,7 +3,7 @@ import classes from './Inspect.module.css';
 import {connect} from 'react-redux';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import * as actionTypes from '../../store/actions/actionTypes';
-import updateSearchAsync from '../../store/actions/updateText';
+import updateSearchAsync from '../../store/actions/updateSearch';
 
 const Inspect = props => {
 
@@ -26,7 +26,7 @@ const Inspect = props => {
 
     const ignoreButtonClickedHandler = () => {
         props.onResetInspect();
-        props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms);
+        props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms, props.ignoredWords);
         props.onAddIgnore(props.word);
     }
 
@@ -71,7 +71,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onResetInspect: () => dispatch({type: actionTypes.RESET_INSPECT}),
-        onUpdateSearch: (text, numWords, overusedList) => dispatch(updateSearchAsync(text, numWords, overusedList)),
+        onUpdateSearch: (text, numWords, overusedList, ignoredWords) => dispatch(updateSearchAsync(text, numWords, overusedList, ignoredWords)),
         onAddIgnore: ignoredWord => dispatch({type: actionTypes.ADD_IGNORE, word: ignoredWord})
     }
 }

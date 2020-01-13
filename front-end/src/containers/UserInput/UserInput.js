@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
 // Action creators
 import searchTextAsync from '../../store/actions/searchText';
-import updateSearchAsync from '../../store/actions/updateText';
+import updateSearchAsync from '../../store/actions/updateSearch';
 
 // Helpers
 import applyHighlight from '../../helper/applyHightlight';
@@ -21,7 +21,60 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
 const UserInput = props => {
-    console.log(props.ignoredWords);
+
+    // Controls a snackbar that prompts a new user to click on 
+    // a word in the sidebar to see its synonyms
+    const [clickWordModal, setClickWordModal] = useState(false);
+
+    // Is determined by localStorage, 
+    const [userIsNew, setUserIsNew] = useState(false);
+
+
+
+    // On mount: sets whether or not the user is new.
+
+    useEffect(() => {
+        const initialText = localStorage.getItem('text');
+        if (!initialText) {
+            setUserIsNew(true);
+        };
+    }, []);
+
+
+
+    // text that updates after the user stops typing (1 second)
+    // this is used to update search with updateSearchAsync()
+
+    let debouncedText = useDebounce(props.text, 1000);
+
+    useEffect(() => {
+        if (debouncedText && props.numWords >= 200 && props.overused.length > 0) {
+            props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms, props.ignoredWords);
+        }
+    }, [debouncedText]);
+
+
+
+    // Updates overusedList based on change in ignored words
+
+    useEffect(() => {
+        props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms, props.ignoredWords);
+
+    }, [props.ignoredWords]);
+
+    
+
+    // To reset overused if the user deletes their current essay.
+
+    useEffect(() => {
+        if (props.numWords === 0 && props.overused.length > 0) {
+            props.onResetSearch();
+        }
+    }, [props.numWords]);
+
+
+
+    // Determining border shadows dynamically based on dark mode
 
     const neuBorder = props.darkMode ? {
         main: {boxShadow: '-10px -10px 10px rgba(255, 255, 255, 0.015), 10px 10px 10px rgba(0, 0, 0, 0.12), inset 1px 1px 3px rgba(0, 0, 0, 0.15), inset -1px -1px 3px rgba(255, 255, 255, 0.02)'},
@@ -32,39 +85,7 @@ const UserInput = props => {
         secondary: {boxShadow: '-8px -8px 8px rgba(255, 255, 255, 0.35), 8px 8px 8px rgba(0, 0, 0, 0.05), inset 1px 1px 3px rgba(0, 0, 0, 0.03), inset -1px -1px 3px rgba(255, 255, 255, 0.2)'}
     };
 
-    // Controls a snackbar that prompts a new user to click on 
-    // a word in the sidebar to see its synonyms
-    const [clickWordModal, setClickWordModal] = useState(false);
 
-    // Is determined by localStorage, 
-    const [userIsNew, setUserIsNew] = useState(false);
-
-    // On mount: sets whether or not the user is new
-
-    useEffect(() => {
-        const initialText = localStorage.getItem('text');
-        if (!initialText) {
-            setUserIsNew(true);
-        };
-    }, []);
-
-    // text that updates after the user stops typing (1 second)
-    // this is used to update search with updateSearchAsync()
-    let debouncedText = useDebounce(props.text, 1000);
-
-    useEffect(() => {
-        // if (debouncedText && props.overused.length > 0 && props.numWords >= 200)
-        if (debouncedText && props.numWords >= 200 && props.overused.length > 0) {
-            props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms);
-        }
-    }, [debouncedText]);
-
-    // To reset overused if the user deletes their current essay.
-    useEffect(() => {
-        if (props.numWords === 0 && props.overused.length > 0) {
-            props.onResetSearch();
-        }
-    }, [props.numWords]);
 
     const checkButtonClickedHandler = () => {
         if (props.overused.length === 0) {
@@ -73,7 +94,7 @@ const UserInput = props => {
                 setClickWordModal(true);
             }
         } else {
-            props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms);
+            props.onUpdateSearch(props.text, props.numWords, props.loadedSynonyms, props.ignoredWords);
         }
     }
 
@@ -238,7 +259,7 @@ const mapDispatchToProps = dispatch => {
         onTextUpdated: text => dispatch({type: actionTypes.UPDATE_TEXT, text: text}),
         onSearchText: (text, numWords) => dispatch(searchTextAsync(text, numWords)),
         onSetInspect: (word, synonyms) => dispatch({type: actionTypes.SET_INSPECT, word: word, synonyms: synonyms}),
-        onUpdateSearch: (text, numWords, overusedList) => dispatch(updateSearchAsync(text, numWords, overusedList)),
+        onUpdateSearch: (text, numWords, overusedList, ignoredWords) => dispatch(updateSearchAsync(text, numWords, overusedList, ignoredWords)),
         onResetSearch: () => dispatch({type: actionTypes.RESET_SEARCH})
     }
 }

@@ -17,7 +17,7 @@ const getExpectedFrequency = word => {
     return (.0714 / index)
 }
 
-const updateTextAsync = (text, numWords, loadedSynonyms) => {
+const updateTextAsync = (text, numWords, loadedSynonyms, ignoredWords) => {
 
     return dispatch => {
         dispatch(searchTextStart());
@@ -34,7 +34,7 @@ const updateTextAsync = (text, numWords, loadedSynonyms) => {
 
                 const numFound = allWords[word];
 
-                if (numFound >= 3) {
+                if (numFound >= 3 && !ignoredWords.includes(word)) {
 
                     if (isValidWord(word)) {
     
