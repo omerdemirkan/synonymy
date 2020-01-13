@@ -1,28 +1,20 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    words: [],
-    ignoreModal: false
+    words: []
 }
 
 const ignoreReducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.ADD_IGNORE:
             return {
-                words: state.words.concat(action.word),
-                ignoreModal: true
+                words: state.words.concat(action.word)
             }
         case actionTypes.REMOVE_IGNORE:
             let newIgnoredWords = [...state.words];
             newIgnoredWords.pop();
             return {
-                words: newIgnoredWords,
-                ignoreModal: false
-            }
-        case actionTypes.CLOSE_IGNORE_MODAL: 
-            return {
-                ...state,
-                ignoreModal: false
+                words: newIgnoredWords
             }
         default:
             return state

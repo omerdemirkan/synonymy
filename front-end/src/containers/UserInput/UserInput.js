@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './UserInput.module.css';
 import useDebounce from '../Hooks/useDebounce';
 
@@ -227,11 +227,11 @@ const UserInput = props => {
         onClose={() => setClickWordModal(false)}
         message="Click on a word to see its synonyms"
         action={
-          <React.Fragment>
+          <>
             <IconButton size="small" aria-label="close" color="inherit" onClick={() => setClickWordModal(false)}>
               <CloseIcon fontSize="small" />
             </IconButton>
-          </React.Fragment>
+          </>
         }
       />
     </div>
