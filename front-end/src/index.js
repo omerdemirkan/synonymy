@@ -12,13 +12,15 @@ import thunk from 'redux-thunk';
 import palleteReducer from './store/reducers/pallete';
 import userInputReducer from './store/reducers/userInput';
 import inspectReducer from './store/reducers/inspect';
+import ignoreReducer from './store/reducers/ignore';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     pallete: palleteReducer,
     userInput: userInputReducer,
-    inspect: inspectReducer
+    inspect: inspectReducer,
+    ignore: ignoreReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
