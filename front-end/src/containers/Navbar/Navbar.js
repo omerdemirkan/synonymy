@@ -13,8 +13,7 @@ const Navbar = props => {
     const [showSideDrawer, setShowSideDrawer] = useState(false);
     
     return <nav className={classes.Navbar}
-    style={{
-        background: props.pallete.navbar, 
+    style={{ 
         color: props.pallete.navbarText
     }}
     >

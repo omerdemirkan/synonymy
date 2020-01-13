@@ -8,7 +8,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 const Footer = props => {
     return <div 
     className={classes.Footer}
-    style={{background: props.pallete.footer, color: props.pallete.navbarText}}
+    style={{color: props.pallete.navbarText}}
     >
         <div className={classes.DarkModeBackdrop} style={props.darkMode ? {opacity: '1'} : {}}></div>
         <div className={classes.InfoBox}>

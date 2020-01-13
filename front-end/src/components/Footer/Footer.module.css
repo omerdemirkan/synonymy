@@ -1,7 +1,7 @@
 .Footer {
     height: 100px;
     box-sizing: border-box;
-    background-color: red;
+    background: linear-gradient(170.56deg, #008EEE -7.91%, #142685 162.01%);
     padding: 20px 0;
     transition: background-color 0.2s ease;
     position: relative;
@@ -14,7 +14,7 @@
     left: 0;
     width: 100vw;
     height: 100%;
-    background-color: red;
+    background: linear-gradient(174.13deg, #374650 -54.22%, #0D1215 152.49%);
     opacity: 0;
     transition: opacity 0.2s ease;
     z-index: 12;
