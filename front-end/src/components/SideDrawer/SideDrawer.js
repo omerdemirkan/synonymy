@@ -3,6 +3,7 @@ import classes from './SideDrawer.module.css'
 import DarkModeSwitch from '../../components/UI/DarkModeSwitch/DarkModeSwitch';
 import { connect } from 'react-redux';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import * as actionTypes from '../../store/actions/actionTypes';
 
 function SideDrawer(props) {
 
@@ -11,9 +12,9 @@ function SideDrawer(props) {
         color: props.pallete.navbarText
     }
 
-    const buttonClickedHandler = () => {
+    const tutorialClickedHandler = () => {
         props.buttonClicked();
-        
+        props.onToggleModal();
     }
 
     return <div className={classes.SideDrawer}
@@ -27,7 +28,7 @@ function SideDrawer(props) {
                 <button 
                 className={classes.ListButton} 
                 style={{color: props.pallete.navbarText, borderColor: props.pallete.navbarText}}
-                onClick={buttonClickedHandler}>
+                onClick={() => props.buttonClicked()}>
                     <AnchorLink className={classes.Link} href='#about'>About</AnchorLink>
                 </button>
             </li>
@@ -36,8 +37,8 @@ function SideDrawer(props) {
                 className={classes.ListButton} 
                 style={{color: props.pallete.navbarText, 
                 borderColor: props.pallete.navbarText}}
-                onClick={buttonClickedHandler}>
-                    <AnchorLink className={classes.Link} href='#tutorial'>Tutorial</AnchorLink>
+                onClick={tutorialClickedHandler}>
+                    Tutorial
                 </button>
             </li>
         </ul>
@@ -50,4 +51,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(SideDrawer);
+const mapDispatchToProps = dispatch => {
+    return {
+        onToggleModal: () => dispatch({type: actionTypes.TOGGLE_TUTORIAL_MODAL})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideDrawer);

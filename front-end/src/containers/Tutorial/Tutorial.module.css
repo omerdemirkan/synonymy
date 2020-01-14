@@ -1,0 +1,24 @@
+.CloseIcon {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    opacity: .5;
+}
+
+.CloseIcon:hover {
+    opacity: 1;
+}
+
+.ImageBox {
+    animation: PhaseIn 0.5s ease forwards;
+}
+
+@keyframes PhaseIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
