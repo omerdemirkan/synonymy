@@ -7,6 +7,7 @@ import UserInput from './containers/UserInput/UserInput';
 import About from './components/About/About';
 import Inspect from './containers/Inspect/Inspect';
 import Footer from './components/Footer/Footer';
+import Tutorial from './containers/Tutorial/Tutorial';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
     <Navbar/>
       
     <Main>
+      <Tutorial/>
       <Inspect/>
       <UserInput/>
       <About/>

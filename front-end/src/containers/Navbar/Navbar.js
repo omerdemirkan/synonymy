@@ -6,9 +6,9 @@ import SideDrawer from '../../components/SideDrawer/SideDrawer';
 // import Backdrop from '../../components/Backdrop/Backdrop';
 import Backdrop from '@material-ui/core/Backdrop';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import * as actionTypes from '../../store/actions/actionTypes';
 
 const Navbar = props => {
-    console.log(props.darkMode);
     // Determines whether or not the side-drawer is open, also affects
     const [showSideDrawer, setShowSideDrawer] = useState(false);
     
@@ -32,7 +32,7 @@ const Navbar = props => {
             </li>
 
             <li className={classes.ListItem}><AnchorLink className={classes.Link} href='#about'>About</AnchorLink></li>
-            <li className={classes.ListItem}><AnchorLink className={classes.Link} href='#tutorial'>Tutorial</AnchorLink></li>
+            <li className={classes.ListItem} onClick={props.onToggleModal}>Tutorial</li>
         </ul>
         
 
@@ -67,4 +67,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Navbar);
+const mapDispatchToProps = dispatch => {
+    return {
+        onToggleModal: () => dispatch({type: actionTypes.TOGGLE_TUTORIAL_MODAL})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
