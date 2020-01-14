@@ -20,8 +20,10 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const UserInput = props => {
+    console.log(props.loading);
 
     // Controls a snackbar that prompts a new user to click on 
     // a word in the sidebar to see its synonyms
@@ -156,12 +158,17 @@ const UserInput = props => {
                                 })}
                             </tbody>
                         </table>
-                            <div className={classes.Stats}>
-                                <p className={classes.Stat}>{props.numWords} words</p>
-                                <p className={classes.Stat}>{props.numChars} characters</p>
-                            </div>
-                            
 
+                        <div className={classes.Stats}>
+                            <p className={classes.Stat}>{props.numWords} words</p>
+                            <p className={classes.Stat}>{props.numChars} characters</p>
+                        </div>
+
+                        {props.loading ? 
+                            <CircularProgress size={20} className={classes.Spinner} color="dark"/>
+                        : null}
+                        
+                       
                     </div>
                 </aside>
             : null}

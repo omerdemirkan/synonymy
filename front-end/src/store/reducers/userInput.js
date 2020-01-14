@@ -47,6 +47,7 @@ const userInputReducer = (state = initialState, action) => {
                 changed: true
             }
         case actionTypes.SEARCH_TEXT_START:
+            console.log('inside reducer');
             return {
                 ...state,
                 loading: true
@@ -56,7 +57,8 @@ const userInputReducer = (state = initialState, action) => {
                 ...state,
                 overused: action.overused,
                 loadedSynonyms: action.loadedSynonyms,
-                changed: false
+                changed: false,
+                loading: false
             }
         case actionTypes.SEARCH_TEXT_FAILURE:
             return state;

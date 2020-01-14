@@ -33,6 +33,12 @@
     transition: box-shadow 0.2s ease;
 }
 
+.Spinner {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
 .SynonymLane {
     position: relative;
     margin: 0;
