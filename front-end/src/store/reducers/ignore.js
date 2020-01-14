@@ -1,3 +1,7 @@
+// List of ignored words in calculating overused.
+// Managed in redux because Inspect renders conditionally
+// and results in a spiratic snackbar.
+
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {

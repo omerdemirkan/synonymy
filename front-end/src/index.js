@@ -13,6 +13,7 @@ import palleteReducer from './store/reducers/pallete';
 import userInputReducer from './store/reducers/userInput';
 import inspectReducer from './store/reducers/inspect';
 import ignoreReducer from './store/reducers/ignore';
+import tutorialModal from './store/reducers/tutorial';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     pallete: palleteReducer,
     userInput: userInputReducer,
     inspect: inspectReducer,
-    ignore: ignoreReducer
+    ignore: ignoreReducer,
+    tutorial: tutorialModal
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));

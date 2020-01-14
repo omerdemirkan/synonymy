@@ -231,7 +231,8 @@ mark {
     .SynonymBox {
         width: 100%;
         font-size: 1.2rem;
-        padding: 20px 20px 20px 0;
+        padding: 20px 0;
+        padding-right: calc(2vw + 20px)
     }
 
     .NameFieldItem {

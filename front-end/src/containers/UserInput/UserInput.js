@@ -264,7 +264,7 @@ const UserInput = props => {
             </IconButton>
         </>
         }
-        />;
+        />
 
 
     </div>

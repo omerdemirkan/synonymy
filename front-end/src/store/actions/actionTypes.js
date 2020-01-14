@@ -18,5 +18,8 @@ export const ADD_IGNORE = 'ADD_IGNORE';
 export const REMOVE_IGNORE = 'REMOVE_IGNORE';
 export const CLOSE_IGNORE_MODAL = 'CLOSE_IGNORE_MODAL';
 
+// Tutorial
+export const TOGGLE_TUTORIAL_MODAL = 'TOGGLE_TUTORIAL_MODAL';
+
 
 
