@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './Tutorial.module.css';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
@@ -34,7 +34,7 @@ const content = [
     },
     {
         image: <span className={classes.ImageBox}><img src={img3} style={imageStyle}/></span>,
-        description: 'Words I find to be overused will appear. Click on one to see its synonyms.'
+        description: 'Whatever I find will be listed in order. Click on one to see its synonyms.'
     },
     {
         image: <div className={classes.ImageBox}><img src={img4} style={imageStyle}/></div>,
@@ -49,6 +49,12 @@ const content = [
 const Tutorial = props => {
     const [stage, setStage] = useState(0);
 
+    useEffect(() => {
+        if (props.tutorialModalOpen) {
+            setStage(0);
+        }
+    }, [props.tutorialModalOpen]);
+
     const nextButtonClickedHandler = () => {
         if (stage < 4) {
             setStage(stage + 1);
@@ -62,6 +68,7 @@ const Tutorial = props => {
     }
 
     return <Dialog
+    scroll={'body'}
     fullWidth={true}
     open={props.tutorialModalOpen}
     onClose={props.onToggleModal}
@@ -86,15 +93,17 @@ const Tutorial = props => {
         <button 
         onClick={backButtonClickedHandler}
         disabled={stage === 0}
+        className={classes.Button}
         >
-            Back
+            BACK
         </button>
 
-        <button onClick={nextButtonClickedHandler}
+        <button 
+        onClick={nextButtonClickedHandler}
         disabled={stage === content.length - 1}
-        
+        className={classes.Button}
         >
-            Next
+            NEXT
         </button>
         </DialogActions>
 

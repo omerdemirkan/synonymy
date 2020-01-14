@@ -13,6 +13,30 @@
     animation: PhaseIn 0.5s ease forwards;
 }
 
+.Button {
+    color: #2090DB;
+    transition: background-color 0.1s ease;
+
+    background: transparent;
+    border: none;
+    border-radius: .25rem;
+    width: 70px;
+    height: 30px;
+
+    outline: none;
+    font-weight: 600;
+    background-color: RGBA(77,152,242,0);
+    cursor: pointer;
+}
+
+.Button:hover {
+    background-color: RGBA(77,152,242,0.1);
+}
+
+.Button:disabled {
+    opacity: .6;
+}
+
 @keyframes PhaseIn {
     from {
         opacity: 0;
