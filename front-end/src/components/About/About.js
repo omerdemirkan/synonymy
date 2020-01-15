@@ -24,7 +24,7 @@ function About(props) {
                 <p className={classes.SecondaryHeader}>Simple: I help reduce repitition in your essays.</p>
                 <p className={classes.Text}>
                     I read your essay and find recurring words, 
-                    compare its use to the estimated occurance in day-to-day language, 
+                    compare the words' use to their estimated occurrence in day-to-day language, 
                     rank order them based severity and offer synonyms.
                 </p>
             </div>
@@ -37,9 +37,9 @@ function About(props) {
                     collected by <a target="_blank" href="http://norvig.com/mayzner.html" style={{color: props.pallete.userInputText}}>Peter Norvig</a> from data provided by Google Books.
                 </p>
                 <p className={classes.Text}>
-                    Because the use of words follow a <a target="_blank" href="https://en.wikipedia.org/wiki/Zipf%27s_law" style={{color: props.pallete.userInputText}}>zipf distribution</a>,  
-                    I can use the word's ranking in this list to come up with an estimate of the expected ratio of use.
-                    I then compare the actual ratio to the expected ratio to come up with a sort of "ratio of ratios" which I call the word's score.
+                    Because our use of words follows a <a target="_blank" href="https://en.wikipedia.org/wiki/Zipf%27s_law" style={{color: props.pallete.userInputText}}>Zipf distribution</a>,  
+                    I can use the word's ranking in this list to come up with a surprisingly accurate estimate of its occurrence in day-to-day language.
+                    I then compare the occurrence in your essay to the average occurrence to come up with what I call the word's score.
                     This score is used as a general benchmark for how overused I perceive a word to be.
                     Finally, I take the most overused words and gather all the possible synonyms I can find and offer them.
                 </p>
@@ -56,8 +56,6 @@ function About(props) {
                     To get synonyms of a particular word, click on the word in the sidebar. 
                     All of the synonyms I can find will be at the top of the screen and all instances of the word will be highlighted for you.
                 </p>
-
-                <p></p>
                 
             </div>
             

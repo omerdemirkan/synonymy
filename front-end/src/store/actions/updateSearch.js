@@ -13,7 +13,7 @@ const getExpectedFrequency = word => {
     word = word.toUpperCase();
     const rank = usage.indexOf(word) + 1
     // Rough yet surprisingly accurate formula to estimate 
-    // frequency of the word used in everyday language (Pareto distribution)
+    // frequency of the word used in everyday language (Zipf distribution)
     return (.0714 / rank)
 }
 
