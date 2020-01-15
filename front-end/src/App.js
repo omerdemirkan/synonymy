@@ -9,6 +9,8 @@ import Inspect from './containers/Inspect/Inspect';
 import Footer from './components/Footer/Footer';
 import Tutorial from './containers/Tutorial/Tutorial';
 
+import { Route, Switch } from 'react-router-dom';
+
 function App() {
 
   // Sets theme preference on first use
@@ -21,13 +23,21 @@ function App() {
 
   return <div className="App">
     <Navbar/>
+
       
-    <Main>
-      <Tutorial/>
-      <Inspect/>
-      <UserInput/>
-      <About/>
-    </Main>
+      <Switch>
+        <Route path="/faq" exact component={Main}/>
+
+        <Route path="/" render={() => {
+          return <Main>
+            <Tutorial/>
+            <Inspect/>
+            <UserInput/>
+            <About/>
+          </Main>
+        }}/>
+      </Switch>
+      
     <Footer/>
   </div>
 }
