@@ -8,6 +8,7 @@ import About from './components/About/About';
 import Inspect from './containers/Inspect/Inspect';
 import Footer from './components/Footer/Footer';
 import Tutorial from './containers/Tutorial/Tutorial';
+import FAQ from './components/FAQ/FAQ';
 
 import { Route, Switch } from 'react-router-dom';
 
@@ -22,23 +23,27 @@ function App() {
   }, []);
 
   return <div className="App">
-    <Navbar/>
 
-      
+      <Navbar/>
+
       <Switch>
-        <Route path="/faq" exact component={Main}/>
+
+        <Route path="/faq" exact component={FAQ}/>
 
         <Route path="/" render={() => {
           return <Main>
-            <Tutorial/>
             <Inspect/>
             <UserInput/>
             <About/>
           </Main>
         }}/>
+
       </Switch>
+
+      <Tutorial/>
       
-    <Footer/>
+      <Footer/>
+
   </div>
 }
 

@@ -23,7 +23,6 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const UserInput = props => {
-    console.log(props.loading);
 
     // Controls a snackbar that prompts a new user to click on 
     // a word in the sidebar to see its synonyms
