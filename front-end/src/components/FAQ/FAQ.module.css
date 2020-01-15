@@ -1,7 +1,7 @@
 .FAQ {
     width: 100%;
     padding: 60px 0 30px;
-    min-height: calc(100vh - 190px);
+    min-height: calc(100vh - 90px);
     transition: background-color 0.2s ease;
 }
 
@@ -15,7 +15,7 @@
     max-width: 750px;
     transform: translate(-50%);
     margin-left: 50%;
-    padding: 8px 30px 1px;
+    padding: 12px 30px 6px;
     border-radius: 10px;
     transition: box-shadow 0.2s ease;
     box-sizing: border-box;

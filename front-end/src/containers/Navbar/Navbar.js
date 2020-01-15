@@ -3,10 +3,9 @@ import classes from './Navbar.module.css';
 import { connect } from 'react-redux';
 import DarkModeSwitch from '../../components/UI/DarkModeSwitch/DarkModeSwitch';
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
-// import Backdrop from '../../components/Backdrop/Backdrop';
 import Backdrop from '@material-ui/core/Backdrop';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
 import * as actionTypes from '../../store/actions/actionTypes';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = props => {
     // Determines whether or not the side-drawer is open, also affects
@@ -19,7 +18,7 @@ const Navbar = props => {
     >
         <div className={classes.DarkModeBackdrop} style={props.darkMode ? {opacity: '1'} : {}}></div>
         <h2 className={classes.Logo}>
-            Synonymy
+            <NavLink to="/" className={classes.Link}>Synonymy</NavLink>
             <p className={classes.Beta}>beta</p>
         </h2>
         
@@ -30,9 +29,9 @@ const Navbar = props => {
             <li>
                 <DarkModeSwitch/>
             </li>
-
-            <li className={classes.ListItem}><AnchorLink className={classes.Link} href='#about'>About</AnchorLink></li>
             <li className={classes.ListItem} onClick={props.onToggleModal}>Tutorial</li>
+
+            <li className={classes.ListItem}><NavLink to="/faq" className={classes.Link}>FAQ</NavLink></li>
         </ul>
         
 
