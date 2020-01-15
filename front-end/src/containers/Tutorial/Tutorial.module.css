@@ -10,6 +10,11 @@
 }
 
 .ImageBox {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+    min-height: 335px;
     animation: PhaseIn 0.5s ease forwards;
 }
 
@@ -44,5 +49,11 @@
 
     to {
         opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .ImageBox {
+        min-height: 0px;
     }
 }

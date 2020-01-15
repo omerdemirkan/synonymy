@@ -18,34 +18,6 @@ import img3 from '../../images/synonymy3.png';
 import img4 from '../../images/synonymy4.png';
 import img5 from '../../images/synonymy5.png';
 
-const imageStyle = {
-    width: '100%',
-    maxWidth: '550px'
-}
-
-const content = [
-    {
-        image: <span className={classes.ImageBox}><img src={img1} style={imageStyle}/></span>,
-        description: 'Once you are close to your final draft, paste your essay in the text field.'
-    },
-    {
-        image: <div className={classes.ImageBox}><img src={img2} style={imageStyle}/></div>,
-        description: `Click on CHECK, I'll search through your essay and find overused words.`
-    },
-    {
-        image: <span className={classes.ImageBox}><img src={img3} style={imageStyle}/></span>,
-        description: 'Whatever I find will be listed in order. Click on one to see its synonyms.'
-    },
-    {
-        image: <div className={classes.ImageBox}><img src={img4} style={imageStyle}/></div>,
-        description: `The word's synonyms will appear and all instances will be highlighted`
-    },
-    {
-        image: <span className={classes.ImageBox}><img src={img5} style={imageStyle}/></span>,
-        description: `You can choose to ignore a word if you don't find it particularly helpful`
-    },
-]
-
 const Tutorial = props => {
     const [stage, setStage] = useState(0);
 
@@ -67,11 +39,39 @@ const Tutorial = props => {
         }
     }
 
+    const imageStyle = {
+        width: '100%'
+    }
+    
+    const content = [
+        {
+            image: <span className={classes.ImageBox}><img src={img1} style={imageStyle}/></span>,
+            description: 'Once you are close to your final draft, paste your essay in the text field.'
+        },
+        {
+            image: <div className={classes.ImageBox}><img src={img2} style={imageStyle}/></div>,
+            description: `Click on CHECK, I'll search through your essay and find overused words.`
+        },
+        {
+            image: <span className={classes.ImageBox}><img src={img3} style={imageStyle}/></span>,
+            description: 'Whatever I find will be listed in order. Click on one to see its synonyms.'
+        },
+        {
+            image: <div className={classes.ImageBox}><img src={img4} style={imageStyle}/></div>,
+            description: `The word's synonyms will appear and all instances will be highlighted`
+        },
+        {
+            image: <span className={classes.ImageBox}><img src={img5} style={imageStyle}/></span>,
+            description: `You can choose to ignore a word if you don't find it particularly helpful`
+        },
+    ]
+
     return <Dialog
-    scroll={'body'}
+    scroll={'paper'}
     fullWidth={true}
     open={props.tutorialModalOpen}
     onClose={props.onToggleModal}
+    style={{overflowY: 'scroll'}}
     >
         <CloseRoundedIcon onClick={props.onToggleModal} className={classes.CloseIcon}/>
         <DialogTitle style={{backgroundColor: '#DFE6EC'}}>{"How do I use Synonymy?"}</DialogTitle>

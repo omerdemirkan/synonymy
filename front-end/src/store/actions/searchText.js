@@ -6,10 +6,10 @@ import {isValidWord} from '../../helper/isValidWord';
 
 const getExpectedFrequency = word => {
     word = word.toUpperCase();
-    const index = usage.indexOf(word)
+    const rank = usage.indexOf(word) + 1
     // Rough yet surprisingly accurate formula to estimate 
     // frequency of the word used in everyday language (Pareto distribution)
-    return (.0714 / index)
+    return (.0714 / rank)
 }
 
 const searchTextAsync = (text, numWords) => {
