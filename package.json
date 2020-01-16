@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front-end && npm run build --prefix front-end",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",

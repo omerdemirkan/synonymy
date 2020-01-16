@@ -6,7 +6,7 @@
 .InspectBox {
     width: 90%;
     max-width: 800px;
-    padding: 8px 28px 30px;
+    padding: 8px 35px 30px;
     box-sizing: border-box;
     margin: auto;
     border: none;
@@ -89,6 +89,6 @@
 @media (max-width: 768px) {
     .InspectBox {
         max-width: 800px;
-        padding: 20px 20px 40px;
+        padding: 20px 35px 40px;
     }
 }
