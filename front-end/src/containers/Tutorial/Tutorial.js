@@ -74,7 +74,7 @@ const Tutorial = props => {
     style={{overflowY: 'scroll'}}
     >
         <CloseRoundedIcon onClick={props.onToggleModal} className={classes.CloseIcon}/>
-        <DialogTitle style={{backgroundColor: '#DFE6EC'}}>{"How do I use Synonymy?"}</DialogTitle>
+        <DialogTitle style={{backgroundColor: '#DFE6EC', textAlign: 'center'}}>{"How do I use Synonymy?"}</DialogTitle>
 
         <DialogContent
         style={{backgroundColor: '#DFE6EC'}}

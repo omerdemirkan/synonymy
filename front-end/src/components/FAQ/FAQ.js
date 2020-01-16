@@ -39,6 +39,14 @@ function FAQ(props) {
                 <p className={classes.Answer}>Synonymy is currently unable to check for the context. If the synonyms for a particular word aren't helpful, feel free to click <bold>IGNORE</bold>, and you won't see those words until your next visit.</p>
             </div>
 
+            <div className={classes.Contact}>
+
+                <hr className={classes.Divider}/>
+                <h2 className={classes.ContactHeader} style={{textAlign: 'center'}}>Contact</h2>
+                <p className={classes.ContactText}>Got another question? <a href="mailto:omerfarukpiano@gmail.com" style={{color: 'inherit'}}>Shoot me an email</a>!</p>
+                <p>To report a technical issue, please notify me on <a target="_blank" href="https://github.com/omerdemirkan/synonymy/issues" style={{color: 'inherit'}}>Github</a>.</p>
+            </div>
+
         </div>
     </div>
 }
