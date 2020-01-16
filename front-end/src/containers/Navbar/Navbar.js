@@ -31,7 +31,7 @@ const Navbar = props => {
             </li>
             <li className={classes.ListItem} onClick={props.onToggleModal}>Tutorial</li>
 
-            <li className={classes.ListItem}><NavLink to="/faq" className={classes.Link}>FAQ</NavLink></li>
+            <li className={classes.ListItem}><NavLink to="/faq" className={classes.Link}>FAQs</NavLink></li>
         </ul>
         
 
