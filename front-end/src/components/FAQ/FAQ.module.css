@@ -63,7 +63,7 @@
 
 }
 
-.Answer::selection, .Question::selection, .MainHeader::selection, .Answer bold::selection {
+.Answer::selection, .ContactHeader::selection, .ContactText::selection,  .Question::selection, .MainHeader::selection, .Answer bold::selection {
     color: inherit;
     background-color: rgb(196, 196, 196);
 }
