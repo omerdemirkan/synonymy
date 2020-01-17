@@ -1,7 +1,7 @@
 .Footer {
     height: 100px;
     box-sizing: border-box;
-    background: linear-gradient(174.2deg, #008EEE -8.16%, #142685 143.6%);
+    background: linear-gradient(177.97deg, #0098FF -27.82%, #004FC7 140.24%);
     padding: 20px 0;
     transition: background-color 0.2s ease;
     position: relative;
@@ -54,7 +54,7 @@
 
 @media (max-width: 768px) {
     .Footer {
-        background: #008EEE;
+        background: #0098FF;
     }
     .DarkModeBackdrop {
         background: #2B3842;
