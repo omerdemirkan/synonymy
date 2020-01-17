@@ -140,7 +140,7 @@ const UserInput = props => {
                                         <td 
                                         className={classes.NameFieldItem} 
                                         onClick={() => wordClickedHandler(element.word)}
-                                        style={props.inspectedWord === element.word ? {opacity: '1', fontWeight: '500'} : null}>
+                                        style={props.inspectedWord === element.word ? {opacity: '1', fontWeight: '500', letterSpacing: '-.1px'} : null}>
                                             {element.word}
                                         </td>
                                         <td

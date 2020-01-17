@@ -81,11 +81,13 @@ td {
     padding-left: 10px;
     cursor: pointer;
     opacity: .9;
+    letter-spacing: 0px;
 }
 
 .NameFieldItem:hover {
     font-weight: 500;
     opacity: 1;
+    letter-spacing: -.1px;
 }
 
 .CategoryHeader {
