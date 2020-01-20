@@ -69,19 +69,16 @@ const updateTextAsync = (text, numWords, loadedSynonyms, ignoredWords) => {
                     element.synonyms = loadedSynonyms[element.word];
                 } else {
                     // If synonym hasn't been fetched yet
-                    console.log('item added to wordsWithoutSynonyms');
                     wordsWithoutSynonyms.push(element);
                 }
             });
 
             if (wordsWithoutSynonyms.length > 0) {
-                console.log('sending request for word(s)');
                 axios.post('/synonyms/', {
                     list: wordsWithoutSynonyms
                 })
                 .then(res => {
                     // Adding synonyms for new overused words
-                    console.log('response: ', res.data);
                     loadedSynonyms = {...loadedSynonyms, ...res.data}
                     dispatch(searchTextSuccess(newOverusedList, loadedSynonyms));
                 })

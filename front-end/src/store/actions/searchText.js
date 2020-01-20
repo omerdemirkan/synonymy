@@ -69,7 +69,7 @@ const searchTextAsync = (text, numWords) => {
                     dispatch(searchTextSuccess(overusedList, res.data));
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.log("error: " + err);
                 });
 
             } else {
