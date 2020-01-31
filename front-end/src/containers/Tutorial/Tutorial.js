@@ -45,23 +45,23 @@ const Tutorial = props => {
     
     const content = [
         {
-            image: <span className={classes.ImageBox}><img src={img1} style={imageStyle}/></span>,
+            image: <span className={classes.ImageBox}><img src={img1} style={imageStyle} alt="Tutorial step 1"/></span>,
             description: 'Once you are close to your final draft, paste your essay in the text field.'
         },
         {
-            image: <div className={classes.ImageBox}><img src={img2} style={imageStyle}/></div>,
+            image: <div className={classes.ImageBox}><img src={img2} style={imageStyle} alt="Tutorial step 2"/></div>,
             description: `Click on CHECK, I'll search through your essay and find overused words.`
         },
         {
-            image: <span className={classes.ImageBox}><img src={img3} style={imageStyle}/></span>,
+            image: <span className={classes.ImageBox}><img src={img3} style={imageStyle} alt="Tutorial step 3"/></span>,
             description: 'Whatever I find will be listed in order. Click on one to see its synonyms.'
         },
         {
-            image: <div className={classes.ImageBox}><img src={img4} style={imageStyle}/></div>,
+            image: <div className={classes.ImageBox}><img src={img4} style={imageStyle} alt="Tutorial step 4"/></div>,
             description: `The word's synonyms will appear and all instances will be highlighted`
         },
         {
-            image: <span className={classes.ImageBox}><img src={img5} style={imageStyle}/></span>,
+            image: <span className={classes.ImageBox}><img src={img5} style={imageStyle} alt="Tutorial step 5"/></span>,
             description: `You can choose to ignore a word if you don't find it particularly helpful`
         },
     ]
