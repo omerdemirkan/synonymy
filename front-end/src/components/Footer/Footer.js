@@ -16,12 +16,12 @@ const Footer = props => {
             <div className={classes.Icons}>
 
                 <a style={{color: props.pallete.navbarText}} 
-                href="https://www.linkedin.com/in/omer-demirkan" target="_blank">
+                href="https://www.linkedin.com/in/omer-demirkan" target="_blank" rel="noopener noreferrer">
                     <LinkedInIcon className={classes.LinkIcon}/>
                 </a>
 
                 <a style={{color: props.pallete.navbarText}} 
-                href="https://github.com/omerdemirkan" target="_blank">
+                href="https://github.com/omerdemirkan" target="_blank" rel="noopener noreferrer">
                     <GitHubIcon className={classes.LinkIcon}/>
                 </a>
                 
