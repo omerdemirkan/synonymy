@@ -18,7 +18,7 @@ router.post('/', limiter, (req, res) => {
             }
         });
     } else {
-        res.json('eRROR in request (issue with list object)');
+        res.json('Error in request (issue with list object)');
     }
     res.json(synonymsList)
 })
