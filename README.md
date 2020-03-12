@@ -1,6 +1,8 @@
 # Synonymy.app
 A program that detects overused words in essays and recommends synonyms.
 
+[See it Live!](https://synonymy-app.herokuapp.com/)
+
 ## How to use it
 Paste your near-final draft essay into the text field and click CHECK.
 The top ten offenders will be shown ranked from most to least overused.
