@@ -3,6 +3,12 @@ A program that detects overused words in essays and recommends synonyms.
 
 [See it Live!](https://synonymy-app.herokuapp.com/)
 
+### Submitting an essay
+![gif 2](https://media.giphy.com/media/fx55j5dkVLjTy1hUG3/giphy.gif)
+
+### Live Reload
+![gif 1](https://media.giphy.com/media/MZXNacfBPlwWiyzyjd/giphy.gif)
+
 ## How to use it
 Paste your near-final draft essay into the text field and click CHECK.
 The top ten offenders will be shown ranked from most to least overused.
