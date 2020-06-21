@@ -34,10 +34,10 @@ function About(props) {
                 <p className={classes.Text}>
                     After gathering a list of words used more than twice, 
                     I look for the word in a list of 97,565 unique words used in over 743 billion different places ranked from most to least used
-                    collected by <a target="_blank" href="http://norvig.com/mayzner.html" style={{color: props.pallete.userInputText}}>Peter Norvig</a> from data provided by Google Books.
+                    collected by <a target="_blank" rel="noopener noreferrer" href="http://norvig.com/mayzner.html" style={{color: props.pallete.userInputText}}>Peter Norvig</a> from data provided by Google Books.
                 </p>
                 <p className={classes.Text}>
-                    Because our use of words follows a <a target="_blank" href="https://en.wikipedia.org/wiki/Zipf%27s_law" style={{color: props.pallete.userInputText}}>Zipf distribution</a>,  
+                    Because our use of words follows a <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Zipf%27s_law" style={{color: props.pallete.userInputText}}>Zipf distribution</a>,  
                     I can use the word's ranking in this list to come up with a surprisingly accurate estimate of its occurrence in day-to-day language.
                     I then compare the occurrence in your essay to the average occurrence to come up with what I call the word's score.
                     This score is used as a general benchmark for how overused I perceive a word to be.
